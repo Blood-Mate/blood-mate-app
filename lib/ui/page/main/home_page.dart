@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../common/component.dart';
+import 'package:bloodmate_app/ui/view/main/main_views.dart';
+import 'package:bloodmate_app/ui/viewmodel/main/main_viewmodels.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,12 +17,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: theme.canvasColor,
         body: Column(
           children: [
-            HomePageHeader(),
-            Expanded(child: HomePageBody(screenSize)),
-            Divider(
-              color: Color(0x40808080),
-              thickness: 5.0,
-            ),
+            homePageProfile(),
+            ThinDevider(),
+            Expanded(child: friendsNewsList()),
+            moreButton(),
+            ThinDevider(),
             HomePageTail(screenSize),
           ],
         ));
@@ -59,36 +63,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget HomePageBody(Size screenSize) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: 20),
-        Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text('내 친구 소식')),
-        SizedBox(height: 20),
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                height: 70,
-                width: screenSize.width,
-                decoration: BoxDecoration(color: Colors.red),
-                child: Center(child: (Text('내 친구 소식 미리보기 박스'))),
-              )
-            ],
-          ),
-        ),
-        Container(
-            alignment: Alignment.bottomRight,
-            padding: EdgeInsets.all(10),
-            child: Text('더보기', textAlign: TextAlign.end))
-      ],
-    );
+  Widget homePageProfile() {
+    return ChangeNotifierProvider<HomePageProfileViewModel>(
+        create: (_) => HomePageProfileViewModel(),
+        child: HomePageProfileView());
+    ;
+  }
+
+  Widget friendsNewsList() {
+    return ChangeNotifierProvider<FriendsNewsListViewModel>(
+        create: (_) => FriendsNewsListViewModel(),
+        child: FriendsNewsListView());
+  }
+
+  Widget moreButton() {
+    return Container(
+        alignment: Alignment.bottomRight,
+        padding: EdgeInsets.all(10),
+        child: Text('더보기', textAlign: TextAlign.end));
   }
 
   Widget HomePageTail(Size screenSize) {

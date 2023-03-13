@@ -68,7 +68,7 @@ class _NavBarState extends State<NavBar> {
               //_menu = 1;
               GoRouter.of(context).go('/local');
             }),
-            icon: Icon(Icons.location_on),
+            icon: Icon(Icons.auto_stories),
             enableFeedback: false,
           ),
           IconButton(
@@ -76,7 +76,7 @@ class _NavBarState extends State<NavBar> {
               //_menu = 1;
               GoRouter.of(context).go('/acquaintance');
             }),
-            icon: Icon(Icons.people),
+            icon: Icon(Icons.face),
             enableFeedback: false,
           ),
           IconButton(
@@ -84,7 +84,7 @@ class _NavBarState extends State<NavBar> {
               //_menu = 1;
               GoRouter.of(context).go('/alert');
             }),
-            icon: Icon(Icons.alarm_outlined),
+            icon: Icon(Icons.notifications),
             enableFeedback: false,
           ),
           IconButton(
