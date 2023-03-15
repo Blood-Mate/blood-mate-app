@@ -24,7 +24,7 @@ class BloodMateApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootkey,
-    initialLocation: '/home', //'/splash',
+    initialLocation: '/profile', //'/splash',
     routes: [
       GoRoute(
         path: '/',
@@ -98,7 +98,8 @@ class BloodMateApp extends StatelessWidget {
 
   final ThemeData _theme = ThemeData(
     canvasColor: const Color(0xFFFFFFFF),
-    primaryColor: const Color(0xFFFF2525),
+    primaryColor: Color.fromARGB(255, 253, 45, 45), //Color(0xFFFF2525),
+    focusColor: Color.fromARGB(255, 235, 94, 94),
     textTheme: const TextTheme(),
   );
 }

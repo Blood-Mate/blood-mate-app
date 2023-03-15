@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/component.dart';
+import '../../common/component/component.dart';
 
 class AcquaintancePage extends StatelessWidget {
   const AcquaintancePage({super.key});

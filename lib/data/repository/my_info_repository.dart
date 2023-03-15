@@ -4,9 +4,9 @@ import '../model/models.dart';
 import '../data_source/data_sources.dart';
 import 'package:bloodmate_app/data/mock_data/mock_data.dart';
 
-class ProfileRepository {
+class MyInfoRepository {
   // mock data
-  Profile getMockData() {
-    return ProfileRepo.profileMockData;
+  MyInfo getMockData() {
+    return MyInfoRepo.myInfoMockData;
   }
 }

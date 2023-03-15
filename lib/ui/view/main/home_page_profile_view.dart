@@ -1,15 +1,15 @@
-import 'package:bloodmate_app/data/model/models.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:bloodmate_app/ui/viewmodel/main/home_page_profile_viewmodel.dart';
+import 'package:bloodmate_app/ui/viewmodel/main/profile_viewmodel.dart';
 
 class HomePageProfileView extends StatelessWidget {
   const HomePageProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<HomePageProfileViewModel>(context);
+    var viewModel = Provider.of<ProfileViewModel>(context);
     return _buildHomePageProfileView(viewModel);
   }
 
@@ -21,19 +21,26 @@ class HomePageProfileView extends StatelessWidget {
         SizedBox(height: 50),
         Row(
           children: [
-            SizedBox(width: 30),
+            SizedBox(width: 20),
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(color: Colors.red),
+              decoration: BoxDecoration(border: Border.all(width: 1)),
+              // child: CachedNetworkImage(
+              //   imageUrl: data.profile_image_URL,
+              //   placeholder: (context, url) => CircularProgressIndicator(),
+              // ),
+              child: Image(
+                  image: CachedNetworkImageProvider(data.profile_image_URL)),
             ),
-            SizedBox(width: 30),
+            SizedBox(width: 20),
             Container(
               height: 100,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 10),
                   Text(
                     '안녕하세요!',
                     style: TextStyle(fontSize: 20),
@@ -47,6 +54,7 @@ class HomePageProfileView extends StatelessWidget {
             )
           ],
         ),
+        SizedBox(height: 10),
       ],
     );
   }

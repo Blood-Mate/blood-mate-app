@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/component.dart';
+import '../../common/component/component.dart';
 
 class LocalDonationPage extends StatelessWidget {
   const LocalDonationPage({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/component.dart';
+import '../../common/component/component.dart';
 
 class AlertPage extends StatelessWidget {
   const AlertPage({super.key});

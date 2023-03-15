@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/ui/common/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,11 +21,12 @@ class FriendsNewsListView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text('내 친구 소식')),
+        ThinDevider(),
         SizedBox(height: 20),
         Flexible(
           child: ListView.builder(
