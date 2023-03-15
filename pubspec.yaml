@@ -38,6 +38,7 @@ dependencies:
   go_router: ^6.2.0
   provider: ^6.0.2
   freezed_annotation: ^2.2.0
+  cached_network_image: ^3.2.3
 
   hive:
   hive_flutter:

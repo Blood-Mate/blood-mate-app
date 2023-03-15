@@ -15,7 +15,7 @@ abstract class FriendsPostRepo {
 
 abstract class ProfileRepo {
   static Profile profileMockData = Profile.fromJson(jsonDecode(
-      '{"name":"NameIsMyName","profile_image_URL":"https://profile-image.com","blood_type":"AB","phone_number":"010-0000-0000"}'));
+      '{"name":"NameIsMyName","profile_image_URL":"https://picsum.photos/id/1/200/300","blood_type":"AB","phone_number":"010-0000-0000"}'));
 }
 
 abstract class MyInfoRepo {

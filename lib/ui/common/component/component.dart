@@ -1,6 +1,10 @@
 //import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+export 'list_view_tile.dart';
+export 'circular_image.dart';
+export 'page_button.dart';
+export 'profile_button.dart';
 
 class ThinDevider extends StatelessWidget {
   const ThinDevider({super.key});
@@ -9,7 +13,7 @@ class ThinDevider extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Divider(
       color: Color(0x40808080),
-      height: 16,
+      height: 12,
       thickness: 2.0,
     );
   }
@@ -36,7 +40,7 @@ class SubPageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 50),
+        SizedBox(height: 40),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
