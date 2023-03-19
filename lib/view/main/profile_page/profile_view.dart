@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/viewmodel/main/profile_viewmodel.dart';
@@ -10,10 +11,10 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var viewModel = Provider.of<ProfileViewModel>(context);
-    return _buildProfileView(viewModel);
+    return _buildProfileView(viewModel, context);
   }
 
-  Widget _buildProfileView(viewModel) {
+  Widget _buildProfileView(viewModel, context) {
     final data = viewModel.data; // viewModel에 저장된 data
 
     return Column(
@@ -41,9 +42,53 @@ class ProfileView extends StatelessWidget {
           ],
         ),
         SizedBox(height: 10),
-        Text('Blood type : ' + data.blood_type),
-        Text('Phone Number : ' + data.phone_number),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Blood type : ' + data.blood_type),
+              Text('Phone Number : ' + data.phone_number),
+            ]),
+            signOutButton(context),
+          ],
+        )
       ],
+    );
+  }
+
+  Widget signOutButton(context) {
+    return ElevatedButton(
+      child: const Text(
+        'Sign Out',
+        style: TextStyle(
+          color: Colors.black,
+        ),
+      ),
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Sign Out'),
+                content: Text('Sign Out Really?'),
+                actions: <Widget>[
+                  ElevatedButton(
+                    child: Text('Yes'),
+                    onPressed: () {
+                      ProfileViewModel().signOut();
+                      GoRouter.of(context).go('/signin');
+                    },
+                  ),
+                  ElevatedButton(
+                    child: Text('No'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              );
+            });
+      },
     );
   }
 }

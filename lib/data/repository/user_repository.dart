@@ -74,11 +74,12 @@ class UserRepository {
       if (response.statusCode == 201) {
         // 로그인 성공시에 access token, refresh token 저장
         final box = await Hive.openBox('tokens');
-        await box.put('access_token', response.data['accessToken']);
-        await box.put('refresh_token', response.data['refreshToken']);
+        box.put('access_token', response.data['accessToken']);
+        box.put('refresh_token', response.data['refreshToken']);
+        print(response.data['accessToken']);
 
         //test log
-        print("Success");
+        print("success");
 
         return "Success";
       } else {

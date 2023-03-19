@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SignInFailDialog extends StatelessWidget {
-  const SignInFailDialog({super.key});
+class FailDialog extends StatelessWidget {
+  FailDialog({super.key, required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Error'),
-      content: Text('Failed to sign in. Please try again.'),
+      content: Text('Failed to ' + text + '. Please try again.'),
       actions: <Widget>[
         ElevatedButton(
           child: Text('OK'),

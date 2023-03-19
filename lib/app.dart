@@ -1,5 +1,7 @@
+import 'package:bloodmate_app/data/util/global_data.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import 'view/pages.dart';
 
@@ -12,19 +14,22 @@ class BloodMateApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      theme: _theme,
-      builder: (context, child) => ScrollConfiguration(
-        behavior: DiableScrollGlow(),
-        child: child ?? Container(),
+    return ChangeNotifierProvider(
+      create: (context) => MyTokens(),
+      child: MaterialApp.router(
+        routerConfig: _router,
+        theme: _theme,
+        builder: (context, child) => ScrollConfiguration(
+          behavior: DiableScrollGlow(),
+          child: child ?? Container(),
+        ),
       ),
     );
   }
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootkey,
-    initialLocation: '/signin', //'/splash',
+    initialLocation: '/splash',
     routes: [
       GoRoute(
         path: '/',

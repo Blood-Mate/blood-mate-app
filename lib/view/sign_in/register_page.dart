@@ -1,10 +1,10 @@
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/pages.dart';
-import 'package:bloodmate_app/view/start/register_field.dart';
+import 'package:bloodmate_app/view/sign_in/register_field.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/view/common/component/component.dart';
-import 'package:bloodmate_app/view/start/sign_in_field.dart';
+import 'package:bloodmate_app/view/sign_in/sign_in_field.dart';
 import 'package:bloodmate_app/viewmodel/register_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,7 +55,9 @@ class RegisterPage extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return SignInFailDialog();
+                        return FailDialog(
+                          text: "register",
+                        );
                       });
                 }
               }),

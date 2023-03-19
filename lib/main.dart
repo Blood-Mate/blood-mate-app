@@ -9,6 +9,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await Hive.initFlutter();
+  //Hive.registerAdapter(UserModelAdapter());
 
   runApp(BloodMateApp());
 }

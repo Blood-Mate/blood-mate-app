@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/pages.dart';
-import 'package:bloodmate_app/view/start/sign_in_field.dart';
+import 'package:bloodmate_app/view/sign_in/sign_in_field.dart';
 import 'package:bloodmate_app/viewmodel/sign_in_viewmodel.dart';
 
 class SignInPage extends StatelessWidget {
@@ -51,7 +51,9 @@ class SignInPage extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return SignInFailDialog();
+                        return FailDialog(
+                          text: "sign in",
+                        );
                       });
                 }
               }),

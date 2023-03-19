@@ -12,7 +12,9 @@ class QnAPage extends StatelessWidget {
       height: screenSize.height,
       decoration: BoxDecoration(color: Colors.grey),
       child: const Center(
-        child: Text('QnA'),
+        child: Column(
+          children: [Text('QnA')],
+        ),
       ),
     );
   }
