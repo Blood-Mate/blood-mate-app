@@ -20,13 +20,13 @@ MyInfo _$MyInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MyInfo {
-  List<int> get public_post_ID_list => throw _privateConstructorUsedError;
-  List<int> get private_post_ID_list => throw _privateConstructorUsedError;
-  List<String> get sendding_messages => throw _privateConstructorUsedError;
-  List<String> get receiving_messages => throw _privateConstructorUsedError;
+  List<int> get publicPosts => throw _privateConstructorUsedError;
+  List<int> get privatePosts => throw _privateConstructorUsedError;
+  List<String> get senddingMessages => throw _privateConstructorUsedError;
+  List<String> get receivingMessages => throw _privateConstructorUsedError;
   List<String> get awards => throw _privateConstructorUsedError;
-  List<int> get donation_request_list => throw _privateConstructorUsedError;
-  List<int> get success_donation_list => throw _privateConstructorUsedError;
+  List<int> get donationRequests => throw _privateConstructorUsedError;
+  List<int> get successDonations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,13 +39,13 @@ abstract class $MyInfoCopyWith<$Res> {
       _$MyInfoCopyWithImpl<$Res, MyInfo>;
   @useResult
   $Res call(
-      {List<int> public_post_ID_list,
-      List<int> private_post_ID_list,
-      List<String> sendding_messages,
-      List<String> receiving_messages,
+      {List<int> publicPosts,
+      List<int> privatePosts,
+      List<String> senddingMessages,
+      List<String> receivingMessages,
       List<String> awards,
-      List<int> donation_request_list,
-      List<int> success_donation_list});
+      List<int> donationRequests,
+      List<int> successDonations});
 }
 
 /// @nodoc
@@ -61,42 +61,42 @@ class _$MyInfoCopyWithImpl<$Res, $Val extends MyInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? public_post_ID_list = null,
-    Object? private_post_ID_list = null,
-    Object? sendding_messages = null,
-    Object? receiving_messages = null,
+    Object? publicPosts = null,
+    Object? privatePosts = null,
+    Object? senddingMessages = null,
+    Object? receivingMessages = null,
     Object? awards = null,
-    Object? donation_request_list = null,
-    Object? success_donation_list = null,
+    Object? donationRequests = null,
+    Object? successDonations = null,
   }) {
     return _then(_value.copyWith(
-      public_post_ID_list: null == public_post_ID_list
-          ? _value.public_post_ID_list
-          : public_post_ID_list // ignore: cast_nullable_to_non_nullable
+      publicPosts: null == publicPosts
+          ? _value.publicPosts
+          : publicPosts // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      private_post_ID_list: null == private_post_ID_list
-          ? _value.private_post_ID_list
-          : private_post_ID_list // ignore: cast_nullable_to_non_nullable
+      privatePosts: null == privatePosts
+          ? _value.privatePosts
+          : privatePosts // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      sendding_messages: null == sendding_messages
-          ? _value.sendding_messages
-          : sendding_messages // ignore: cast_nullable_to_non_nullable
+      senddingMessages: null == senddingMessages
+          ? _value.senddingMessages
+          : senddingMessages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      receiving_messages: null == receiving_messages
-          ? _value.receiving_messages
-          : receiving_messages // ignore: cast_nullable_to_non_nullable
+      receivingMessages: null == receivingMessages
+          ? _value.receivingMessages
+          : receivingMessages // ignore: cast_nullable_to_non_nullable
               as List<String>,
       awards: null == awards
           ? _value.awards
           : awards // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      donation_request_list: null == donation_request_list
-          ? _value.donation_request_list
-          : donation_request_list // ignore: cast_nullable_to_non_nullable
+      donationRequests: null == donationRequests
+          ? _value.donationRequests
+          : donationRequests // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      success_donation_list: null == success_donation_list
-          ? _value.success_donation_list
-          : success_donation_list // ignore: cast_nullable_to_non_nullable
+      successDonations: null == successDonations
+          ? _value.successDonations
+          : successDonations // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ) as $Val);
   }
@@ -109,13 +109,13 @@ abstract class _$$_MyInfoCopyWith<$Res> implements $MyInfoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<int> public_post_ID_list,
-      List<int> private_post_ID_list,
-      List<String> sendding_messages,
-      List<String> receiving_messages,
+      {List<int> publicPosts,
+      List<int> privatePosts,
+      List<String> senddingMessages,
+      List<String> receivingMessages,
       List<String> awards,
-      List<int> donation_request_list,
-      List<int> success_donation_list});
+      List<int> donationRequests,
+      List<int> successDonations});
 }
 
 /// @nodoc
@@ -128,42 +128,42 @@ class __$$_MyInfoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? public_post_ID_list = null,
-    Object? private_post_ID_list = null,
-    Object? sendding_messages = null,
-    Object? receiving_messages = null,
+    Object? publicPosts = null,
+    Object? privatePosts = null,
+    Object? senddingMessages = null,
+    Object? receivingMessages = null,
     Object? awards = null,
-    Object? donation_request_list = null,
-    Object? success_donation_list = null,
+    Object? donationRequests = null,
+    Object? successDonations = null,
   }) {
     return _then(_$_MyInfo(
-      public_post_ID_list: null == public_post_ID_list
-          ? _value._public_post_ID_list
-          : public_post_ID_list // ignore: cast_nullable_to_non_nullable
+      publicPosts: null == publicPosts
+          ? _value._publicPosts
+          : publicPosts // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      private_post_ID_list: null == private_post_ID_list
-          ? _value._private_post_ID_list
-          : private_post_ID_list // ignore: cast_nullable_to_non_nullable
+      privatePosts: null == privatePosts
+          ? _value._privatePosts
+          : privatePosts // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      sendding_messages: null == sendding_messages
-          ? _value._sendding_messages
-          : sendding_messages // ignore: cast_nullable_to_non_nullable
+      senddingMessages: null == senddingMessages
+          ? _value._senddingMessages
+          : senddingMessages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      receiving_messages: null == receiving_messages
-          ? _value._receiving_messages
-          : receiving_messages // ignore: cast_nullable_to_non_nullable
+      receivingMessages: null == receivingMessages
+          ? _value._receivingMessages
+          : receivingMessages // ignore: cast_nullable_to_non_nullable
               as List<String>,
       awards: null == awards
           ? _value._awards
           : awards // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      donation_request_list: null == donation_request_list
-          ? _value._donation_request_list
-          : donation_request_list // ignore: cast_nullable_to_non_nullable
+      donationRequests: null == donationRequests
+          ? _value._donationRequests
+          : donationRequests // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      success_donation_list: null == success_donation_list
-          ? _value._success_donation_list
-          : success_donation_list // ignore: cast_nullable_to_non_nullable
+      successDonations: null == successDonations
+          ? _value._successDonations
+          : successDonations // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
   }
@@ -173,58 +173,56 @@ class __$$_MyInfoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MyInfo implements _MyInfo {
   _$_MyInfo(
-      {required final List<int> public_post_ID_list,
-      required final List<int> private_post_ID_list,
-      required final List<String> sendding_messages,
-      required final List<String> receiving_messages,
+      {required final List<int> publicPosts,
+      required final List<int> privatePosts,
+      required final List<String> senddingMessages,
+      required final List<String> receivingMessages,
       required final List<String> awards,
-      required final List<int> donation_request_list,
-      required final List<int> success_donation_list})
-      : _public_post_ID_list = public_post_ID_list,
-        _private_post_ID_list = private_post_ID_list,
-        _sendding_messages = sendding_messages,
-        _receiving_messages = receiving_messages,
+      required final List<int> donationRequests,
+      required final List<int> successDonations})
+      : _publicPosts = publicPosts,
+        _privatePosts = privatePosts,
+        _senddingMessages = senddingMessages,
+        _receivingMessages = receivingMessages,
         _awards = awards,
-        _donation_request_list = donation_request_list,
-        _success_donation_list = success_donation_list;
+        _donationRequests = donationRequests,
+        _successDonations = successDonations;
 
   factory _$_MyInfo.fromJson(Map<String, dynamic> json) =>
       _$$_MyInfoFromJson(json);
 
-  final List<int> _public_post_ID_list;
+  final List<int> _publicPosts;
   @override
-  List<int> get public_post_ID_list {
-    if (_public_post_ID_list is EqualUnmodifiableListView)
-      return _public_post_ID_list;
+  List<int> get publicPosts {
+    if (_publicPosts is EqualUnmodifiableListView) return _publicPosts;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_public_post_ID_list);
+    return EqualUnmodifiableListView(_publicPosts);
   }
 
-  final List<int> _private_post_ID_list;
+  final List<int> _privatePosts;
   @override
-  List<int> get private_post_ID_list {
-    if (_private_post_ID_list is EqualUnmodifiableListView)
-      return _private_post_ID_list;
+  List<int> get privatePosts {
+    if (_privatePosts is EqualUnmodifiableListView) return _privatePosts;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_private_post_ID_list);
+    return EqualUnmodifiableListView(_privatePosts);
   }
 
-  final List<String> _sendding_messages;
+  final List<String> _senddingMessages;
   @override
-  List<String> get sendding_messages {
-    if (_sendding_messages is EqualUnmodifiableListView)
-      return _sendding_messages;
+  List<String> get senddingMessages {
+    if (_senddingMessages is EqualUnmodifiableListView)
+      return _senddingMessages;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sendding_messages);
+    return EqualUnmodifiableListView(_senddingMessages);
   }
 
-  final List<String> _receiving_messages;
+  final List<String> _receivingMessages;
   @override
-  List<String> get receiving_messages {
-    if (_receiving_messages is EqualUnmodifiableListView)
-      return _receiving_messages;
+  List<String> get receivingMessages {
+    if (_receivingMessages is EqualUnmodifiableListView)
+      return _receivingMessages;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_receiving_messages);
+    return EqualUnmodifiableListView(_receivingMessages);
   }
 
   final List<String> _awards;
@@ -235,27 +233,27 @@ class _$_MyInfo implements _MyInfo {
     return EqualUnmodifiableListView(_awards);
   }
 
-  final List<int> _donation_request_list;
+  final List<int> _donationRequests;
   @override
-  List<int> get donation_request_list {
-    if (_donation_request_list is EqualUnmodifiableListView)
-      return _donation_request_list;
+  List<int> get donationRequests {
+    if (_donationRequests is EqualUnmodifiableListView)
+      return _donationRequests;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_donation_request_list);
+    return EqualUnmodifiableListView(_donationRequests);
   }
 
-  final List<int> _success_donation_list;
+  final List<int> _successDonations;
   @override
-  List<int> get success_donation_list {
-    if (_success_donation_list is EqualUnmodifiableListView)
-      return _success_donation_list;
+  List<int> get successDonations {
+    if (_successDonations is EqualUnmodifiableListView)
+      return _successDonations;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_success_donation_list);
+    return EqualUnmodifiableListView(_successDonations);
   }
 
   @override
   String toString() {
-    return 'MyInfo(public_post_ID_list: $public_post_ID_list, private_post_ID_list: $private_post_ID_list, sendding_messages: $sendding_messages, receiving_messages: $receiving_messages, awards: $awards, donation_request_list: $donation_request_list, success_donation_list: $success_donation_list)';
+    return 'MyInfo(publicPosts: $publicPosts, privatePosts: $privatePosts, senddingMessages: $senddingMessages, receivingMessages: $receivingMessages, awards: $awards, donationRequests: $donationRequests, successDonations: $successDonations)';
   }
 
   @override
@@ -264,31 +262,31 @@ class _$_MyInfo implements _MyInfo {
         (other.runtimeType == runtimeType &&
             other is _$_MyInfo &&
             const DeepCollectionEquality()
-                .equals(other._public_post_ID_list, _public_post_ID_list) &&
+                .equals(other._publicPosts, _publicPosts) &&
             const DeepCollectionEquality()
-                .equals(other._private_post_ID_list, _private_post_ID_list) &&
+                .equals(other._privatePosts, _privatePosts) &&
             const DeepCollectionEquality()
-                .equals(other._sendding_messages, _sendding_messages) &&
+                .equals(other._senddingMessages, _senddingMessages) &&
             const DeepCollectionEquality()
-                .equals(other._receiving_messages, _receiving_messages) &&
+                .equals(other._receivingMessages, _receivingMessages) &&
             const DeepCollectionEquality().equals(other._awards, _awards) &&
             const DeepCollectionEquality()
-                .equals(other._donation_request_list, _donation_request_list) &&
+                .equals(other._donationRequests, _donationRequests) &&
             const DeepCollectionEquality()
-                .equals(other._success_donation_list, _success_donation_list));
+                .equals(other._successDonations, _successDonations));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_public_post_ID_list),
-      const DeepCollectionEquality().hash(_private_post_ID_list),
-      const DeepCollectionEquality().hash(_sendding_messages),
-      const DeepCollectionEquality().hash(_receiving_messages),
+      const DeepCollectionEquality().hash(_publicPosts),
+      const DeepCollectionEquality().hash(_privatePosts),
+      const DeepCollectionEquality().hash(_senddingMessages),
+      const DeepCollectionEquality().hash(_receivingMessages),
       const DeepCollectionEquality().hash(_awards),
-      const DeepCollectionEquality().hash(_donation_request_list),
-      const DeepCollectionEquality().hash(_success_donation_list));
+      const DeepCollectionEquality().hash(_donationRequests),
+      const DeepCollectionEquality().hash(_successDonations));
 
   @JsonKey(ignore: true)
   @override
@@ -306,30 +304,30 @@ class _$_MyInfo implements _MyInfo {
 
 abstract class _MyInfo implements MyInfo {
   factory _MyInfo(
-      {required final List<int> public_post_ID_list,
-      required final List<int> private_post_ID_list,
-      required final List<String> sendding_messages,
-      required final List<String> receiving_messages,
+      {required final List<int> publicPosts,
+      required final List<int> privatePosts,
+      required final List<String> senddingMessages,
+      required final List<String> receivingMessages,
       required final List<String> awards,
-      required final List<int> donation_request_list,
-      required final List<int> success_donation_list}) = _$_MyInfo;
+      required final List<int> donationRequests,
+      required final List<int> successDonations}) = _$_MyInfo;
 
   factory _MyInfo.fromJson(Map<String, dynamic> json) = _$_MyInfo.fromJson;
 
   @override
-  List<int> get public_post_ID_list;
+  List<int> get publicPosts;
   @override
-  List<int> get private_post_ID_list;
+  List<int> get privatePosts;
   @override
-  List<String> get sendding_messages;
+  List<String> get senddingMessages;
   @override
-  List<String> get receiving_messages;
+  List<String> get receivingMessages;
   @override
   List<String> get awards;
   @override
-  List<int> get donation_request_list;
+  List<int> get donationRequests;
   @override
-  List<int> get success_donation_list;
+  List<int> get successDonations;
   @override
   @JsonKey(ignore: true)
   _$$_MyInfoCopyWith<_$_MyInfo> get copyWith =>

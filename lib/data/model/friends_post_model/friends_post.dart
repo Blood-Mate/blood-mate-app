@@ -6,9 +6,9 @@ part 'friends_post.freezed.dart';
 @freezed
 class FriendsPost with _$FriendsPost {
   factory FriendsPost({
-    required int private_post_ID,
-    required int origin_post_ID,
-    required String user_ID,
+    required int privatePostID,
+    required int originPostID,
+    required String userID,
     required String content,
     required int depth,
   }) = _FriendsPost;

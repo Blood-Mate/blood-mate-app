@@ -20,9 +20,9 @@ FriendsPost _$FriendsPostFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FriendsPost {
-  int get private_post_ID => throw _privateConstructorUsedError;
-  int get origin_post_ID => throw _privateConstructorUsedError;
-  String get user_ID => throw _privateConstructorUsedError;
+  int get privatePostID => throw _privateConstructorUsedError;
+  int get originPostID => throw _privateConstructorUsedError;
+  String get userID => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   int get depth => throw _privateConstructorUsedError;
 
@@ -39,9 +39,9 @@ abstract class $FriendsPostCopyWith<$Res> {
       _$FriendsPostCopyWithImpl<$Res, FriendsPost>;
   @useResult
   $Res call(
-      {int private_post_ID,
-      int origin_post_ID,
-      String user_ID,
+      {int privatePostID,
+      int originPostID,
+      String userID,
       String content,
       int depth});
 }
@@ -59,24 +59,24 @@ class _$FriendsPostCopyWithImpl<$Res, $Val extends FriendsPost>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? private_post_ID = null,
-    Object? origin_post_ID = null,
-    Object? user_ID = null,
+    Object? privatePostID = null,
+    Object? originPostID = null,
+    Object? userID = null,
     Object? content = null,
     Object? depth = null,
   }) {
     return _then(_value.copyWith(
-      private_post_ID: null == private_post_ID
-          ? _value.private_post_ID
-          : private_post_ID // ignore: cast_nullable_to_non_nullable
+      privatePostID: null == privatePostID
+          ? _value.privatePostID
+          : privatePostID // ignore: cast_nullable_to_non_nullable
               as int,
-      origin_post_ID: null == origin_post_ID
-          ? _value.origin_post_ID
-          : origin_post_ID // ignore: cast_nullable_to_non_nullable
+      originPostID: null == originPostID
+          ? _value.originPostID
+          : originPostID // ignore: cast_nullable_to_non_nullable
               as int,
-      user_ID: null == user_ID
-          ? _value.user_ID
-          : user_ID // ignore: cast_nullable_to_non_nullable
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -99,9 +99,9 @@ abstract class _$$_FriendsPostCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int private_post_ID,
-      int origin_post_ID,
-      String user_ID,
+      {int privatePostID,
+      int originPostID,
+      String userID,
       String content,
       int depth});
 }
@@ -117,24 +117,24 @@ class __$$_FriendsPostCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? private_post_ID = null,
-    Object? origin_post_ID = null,
-    Object? user_ID = null,
+    Object? privatePostID = null,
+    Object? originPostID = null,
+    Object? userID = null,
     Object? content = null,
     Object? depth = null,
   }) {
     return _then(_$_FriendsPost(
-      private_post_ID: null == private_post_ID
-          ? _value.private_post_ID
-          : private_post_ID // ignore: cast_nullable_to_non_nullable
+      privatePostID: null == privatePostID
+          ? _value.privatePostID
+          : privatePostID // ignore: cast_nullable_to_non_nullable
               as int,
-      origin_post_ID: null == origin_post_ID
-          ? _value.origin_post_ID
-          : origin_post_ID // ignore: cast_nullable_to_non_nullable
+      originPostID: null == originPostID
+          ? _value.originPostID
+          : originPostID // ignore: cast_nullable_to_non_nullable
               as int,
-      user_ID: null == user_ID
-          ? _value.user_ID
-          : user_ID // ignore: cast_nullable_to_non_nullable
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -152,9 +152,9 @@ class __$$_FriendsPostCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FriendsPost implements _FriendsPost {
   _$_FriendsPost(
-      {required this.private_post_ID,
-      required this.origin_post_ID,
-      required this.user_ID,
+      {required this.privatePostID,
+      required this.originPostID,
+      required this.userID,
       required this.content,
       required this.depth});
 
@@ -162,11 +162,11 @@ class _$_FriendsPost implements _FriendsPost {
       _$$_FriendsPostFromJson(json);
 
   @override
-  final int private_post_ID;
+  final int privatePostID;
   @override
-  final int origin_post_ID;
+  final int originPostID;
   @override
-  final String user_ID;
+  final String userID;
   @override
   final String content;
   @override
@@ -174,7 +174,7 @@ class _$_FriendsPost implements _FriendsPost {
 
   @override
   String toString() {
-    return 'FriendsPost(private_post_ID: $private_post_ID, origin_post_ID: $origin_post_ID, user_ID: $user_ID, content: $content, depth: $depth)';
+    return 'FriendsPost(privatePostID: $privatePostID, originPostID: $originPostID, userID: $userID, content: $content, depth: $depth)';
   }
 
   @override
@@ -182,11 +182,11 @@ class _$_FriendsPost implements _FriendsPost {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FriendsPost &&
-            (identical(other.private_post_ID, private_post_ID) ||
-                other.private_post_ID == private_post_ID) &&
-            (identical(other.origin_post_ID, origin_post_ID) ||
-                other.origin_post_ID == origin_post_ID) &&
-            (identical(other.user_ID, user_ID) || other.user_ID == user_ID) &&
+            (identical(other.privatePostID, privatePostID) ||
+                other.privatePostID == privatePostID) &&
+            (identical(other.originPostID, originPostID) ||
+                other.originPostID == originPostID) &&
+            (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.depth, depth) || other.depth == depth));
   }
@@ -194,7 +194,7 @@ class _$_FriendsPost implements _FriendsPost {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, private_post_ID, origin_post_ID, user_ID, content, depth);
+      runtimeType, privatePostID, originPostID, userID, content, depth);
 
   @JsonKey(ignore: true)
   @override
@@ -212,9 +212,9 @@ class _$_FriendsPost implements _FriendsPost {
 
 abstract class _FriendsPost implements FriendsPost {
   factory _FriendsPost(
-      {required final int private_post_ID,
-      required final int origin_post_ID,
-      required final String user_ID,
+      {required final int privatePostID,
+      required final int originPostID,
+      required final String userID,
       required final String content,
       required final int depth}) = _$_FriendsPost;
 
@@ -222,11 +222,11 @@ abstract class _FriendsPost implements FriendsPost {
       _$_FriendsPost.fromJson;
 
   @override
-  int get private_post_ID;
+  int get privatePostID;
   @override
-  int get origin_post_ID;
+  int get originPostID;
   @override
-  String get user_ID;
+  String get userID;
   @override
   String get content;
   @override

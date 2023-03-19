@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../common/component/component.dart';
 import 'package:bloodmate_app/view/main/home_page/guide_page.dart';
@@ -54,7 +56,7 @@ class HomePage extends StatelessWidget {
       height: 80,
       width: screenSize.width,
       decoration: BoxDecoration(border: Border.all(width: 1)),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

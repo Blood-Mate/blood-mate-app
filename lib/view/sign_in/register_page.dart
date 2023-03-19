@@ -1,20 +1,21 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/pages.dart';
-import 'package:bloodmate_app/view/sign_in/sign_in_field.dart';
-import 'package:bloodmate_app/viewmodel/sign_in_viewmodel.dart';
+import 'package:bloodmate_app/view/sign_in/register_field.dart';
+import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({super.key});
+import 'package:bloodmate_app/view/common/component/component.dart';
+import 'package:bloodmate_app/view/sign_in/sign_in_field.dart';
+import 'package:bloodmate_app/viewmodel/register_viewmodel.dart';
+import 'package:go_router/go_router.dart';
+
+class RegisterPage extends StatelessWidget {
+  RegisterPage({super.key});
 
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late final SignInViewModel _viewModel = SignInViewModel();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _bloodTypeController = TextEditingController();
+  late final RegisterViewModel _viewModel = RegisterViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -25,38 +26,13 @@ class SignInPage extends StatelessWidget {
       backgroundColor: theme.canvasColor,
       body: Column(
         children: [
-          const SubPageHeader(title: 'Sign In'),
-          SignInField(
+          const SubPageHeader(title: 'Register'),
+          RegisterField(
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,
+            nameController: _nameController,
+            bloodTypeController: _bloodTypeController,
           ),
-          ElevatedButton(
-              child: const Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              onPressed: () async {
-                // print(_phoneNumberController.text);
-                // print(_passwordController.text);
-                final res = await _viewModel.signIn(
-                  _phoneNumberController.text,
-                  _passwordController.text,
-                );
-
-                if (res == "Success") {
-                  GoRouter.of(context).go('/home');
-                } else {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return FailDialog(
-                          text: "sign in",
-                        );
-                      });
-                }
-              }),
           ElevatedButton(
               child: const Text(
                 'Register',
@@ -64,11 +40,26 @@ class SignInPage extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              onPressed: () {
-                PageRouteWithAnimation pageRouteWithAnimation =
-                    PageRouteWithAnimation(RegisterPage());
-                Navigator.push(
-                    context, pageRouteWithAnimation.slideRitghtToLeft());
+              onPressed: () async {
+                final res = await _viewModel.register(
+                  _phoneNumberController.text,
+                  _passwordController.text,
+                  _nameController.text,
+                  _bloodTypeController.text,
+                );
+                print(res);
+                if (res == "Success") {
+                  print("suc");
+                  Navigator.popUntil(context, ModalRoute.withName('/signin'));
+                } else {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return FailDialog(
+                          text: "register",
+                        );
+                      });
+                }
               }),
         ],
       ),

@@ -9,7 +9,7 @@ class FriendsListViewTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
-      title: Text(item.user_ID + '의 헌혈 요청글입니다.'),
+      title: Text(item.userID + '의 헌혈 요청글입니다.'),
       subtitle: Text(item.content),
     ));
   }

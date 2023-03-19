@@ -21,9 +21,9 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Profile {
   String get name => throw _privateConstructorUsedError;
-  String get profile_image_URL => throw _privateConstructorUsedError;
-  String get blood_type => throw _privateConstructorUsedError;
-  String get phone_number => throw _privateConstructorUsedError;
+  String? get profileImageURL => throw _privateConstructorUsedError;
+  String get bloodType => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +37,9 @@ abstract class $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String profile_image_URL,
-      String blood_type,
-      String phone_number});
+      String? profileImageURL,
+      String bloodType,
+      String phoneNumber});
 }
 
 /// @nodoc
@@ -56,26 +56,26 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @override
   $Res call({
     Object? name = null,
-    Object? profile_image_URL = null,
-    Object? blood_type = null,
-    Object? phone_number = null,
+    Object? profileImageURL = freezed,
+    Object? bloodType = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_URL: null == profile_image_URL
-          ? _value.profile_image_URL
-          : profile_image_URL // ignore: cast_nullable_to_non_nullable
+      profileImageURL: freezed == profileImageURL
+          ? _value.profileImageURL
+          : profileImageURL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bloodType: null == bloodType
+          ? _value.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
               as String,
-      blood_type: null == blood_type
-          ? _value.blood_type
-          : blood_type // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone_number: null == phone_number
-          ? _value.phone_number
-          : phone_number // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -90,9 +90,9 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String profile_image_URL,
-      String blood_type,
-      String phone_number});
+      String? profileImageURL,
+      String bloodType,
+      String phoneNumber});
 }
 
 /// @nodoc
@@ -106,26 +106,26 @@ class __$$_ProfileCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? profile_image_URL = null,
-    Object? blood_type = null,
-    Object? phone_number = null,
+    Object? profileImageURL = freezed,
+    Object? bloodType = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_$_Profile(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profile_image_URL: null == profile_image_URL
-          ? _value.profile_image_URL
-          : profile_image_URL // ignore: cast_nullable_to_non_nullable
+      profileImageURL: freezed == profileImageURL
+          ? _value.profileImageURL
+          : profileImageURL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bloodType: null == bloodType
+          ? _value.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
               as String,
-      blood_type: null == blood_type
-          ? _value.blood_type
-          : blood_type // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone_number: null == phone_number
-          ? _value.phone_number
-          : phone_number // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -136,9 +136,9 @@ class __$$_ProfileCopyWithImpl<$Res>
 class _$_Profile implements _Profile {
   _$_Profile(
       {required this.name,
-      required this.profile_image_URL,
-      required this.blood_type,
-      required this.phone_number});
+      this.profileImageURL,
+      required this.bloodType,
+      required this.phoneNumber});
 
   factory _$_Profile.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileFromJson(json);
@@ -146,15 +146,15 @@ class _$_Profile implements _Profile {
   @override
   final String name;
   @override
-  final String profile_image_URL;
+  final String? profileImageURL;
   @override
-  final String blood_type;
+  final String bloodType;
   @override
-  final String phone_number;
+  final String phoneNumber;
 
   @override
   String toString() {
-    return 'Profile(name: $name, profile_image_URL: $profile_image_URL, blood_type: $blood_type, phone_number: $phone_number)';
+    return 'Profile(name: $name, profileImageURL: $profileImageURL, bloodType: $bloodType, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -163,18 +163,18 @@ class _$_Profile implements _Profile {
         (other.runtimeType == runtimeType &&
             other is _$_Profile &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.profile_image_URL, profile_image_URL) ||
-                other.profile_image_URL == profile_image_URL) &&
-            (identical(other.blood_type, blood_type) ||
-                other.blood_type == blood_type) &&
-            (identical(other.phone_number, phone_number) ||
-                other.phone_number == phone_number));
+            (identical(other.profileImageURL, profileImageURL) ||
+                other.profileImageURL == profileImageURL) &&
+            (identical(other.bloodType, bloodType) ||
+                other.bloodType == bloodType) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, profile_image_URL, blood_type, phone_number);
+  int get hashCode =>
+      Object.hash(runtimeType, name, profileImageURL, bloodType, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -193,20 +193,20 @@ class _$_Profile implements _Profile {
 abstract class _Profile implements Profile {
   factory _Profile(
       {required final String name,
-      required final String profile_image_URL,
-      required final String blood_type,
-      required final String phone_number}) = _$_Profile;
+      final String? profileImageURL,
+      required final String bloodType,
+      required final String phoneNumber}) = _$_Profile;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$_Profile.fromJson;
 
   @override
   String get name;
   @override
-  String get profile_image_URL;
+  String? get profileImageURL;
   @override
-  String get blood_type;
+  String get bloodType;
   @override
-  String get phone_number;
+  String get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileCopyWith<_$_Profile> get copyWith =>
