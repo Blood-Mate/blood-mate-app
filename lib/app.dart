@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'ui/page/pages.dart';
+import 'view/pages.dart';
 
 // ShellRoute를 위한 Key설정
 GlobalKey<NavigatorState> _rootkey = GlobalKey<NavigatorState>();
@@ -37,9 +37,9 @@ class BloodMateApp extends StatelessWidget {
         },
       ),
       GoRoute(
-        path: '/login',
+        path: '/regiser',
         builder: (context, state) {
-          return LogInPage();
+          return RegisterPage();
         },
       ),
       GoRoute(
