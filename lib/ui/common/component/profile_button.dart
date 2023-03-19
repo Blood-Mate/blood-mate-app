@@ -57,3 +57,39 @@ class _ProfileButtonState extends State<ProfileButton> {
     );
   }
 }
+
+class ProfileIconButton extends StatefulWidget {
+  const ProfileIconButton({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.page,
+  });
+
+  final Icon icon;
+  final String text;
+  final Widget page;
+
+  @override
+  State<ProfileIconButton> createState() => _ProfileIconButtonState();
+}
+
+class _ProfileIconButtonState extends State<ProfileIconButton> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        PageRouteWithAnimation pageRouteWithAnimation =
+            PageRouteWithAnimation(widget.page);
+        Navigator.push(context, pageRouteWithAnimation.slideRitghtToLeft());
+      },
+      child: Container(
+          child: Row(
+        children: [
+          widget.icon,
+          Text(widget.text),
+        ],
+      )),
+    );
+  }
+}

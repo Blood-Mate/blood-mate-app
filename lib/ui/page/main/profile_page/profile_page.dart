@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import '../../../common/component/component.dart';
 import 'package:bloodmate_app/ui/view/main/main_views.dart';
 import 'package:bloodmate_app/ui/viewmodel/main/main_viewmodels.dart';
+import 'package:bloodmate_app/ui/page/main/profile_page/setting_page.dart';
+import 'package:bloodmate_app/ui/page/main/profile_page/notice_page.dart';
+import 'package:bloodmate_app/ui/page/main/profile_page/support_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -19,8 +22,9 @@ class ProfilePage extends StatelessWidget {
         children: [
           SubPageHeader(title: 'My Page'),
           showProfile(),
-          showMyInfoView(),
+          Expanded(child: showMyInfoView()),
           settingButtonList(),
+          SizedBox(height: 20),
         ],
       ),
     );
@@ -37,8 +41,18 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget settingButtonList() {
-    return Row(
-      children: [],
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ProfileIconButton(
+            icon: Icon(Icons.settings), text: 'Setting', page: SettingPage()),
+        ProfileIconButton(
+            icon: Icon(Icons.support_agent),
+            text: 'Support',
+            page: SupportPage()),
+        ProfileIconButton(
+            icon: Icon(Icons.settings), text: 'Notice', page: NoticePage())
+      ],
     );
   }
 }

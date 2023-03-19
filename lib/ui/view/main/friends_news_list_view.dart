@@ -32,7 +32,7 @@ class FriendsNewsListView extends StatelessWidget {
           child: ListView.builder(
             itemBuilder: (context, index) {
               final item = items[index];
-              return ListTile(title: Text(item.content));
+              return FriendsListViewTile(item: item);
             },
             itemCount: itemCount,
           ),
@@ -41,3 +41,8 @@ class FriendsNewsListView extends StatelessWidget {
     );
   }
 }
+//     required int private_post_ID,
+//     required int origin_post_ID,
+//     required String user_ID,
+//     required String content,
+//     required int depth,

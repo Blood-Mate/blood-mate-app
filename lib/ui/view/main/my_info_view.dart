@@ -21,6 +21,7 @@ class MyInfoView extends StatelessWidget {
     final data = viewModel.data; // viewModel에 저장된 data
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ProfileButton(text: 'My Post', page: MyPostPage()),

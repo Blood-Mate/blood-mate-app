@@ -1,12 +1,17 @@
-
 import 'package:flutter/material.dart';
 
 class FriendsListViewTile extends StatelessWidget {
-  const FriendsListViewTile({super.key});
+  FriendsListViewTile({super.key, required this.item});
+
+  final item;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Card(
+        child: ListTile(
+      title: Text(item.user_ID + '의 헌혈 요청글입니다.'),
+      subtitle: Text(item.content),
+    ));
   }
 }
 
