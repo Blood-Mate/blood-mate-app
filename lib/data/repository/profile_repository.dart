@@ -13,7 +13,7 @@ class ProfileRepository {
   // Get Instance of the class
   static ProfileRepository get profileRepositoryInstance => _profileRepository;
   // Open Dio
-  final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
+  static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
   // DB에서 profile data 가져옴
   Future getProfile() async {

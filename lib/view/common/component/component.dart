@@ -5,6 +5,8 @@ export 'list_view_tile.dart';
 export 'circular_image.dart';
 export 'page_button.dart';
 export 'profile_button.dart';
+export 'dialog.dart';
+export 'custom_text_file.dart';
 
 class ThinDevider extends StatelessWidget {
   const ThinDevider({super.key});

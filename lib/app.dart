@@ -24,7 +24,7 @@ class BloodMateApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootkey,
-    initialLocation: '/profile', //'/splash',
+    initialLocation: '/signin', //'/splash',
     routes: [
       GoRoute(
         path: '/',
@@ -48,13 +48,12 @@ class BloodMateApp extends StatelessWidget {
           return SignInPage();
         },
       ),
-      // GoRoute(
-      //   path: '/home',
-      //   redirect: (_, __) {
-      //     var now = DateTime.now();
-      //     return '/habit/${now.year}/${now.month}/${now.day}';
-      //   },
-      // ),
+      GoRoute(
+        path: '/main',
+        redirect: (_, __) {
+          return '/home';
+        },
+      ),
       ShellRoute(
         navigatorKey: _homekey,
         builder: (context, state, child) {
