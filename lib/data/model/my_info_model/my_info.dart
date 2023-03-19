@@ -6,13 +6,13 @@ part 'my_info.freezed.dart';
 @freezed
 class MyInfo with _$MyInfo {
   factory MyInfo({
-    required List<int> public_post_ID_list,
-    required List<int> private_post_ID_list,
-    required List<String> sendding_messages,
-    required List<String> receiving_messages,
+    required List<int> publicPosts,
+    required List<int> privatePosts,
+    required List<String> senddingMessages,
+    required List<String> receivingMessages,
     required List<String> awards,
-    required List<int> donation_request_list,
-    required List<int> success_donation_list,
+    required List<int> donationRequests,
+    required List<int> successDonations,
   }) = _MyInfo;
 
   factory MyInfo.fromJson(Map<String, dynamic> json) => _$MyInfoFromJson(json);

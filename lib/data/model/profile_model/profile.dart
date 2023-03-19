@@ -7,9 +7,9 @@ part 'profile.freezed.dart';
 class Profile with _$Profile {
   factory Profile({
     required String name,
-    required String profile_image_URL,
-    required String blood_type,
-    required String phone_number,
+    String? profileImageURL,
+    required String bloodType,
+    required String phoneNumber,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

@@ -42,6 +42,9 @@ class UserRepository {
         // 회원가입 성공
         return "Success";
       } else {
+        // 400 : wrong pw -> 401 될수도있음
+        // 404 : wrong id
+        // 500 : server error
         // 회원가입 실패
         return "fail";
       }

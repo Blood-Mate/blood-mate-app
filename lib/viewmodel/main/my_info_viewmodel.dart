@@ -8,13 +8,13 @@ class MyInfoViewModel with ChangeNotifier {
 
   MyInfo get data => _data;
   MyInfo _data = MyInfo(
-    public_post_ID_list: [],
-    private_post_ID_list: [],
-    sendding_messages: [],
-    receiving_messages: [],
+    publicPosts: [],
+    privatePosts: [],
+    senddingMessages: [],
+    receivingMessages: [],
     awards: [],
-    donation_request_list: [],
-    success_donation_list: [],
+    donationRequests: [],
+    successDonations: [],
   );
 
   MyInfoViewModel() {

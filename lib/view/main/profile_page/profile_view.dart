@@ -24,7 +24,9 @@ class ProfileView extends StatelessWidget {
         Row(
           children: [
             SizedBox(width: 20),
-            CircularImage(imageUrl: data.profile_image_URL, size: 70),
+            ((data.profileImageURL == Null) || (data.profileImageURL == ""))
+                ? CircularImageMock()
+                : CircularImage(imageUrl: data.profileImageURL, size: 70),
             SizedBox(width: 20),
             Container(
               height: 70,
@@ -46,8 +48,8 @@ class ProfileView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Blood type : ' + data.blood_type),
-              Text('Phone Number : ' + data.phone_number),
+              Text('Blood type : ' + data.bloodType),
+              Text('Phone Number : ' + data.phoneNumber),
             ]),
             signOutButton(context),
           ],

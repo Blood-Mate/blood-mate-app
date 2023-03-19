@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 import 'package:bloodmate_app/data/util/global_data.dart';
+import 'package:bloodmate_app/data/repository/profile_repository.dart';
 
 class SplashViewModel {
   final BuildContext context;
@@ -12,11 +13,12 @@ class SplashViewModel {
     try {
       Box _tokenBox = await Hive.openBox('tokens');
       if (_tokenBox.isNotEmpty) {
-        final at = _tokenBox.get('access_token');
-        print(at);
+        final accessToken = _tokenBox.get('access_token');
+        print(accessToken);
+        final isValid = await ProfileRepository().getProfile();
         return true;
       }
-      // 전역변수에 넣고싶은데 myTokens 불러오는데 자꾸 오류남
+      // 전역변수에 넣고싶은데 myTokens 불러오는거에서 오류남
       final myTokens = Provider.of<MyTokens>(context);
       if (_tokenBox.isNotEmpty) {
         myTokens.setTokens(

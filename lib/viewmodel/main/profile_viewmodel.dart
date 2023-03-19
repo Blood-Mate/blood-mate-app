@@ -8,8 +8,8 @@ class ProfileViewModel with ChangeNotifier {
   late final ProfileRepository _profileRepository;
 
   Profile get data => _data;
-  Profile _data = Profile(
-      name: "", profile_image_URL: "", blood_type: "", phone_number: "");
+  Profile _data =
+      Profile(name: "", profileImageURL: "", bloodType: "", phoneNumber: "");
 
   ProfileViewModel() {
     _profileRepository = ProfileRepository();
