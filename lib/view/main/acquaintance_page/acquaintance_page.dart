@@ -1,5 +1,3 @@
-import 'package:bloodmate_app/view/main/acquaintance_page/proteges_view.dart';
-import 'package:bloodmate_app/viewmodel/main/proteges_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +19,7 @@ class AcquaintancePage extends StatelessWidget {
         children: [
           SubPageHeader(title: 'My Friends'),
           acquaintancePageButton(),
-          showMyPeoples(),
+          Expanded(child: showMyPeoples()),
         ],
       ),
     );

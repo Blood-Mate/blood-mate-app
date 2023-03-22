@@ -23,3 +23,18 @@ class LocalListViewTile extends StatelessWidget {
     return const Placeholder();
   }
 }
+
+class AcquaintanceListTile extends StatelessWidget {
+  AcquaintanceListTile({super.key, required this.item});
+
+  final item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: ListTile(
+      title: Text(item.name),
+      subtitle: Text(item.phoneNumber),
+    ));
+  }
+}

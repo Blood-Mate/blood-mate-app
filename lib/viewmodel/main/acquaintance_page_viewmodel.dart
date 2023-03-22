@@ -21,8 +21,11 @@ class AcquaintancePageViewModel with ChangeNotifier {
 
   Future<void> _loadItems() async {
     _guardian = await _peopleRepository.getGuardian();
-    _protege = await _peopleRepository.getProtege();
+    _protege = await _peopleRepository.getProtegeMockData(); //getProtege();
     _contact = await _peopleRepository.getContact();
     notifyListeners();
   }
+
+  // is sending target checkbox에 따라 켜고끄는 api 연결
+  // 각각 data 삭제
 }

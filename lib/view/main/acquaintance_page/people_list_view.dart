@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:bloodmate_app/data/model/models.dart';
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
@@ -20,17 +21,16 @@ class PeopleListView extends StatelessWidget {
     final guardians = viewModel.guardian;
     final contacts = viewModel.contact;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return ListView(
       children: [
         SizedBox(height: 10),
+        Text('Protege'),
         showProteges(proteges),
-        ThickDevider(),
+        Text('Guardian'),
         showGuardians(guardians),
-        ThickDevider(),
+        Text('AppUser'),
         showAppUsers(contacts),
-        ThickDevider(),
+        Text('Contact'),
         showContacts(contacts),
         SizedBox(height: 20),
       ],
@@ -40,57 +40,74 @@ class PeopleListView extends StatelessWidget {
   Widget showProteges(items) {
     final itemCount = items.length;
 
-    return Flexible(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return ListTile(title: Text(item.content));
-        },
-        itemCount: itemCount,
-      ),
+    if (itemCount == 0) {
+      return Card(child: ListTile(title: Text('No Proteges')));
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      //scrollDirection: Axis.vertical,
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return AcquaintanceListTile(item: item);
+      },
     );
   }
 
   Widget showGuardians(items) {
     final itemCount = items.length;
 
-    // return Flexible(
-    //   child: ListView.builder(
-    //     itemBuilder: (context, index) {
-    //       final item = items[index];
-    //       return ListTile(title: Text(item.content));
-    //     },
-    //     itemCount: itemCount,
-    //   ),
-    // );
-    return Container();
-  }
+    if (itemCount == 0) {
+      return Card(child: ListTile(title: Text('No Guardians')));
+    }
 
-  Widget showAppUsers(items) {
-    final itemCount = items.length;
-
-    return Flexible(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return ListTile(title: Text(item.content));
-        },
-        itemCount: itemCount,
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      //scrollDirection: Axis.vertical,
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return AcquaintanceListTile(item: item);
+      },
     );
   }
 
-  Widget showContacts(items) {
-    final itemCount = items.length;
+  Widget showAppUsers(List<People> items) {
+    final filteredItems = items.where((item) => item.isUser!).toList();
+    final itemCount = filteredItems.length;
 
-    return Flexible(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return ListTile(title: Text(item.content));
-        },
-        itemCount: itemCount,
-      ),
+    if (itemCount == 0) {
+      return Card(child: ListTile(title: Text('No App Users')));
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      //scrollDirection: Axis.vertical,
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        final item = filteredItems[index];
+        return AcquaintanceListTile(item: item);
+      },
+    );
+  }
+
+  Widget showContacts(List<People> items) {
+    final filteredItems = items.where((item) => !item.isUser!).toList();
+    final itemCount = filteredItems.length;
+
+    if (itemCount == 0) {
+      return Card(child: ListTile(title: Text('No Contacts')));
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      //scrollDirection: Axis.vertical,
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        final item = filteredItems[index];
+        return AcquaintanceListTile(item: item);
+      },
     );
   }
 }

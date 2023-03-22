@@ -33,6 +33,13 @@ class PeopleRepository {
     return headers;
   }
 
+  // get protege하면 requestorId가 requstorId로 오타나있어서 지정이 안되는 오류로 mock data 활용
+  getProtegeMockData() {
+    print('protege_repo');
+    print(ProtegeRepo.protegeMockData);
+    return ProtegeRepo.protegeMockData;
+  }
+
   // Protege
   Future getProtege() async {
     // load header from local cached repository
