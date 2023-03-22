@@ -20,8 +20,9 @@ People _$PeopleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$People {
-  int get id =>
-      throw _privateConstructorUsedError; // guiardianID? // requstorId?
+  int? get id => throw _privateConstructorUsedError;
+  int? get guardianId => throw _privateConstructorUsedError;
+  int? get requestorId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   bool? get isUser => throw _privateConstructorUsedError;
@@ -39,7 +40,9 @@ abstract class $PeopleCopyWith<$Res> {
       _$PeopleCopyWithImpl<$Res, People>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
+      int? guardianId,
+      int? requestorId,
       String name,
       String phoneNumber,
       bool? isUser,
@@ -60,7 +63,9 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
+    Object? guardianId = freezed,
+    Object? requestorId = freezed,
     Object? name = null,
     Object? phoneNumber = null,
     Object? isUser = freezed,
@@ -68,10 +73,18 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
     Object? bloodType = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      guardianId: freezed == guardianId
+          ? _value.guardianId
+          : guardianId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      requestorId: freezed == requestorId
+          ? _value.requestorId
+          : requestorId // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -103,7 +116,9 @@ abstract class _$$_PeopleCopyWith<$Res> implements $PeopleCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
+      int? guardianId,
+      int? requestorId,
       String name,
       String phoneNumber,
       bool? isUser,
@@ -121,7 +136,9 @@ class __$$_PeopleCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
+    Object? guardianId = freezed,
+    Object? requestorId = freezed,
     Object? name = null,
     Object? phoneNumber = null,
     Object? isUser = freezed,
@@ -129,10 +146,18 @@ class __$$_PeopleCopyWithImpl<$Res>
     Object? bloodType = freezed,
   }) {
     return _then(_$_People(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      guardianId: freezed == guardianId
+          ? _value.guardianId
+          : guardianId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      requestorId: freezed == requestorId
+          ? _value.requestorId
+          : requestorId // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -161,7 +186,9 @@ class __$$_PeopleCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_People implements _People {
   _$_People(
-      {required this.id,
+      {this.id,
+      this.guardianId,
+      this.requestorId,
       required this.name,
       required this.phoneNumber,
       this.isUser,
@@ -172,8 +199,11 @@ class _$_People implements _People {
       _$$_PeopleFromJson(json);
 
   @override
-  final int id;
-// guiardianID? // requstorId?
+  final int? id;
+  @override
+  final int? guardianId;
+  @override
+  final int? requestorId;
   @override
   final String name;
   @override
@@ -187,7 +217,7 @@ class _$_People implements _People {
 
   @override
   String toString() {
-    return 'People(id: $id, name: $name, phoneNumber: $phoneNumber, isUser: $isUser, isSendingTarget: $isSendingTarget, bloodType: $bloodType)';
+    return 'People(id: $id, guardianId: $guardianId, requestorId: $requestorId, name: $name, phoneNumber: $phoneNumber, isUser: $isUser, isSendingTarget: $isSendingTarget, bloodType: $bloodType)';
   }
 
   @override
@@ -196,6 +226,10 @@ class _$_People implements _People {
         (other.runtimeType == runtimeType &&
             other is _$_People &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.guardianId, guardianId) ||
+                other.guardianId == guardianId) &&
+            (identical(other.requestorId, requestorId) ||
+                other.requestorId == requestorId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -208,8 +242,8 @@ class _$_People implements _People {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, phoneNumber, isUser, isSendingTarget, bloodType);
+  int get hashCode => Object.hash(runtimeType, id, guardianId, requestorId,
+      name, phoneNumber, isUser, isSendingTarget, bloodType);
 
   @JsonKey(ignore: true)
   @override
@@ -227,7 +261,9 @@ class _$_People implements _People {
 
 abstract class _People implements People {
   factory _People(
-      {required final int id,
+      {final int? id,
+      final int? guardianId,
+      final int? requestorId,
       required final String name,
       required final String phoneNumber,
       final bool? isUser,
@@ -237,8 +273,12 @@ abstract class _People implements People {
   factory _People.fromJson(Map<String, dynamic> json) = _$_People.fromJson;
 
   @override
-  int get id;
-  @override // guiardianID? // requstorId?
+  int? get id;
+  @override
+  int? get guardianId;
+  @override
+  int? get requestorId;
+  @override
   String get name;
   @override
   String get phoneNumber;

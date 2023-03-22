@@ -8,7 +8,9 @@ part 'people.freezed.dart';
 @freezed
 class People with _$People {
   factory People({
-    required int id, // guiardianID? // requstorId?
+    int? id,
+    int? guardianId,
+    int? requestorId,
     required String name,
     required String phoneNumber,
     bool? isUser,

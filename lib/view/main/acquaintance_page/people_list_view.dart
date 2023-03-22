@@ -1,44 +1,45 @@
 import 'dart:developer';
 
-import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bloodmate_app/viewmodel/main/people_list_viewmodel.dart';
+import 'package:bloodmate_app/view/common/component/component.dart';
+import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class PeopleListView extends StatelessWidget {
   const PeopleListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<PeopleListViewModel>(context);
+    var viewModel = Provider.of<AcquaintancePageViewModel>(context);
     return _buildPeopleListView(viewModel);
   }
 
   Widget _buildPeopleListView(viewModel) {
-    final guardian = viewModel.guardian;
-    final guardianCount = guardian.length;
-    final contacts = viewModel.contacts;
-    final contactsCount = contacts.length;
+    final proteges = viewModel.protege;
+    final guardians = viewModel.guardian;
+    final contacts = viewModel.contact;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: 10),
-        //showNeedProtectList(items),
+        showProteges(proteges),
         ThickDevider(),
-        showGuardians(guardian, guardianCount),
+        showGuardians(guardians),
         ThickDevider(),
-        showAppUsers(contacts, contactsCount),
+        showAppUsers(contacts),
         ThickDevider(),
-        showContacts(contacts, contactsCount),
+        showContacts(contacts),
         SizedBox(height: 20),
       ],
     );
   }
 
-  Widget showGuardians(items, itemCount) {
+  Widget showProteges(items) {
+    final itemCount = items.length;
+
     return Flexible(
       child: ListView.builder(
         itemBuilder: (context, index) {
@@ -50,7 +51,24 @@ class PeopleListView extends StatelessWidget {
     );
   }
 
-  Widget showAppUsers(items, itemCount) {
+  Widget showGuardians(items) {
+    final itemCount = items.length;
+
+    // return Flexible(
+    //   child: ListView.builder(
+    //     itemBuilder: (context, index) {
+    //       final item = items[index];
+    //       return ListTile(title: Text(item.content));
+    //     },
+    //     itemCount: itemCount,
+    //   ),
+    // );
+    return Container();
+  }
+
+  Widget showAppUsers(items) {
+    final itemCount = items.length;
+
     return Flexible(
       child: ListView.builder(
         itemBuilder: (context, index) {
@@ -62,7 +80,9 @@ class PeopleListView extends StatelessWidget {
     );
   }
 
-  Widget showContacts(items, itemCount) {
+  Widget showContacts(items) {
+    final itemCount = items.length;
+
     return Flexible(
       child: ListView.builder(
         itemBuilder: (context, index) {

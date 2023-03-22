@@ -21,8 +21,7 @@ class AcquaintancePage extends StatelessWidget {
         children: [
           SubPageHeader(title: 'My Friends'),
           acquaintancePageButton(),
-          showProteges(),
-          //showMyPeoples(),
+          showMyPeoples(),
         ],
       ),
     );
@@ -33,13 +32,8 @@ class AcquaintancePage extends StatelessWidget {
         height: 50, alignment: Alignment.center, child: Text('Buttons'));
   }
 
-  Widget showProteges() {
-    return ChangeNotifierProvider<ProtegesViewModel>(
-        create: (_) => ProtegesViewModel(), child: ProtegesView());
-  }
-
   Widget showMyPeoples() {
-    return ChangeNotifierProvider<PeopleListViewModel>(
-        create: (_) => PeopleListViewModel(), child: PeopleListView());
+    return ChangeNotifierProvider<AcquaintancePageViewModel>(
+        create: (_) => AcquaintancePageViewModel(), child: PeopleListView());
   }
 }
