@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,29 +16,29 @@ class PeopleListView extends StatelessWidget {
   }
 
   Widget _buildPeopleListView(viewModel) {
-    final items = viewModel.items; // viewModel에 저장된 items
-    final itemCount = items.length;
+    final guardian = viewModel.guardian;
+    final guardianCount = guardian.length;
+    final contacts = viewModel.contacts;
+    final contactsCount = contacts.length;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: 10),
-        showNeedProtectList(items),
+        //showNeedProtectList(items),
         ThickDevider(),
-        showMyProtectorList(items),
+        showGuardians(guardian, guardianCount),
         ThickDevider(),
-        showAppFriendsList(items),
+        showAppUsers(contacts, contactsCount),
         ThickDevider(),
-        showContactFriendsList(items),
+        showContacts(contacts, contactsCount),
         SizedBox(height: 20),
       ],
     );
   }
 
-  Widget showNeedProtectList(items) {
-    final itemCount = 0;
-
+  Widget showGuardians(items, itemCount) {
     return Flexible(
       child: ListView.builder(
         itemBuilder: (context, index) {
@@ -48,15 +50,27 @@ class PeopleListView extends StatelessWidget {
     );
   }
 
-  Widget showMyProtectorList(items) {
-    return Container();
+  Widget showAppUsers(items, itemCount) {
+    return Flexible(
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return ListTile(title: Text(item.content));
+        },
+        itemCount: itemCount,
+      ),
+    );
   }
 
-  Widget showAppFriendsList(items) {
-    return Container();
-  }
-
-  Widget showContactFriendsList(items) {
-    return Container();
+  Widget showContacts(items, itemCount) {
+    return Flexible(
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return ListTile(title: Text(item.content));
+        },
+        itemCount: itemCount,
+      ),
+    );
   }
 }

@@ -26,16 +26,11 @@ class HomePageProfileView extends StatelessWidget {
               width: 100,
               height: 100,
               decoration: BoxDecoration(border: Border.all(width: 1)),
-              // child: CachedNetworkImage(
-              //   imageUrl: data.profile_image_URL,
-              //   placeholder: (context, url) => CircularProgressIndicator(),
-              // ),
-              child: ((data.profileImageURL == Null) ||
+              child: ((data.profileImageURL == null) ||
                       (data.profileImageURL == ""))
                   ? Image(
                       image: AssetImage('assets/image/bloodmate_logo.png'),
-                      fit: BoxFit.cover,
-                    )
+                      fit: BoxFit.cover)
                   : Image(
                       image: CachedNetworkImageProvider(data.profileImageURL)),
             ),

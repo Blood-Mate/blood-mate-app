@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
             ThinDevider(),
             Expanded(child: friendsNewsList()),
             moreButton(),
+            Container(height: 170),
             ThinDevider(),
             homePageTail(screenSize),
           ],
