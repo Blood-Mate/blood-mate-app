@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,22 +24,25 @@ class PeopleListView extends StatelessWidget {
 
     return ListView(
       children: [
-        SizedBox(height: 10),
         Text('Protege'),
         showProteges(proteges),
         Text('Guardian'),
-        showGuardians(guardians),
+        showGuardians(guardians, viewModel),
         Text('AppUser'),
-        showAppUsers(contacts),
+        showAppUsers(contacts, viewModel),
         Text('Contact'),
-        showContacts(contacts),
+        showContacts(contacts, viewModel),
         SizedBox(height: 20),
       ],
     );
   }
 
-  Widget showProteges(items) {
+  Widget showProteges(List<People> items) {
     final itemCount = items.length;
+
+    // sort by name ASC
+    final sortedItems = items;
+    sortedItems.sort((a, b) => a.name.compareTo(b.name));
 
     if (itemCount == 0) {
       return Card(child: ListTile(title: Text('No Proteges')));
@@ -49,14 +53,18 @@ class PeopleListView extends StatelessWidget {
       //scrollDirection: Axis.vertical,
       itemCount: itemCount,
       itemBuilder: (context, index) {
-        final item = items[index];
-        return AcquaintanceListTile(item: item);
+        final item = sortedItems[index];
+        return ProtegeListTile(item: item);
       },
     );
   }
 
-  Widget showGuardians(items) {
+  Widget showGuardians(List<People> items, viewmodel) {
     final itemCount = items.length;
+
+    // sort by name ASC
+    final sortedItems = items;
+    sortedItems.sort((a, b) => a.name.compareTo(b.name));
 
     if (itemCount == 0) {
       return Card(child: ListTile(title: Text('No Guardians')));
@@ -67,15 +75,22 @@ class PeopleListView extends StatelessWidget {
       //scrollDirection: Axis.vertical,
       itemCount: itemCount,
       itemBuilder: (context, index) {
-        final item = items[index];
-        return AcquaintanceListTile(item: item);
+        final item = sortedItems[index];
+        return AppUserListTile(item: item, viewmodel: viewmodel);
       },
     );
   }
 
-  Widget showAppUsers(List<People> items) {
-    final filteredItems = items.where((item) => item.isUser!).toList();
+  Widget showAppUsers(List<People> items, viewmodel) {
+    // app user인지 filtering
+    var filteredItems = items.where((item) => item.isUser!).toList();
+    // guardian인지 filtering
+    filteredItems = items.where((item) => item.isUser!).toList();
+
     final itemCount = filteredItems.length;
+
+    // sort by name ASC
+    filteredItems.sort((a, b) => a.name.compareTo(b.name));
 
     if (itemCount == 0) {
       return Card(child: ListTile(title: Text('No App Users')));
@@ -87,14 +102,17 @@ class PeopleListView extends StatelessWidget {
       itemCount: itemCount,
       itemBuilder: (context, index) {
         final item = filteredItems[index];
-        return AcquaintanceListTile(item: item);
+        return AppUserListTile(item: item, viewmodel: viewmodel);
       },
     );
   }
 
-  Widget showContacts(List<People> items) {
+  Widget showContacts(List<People> items, viewmodel) {
     final filteredItems = items.where((item) => !item.isUser!).toList();
     final itemCount = filteredItems.length;
+
+    // sort by name ASC
+    filteredItems.sort((a, b) => a.name.compareTo(b.name));
 
     if (itemCount == 0) {
       return Card(child: ListTile(title: Text('No Contacts')));
@@ -106,7 +124,7 @@ class PeopleListView extends StatelessWidget {
       itemCount: itemCount,
       itemBuilder: (context, index) {
         final item = filteredItems[index];
-        return AcquaintanceListTile(item: item);
+        return ContactListTile(item: item, viewmodel: viewmodel);
       },
     );
   }

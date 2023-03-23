@@ -19,6 +19,7 @@ class AcquaintancePage extends StatelessWidget {
         children: [
           SubPageHeader(title: 'My Friends'),
           acquaintancePageButton(),
+          ThickDevider(),
           Expanded(child: showMyPeoples()),
         ],
       ),
@@ -26,8 +27,15 @@ class AcquaintancePage extends StatelessWidget {
   }
 
   Widget acquaintancePageButton() {
-    return Container(
-        height: 50, alignment: Alignment.center, child: Text('Buttons'));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Icon(Icons.filter_list, size: 30),
+        SizedBox(width: 10),
+        Icon(Icons.add_box, size: 30),
+        SizedBox(width: 10),
+      ],
+    );
   }
 
   Widget showMyPeoples() {

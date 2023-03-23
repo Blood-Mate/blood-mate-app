@@ -27,6 +27,8 @@ class RegisterPage extends StatelessWidget {
       body: Column(
         children: [
           const SubPageHeader(title: 'Register'),
+          // 키보드 올라왔을 때 같이 올라가는거 적용필요
+          SizedBox(height: 100),
           RegisterField(
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,

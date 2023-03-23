@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
@@ -14,6 +15,8 @@ class AcquaintancePageViewModel with ChangeNotifier {
   List<People> get protege => _protege;
   List<People> get contact => _contact;
 
+  late int statusCode;
+
   AcquaintancePageViewModel() {
     _peopleRepository = PeopleRepository();
     _loadItems();
@@ -21,11 +24,31 @@ class AcquaintancePageViewModel with ChangeNotifier {
 
   Future<void> _loadItems() async {
     _guardian = await _peopleRepository.getGuardian();
-    _protege = await _peopleRepository.getProtegeMockData(); //getProtege();
+    _protege = await _peopleRepository.getProtege();
     _contact = await _peopleRepository.getContact();
     notifyListeners();
   }
 
-  // is sending target checkbox에 따라 켜고끄는 api 연결
-  // 각각 data 삭제
+  Future<int> changeIsSendingTarget(contactId, isSendingTarget) async {
+    statusCode = await _peopleRepository.patchContact(
+        contactId: contactId, isSendingTarget: isSendingTarget);
+    _loadItems();
+    notifyListeners();
+    return statusCode;
+  }
+
+  Future<int> addGuardian(phoneNumber) async {
+    statusCode = await _peopleRepository.postGuardian(phoneNumber: phoneNumber);
+    _loadItems();
+    notifyListeners();
+    return statusCode;
+  }
+
+  Future<int> deleteGuardian(guardianId) async {
+    Response response =
+        await _peopleRepository.deleteGuardian(guardianId: guardianId);
+    _loadItems();
+    notifyListeners();
+    return response.statusCode!;
+  }
 }

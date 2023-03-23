@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
 import '../model/models.dart';
@@ -33,13 +34,6 @@ class PeopleRepository {
     return headers;
   }
 
-  // get protege하면 requestorId가 requstorId로 오타나있어서 지정이 안되는 오류로 mock data 활용
-  getProtegeMockData() {
-    print('protege_repo');
-    print(ProtegeRepo.protegeMockData);
-    return ProtegeRepo.protegeMockData;
-  }
-
   // Protege
   Future getProtege() async {
     // load header from local cached repository
@@ -49,6 +43,7 @@ class PeopleRepository {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       // get proteges
+      print('get guardian requestor');
       Response response = await _dio.get('/guardian/requestor',
           options: Options(headers: headers));
       // transform data
@@ -56,8 +51,7 @@ class PeopleRepository {
           List<People>.from(response.data.map((e) => People.fromJson(e)));
 
       // log
-      print('protege_repo');
-      print(protegeResponse);
+      print('no error');
 
       return protegeResponse;
     }
@@ -72,6 +66,7 @@ class PeopleRepository {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       // get guardians
+      print('get guardian');
       Response response =
           await _dio.get('/guardian', options: Options(headers: headers));
       // transform data
@@ -79,8 +74,7 @@ class PeopleRepository {
           List<People>.from(response.data.map((e) => People.fromJson(e)));
 
       // log
-      print('guardian_repo');
-      print(guardianResponse);
+      print('no error');
 
       return guardianResponse;
     }
@@ -95,6 +89,7 @@ class PeopleRepository {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       // get contacts
+      print('get contact');
       Response response =
           await _dio.get('/contact', options: Options(headers: headers));
 
@@ -103,10 +98,84 @@ class PeopleRepository {
           List<People>.from(response.data.map((e) => People.fromJson(e)));
 
       // log
-      print('contact_repo');
-      print(contactResponse);
+      print('no error');
 
       return contactResponse;
     }
+  }
+
+  Future patchContact(
+      {required int contactId, required bool isSendingTarget}) async {
+    // load header from local cached repository
+    final headers = await getHeader();
+
+    final data = {"contactId": contactId, "isSendingTarget": isSendingTarget};
+
+    // Internet Connection check
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      // patch contacts' isSendingTarget
+      print('patch contact');
+      Response response = await _dio.patch('/contact',
+          data: data, options: Options(headers: headers));
+
+      // log
+      print('no error');
+      return response.statusCode;
+    }
+  }
+
+  Future postGuardian({required String phoneNumber}) async {
+    // load header from local cached repository
+    final headers = await getHeader();
+    final data = {"phoneNumber": phoneNumber};
+
+    // Internet Connection check
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      print('post guardian');
+      // patch contacts' isSendingTarget
+      Response response = await _dio.post('/guardian',
+          data: data, options: Options(headers: headers));
+
+      // log
+      print('no error');
+      return response.statusCode;
+    }
+  }
+
+  Future deleteGuardian({required int guardianId}) async {
+    // load header from local cached repository
+    final headers = await getHeader();
+    final data = {"id": guardianId};
+
+    // Internet Connection check
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      print('delete guardian');
+      // patch contacts' isSendingTarget
+      Response response = await _dio.delete('/guardian',
+          data: data, options: Options(headers: headers));
+
+      // log
+      print('no error');
+      return response;
+    }
+  }
+
+  // // convert phoneNumber
+  // combinePhoneAndCountry(String phoneNumber, String countryCode) {
+  //   // 입력된 전화번호 문자열에서 "-" 문자를 제거
+  //   phoneNumber = phoneNumber.replaceAll('-', '');
+
+  //   // 전화번호와 국가 코드를 합쳐서 전체 전화번호 문자열을 생성
+  //   return countryCode + phoneNumber;
+  // }
+
+  // get protege하면 requestorId가 requstorId로 오타나있어서 지정이 안되는 오류로 mock data 활용
+  getProtegeMockData() {
+    print('protege_repo');
+    print(ProtegeRepo.protegeMockData);
+    return ProtegeRepo.protegeMockData;
   }
 }
