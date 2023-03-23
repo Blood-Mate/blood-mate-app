@@ -7,6 +7,7 @@ export 'page_button.dart';
 export 'profile_button.dart';
 export 'dialog.dart';
 export 'custom_text_file.dart';
+export 'people_list.dart';
 
 class ThinDevider extends StatelessWidget {
   const ThinDevider({super.key});

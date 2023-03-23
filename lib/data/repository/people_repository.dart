@@ -57,29 +57,6 @@ class PeopleRepository {
     }
   }
 
-  // Guardian
-  Future getGuardian() async {
-    // load header from local cached repository
-    final headers = await getHeader();
-
-    // Internet Connection check
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult != ConnectivityResult.none) {
-      // get guardians
-      print('get guardian');
-      Response response =
-          await _dio.get('/guardian', options: Options(headers: headers));
-      // transform data
-      List<People> guardianResponse =
-          List<People>.from(response.data.map((e) => People.fromJson(e)));
-
-      // log
-      print('no error');
-
-      return guardianResponse;
-    }
-  }
-
   // contact
   Future getContact() async {
     // load header from local cached repository
@@ -104,6 +81,26 @@ class PeopleRepository {
     }
   }
 
+  Future postContact({required contacts}) async {
+    // load header from local cached repository
+    final headers = await getHeader();
+
+    final data = {"contacts": contacts};
+    print(data);
+    // Internet Connection check
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      // patch contacts' isSendingTarget
+      print('post contact');
+      Response response = await _dio.post('/contact',
+          data: data, options: Options(headers: headers));
+
+      // log
+      print('no error');
+      return response;
+    }
+  }
+
   Future patchContact(
       {required int contactId, required bool isSendingTarget}) async {
     // load header from local cached repository
@@ -122,6 +119,29 @@ class PeopleRepository {
       // log
       print('no error');
       return response.statusCode;
+    }
+  }
+
+  // Guardian
+  Future getGuardian() async {
+    // load header from local cached repository
+    final headers = await getHeader();
+
+    // Internet Connection check
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      // get guardians
+      print('get guardian');
+      Response response =
+          await _dio.get('/guardian', options: Options(headers: headers));
+      // transform data
+      List<People> guardianResponse =
+          List<People>.from(response.data.map((e) => People.fromJson(e)));
+
+      // log
+      print('no error');
+
+      return guardianResponse;
     }
   }
 
@@ -162,15 +182,6 @@ class PeopleRepository {
       return response;
     }
   }
-
-  // // convert phoneNumber
-  // combinePhoneAndCountry(String phoneNumber, String countryCode) {
-  //   // 입력된 전화번호 문자열에서 "-" 문자를 제거
-  //   phoneNumber = phoneNumber.replaceAll('-', '');
-
-  //   // 전화번호와 국가 코드를 합쳐서 전체 전화번호 문자열을 생성
-  //   return countryCode + phoneNumber;
-  // }
 
   // get protege하면 requestorId가 requstorId로 오타나있어서 지정이 안되는 오류로 mock data 활용
   getProtegeMockData() {

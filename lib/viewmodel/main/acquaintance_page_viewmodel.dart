@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
 import 'package:bloodmate_app/data/repository/people_repository.dart';
@@ -16,9 +18,12 @@ class AcquaintancePageViewModel with ChangeNotifier {
   List<People> get contact => _contact;
 
   late int statusCode;
+  late String selectedSortOrder;
+  final List<String> sortOptions = ['ASC', 'DSC'];
 
   AcquaintancePageViewModel() {
     _peopleRepository = PeopleRepository();
+    selectedSortOrder = 'ASC';
     _loadItems();
   }
 
@@ -33,7 +38,7 @@ class AcquaintancePageViewModel with ChangeNotifier {
     statusCode = await _peopleRepository.patchContact(
         contactId: contactId, isSendingTarget: isSendingTarget);
     _loadItems();
-    notifyListeners();
+    //notifyListeners();
     return statusCode;
   }
 
@@ -50,5 +55,55 @@ class AcquaintancePageViewModel with ChangeNotifier {
     _loadItems();
     notifyListeners();
     return response.statusCode!;
+  }
+
+  Future<int> getContacts() async {
+    // get permission
+    var status = await Permission.contacts.status;
+    print('have permission');
+    if (status.isGranted) {
+      // 연락처 가져오기
+      final Iterable<Contact> contacts = await ContactsService.getContacts();
+      final List<Map<String, String>> contactList = [];
+
+      // API에 맞는 data로 transform
+      for (Contact contact in contacts) {
+        final String name = contact.displayName ?? '';
+        final List<Item>? phones = contact.phones?.toList();
+
+        if (phones != null && phones.isNotEmpty) {
+          for (Item phone in phones) {
+            final String phoneNumber = phone.value ?? '';
+            contactList.add(
+                {"name": name, "phoneNumber": phoneNumber.replaceAll('-', '')});
+          }
+        }
+      }
+      print(contactList);
+      print("get user's contacts");
+      Response response =
+          await _peopleRepository.postContact(contacts: contactList);
+      notifyListeners();
+
+      return response.statusCode!;
+    } else if (status.isDenied) {
+      print('permission failed');
+      Permission.contacts.request(); // 허락해달라고 팝업띄우는 코드
+    }
+    return -1;
+  }
+
+  setSort(String sortBy) {
+    selectedSortOrder = sortBy;
+    notifyListeners();
+  }
+
+  // convert phoneNumber
+  combinePhoneAndCountry(String phoneNumber, String countryCode) {
+    // 입력된 전화번호 문자열에서 "-" 문자를 제거
+    phoneNumber = phoneNumber.replaceAll('-', '');
+
+    // 전화번호와 국가 코드를 합쳐서 전체 전화번호 문자열을 생성
+    return countryCode + phoneNumber;
   }
 }

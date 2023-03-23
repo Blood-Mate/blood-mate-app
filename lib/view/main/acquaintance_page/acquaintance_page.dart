@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/component/component.dart';
+import 'package:bloodmate_app/view/main/acquaintance_page/list_button_view.dart';
 import 'package:bloodmate_app/view/main/acquaintance_page/people_list_view.dart';
-import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';
+import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class AcquaintancePage extends StatelessWidget {
-  const AcquaintancePage({super.key});
+  // const AcquaintancePage({super.key});
+  final viewModel = AcquaintancePageViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +29,12 @@ class AcquaintancePage extends StatelessWidget {
   }
 
   Widget acquaintancePageButton() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Icon(Icons.filter_list, size: 30),
-        SizedBox(width: 10),
-        Icon(Icons.add_box, size: 30),
-        SizedBox(width: 10),
-      ],
-    );
+    return ChangeNotifierProvider.value(
+        value: viewModel, child: ListButtonView());
   }
 
   Widget showMyPeoples() {
-    return ChangeNotifierProvider<AcquaintancePageViewModel>(
-        create: (_) => AcquaintancePageViewModel(), child: PeopleListView());
+    return ChangeNotifierProvider.value(
+        value: viewModel, child: PeopleListView());
   }
 }

@@ -39,12 +39,11 @@ class ProtegeListTile extends StatelessWidget {
   }
 }
 
-// checkbox data만 바뀌었지만 list view 전체가 rebuild 되어서 좋지 않음.
-class StlContactListTile extends StatelessWidget {
-  StlContactListTile({super.key, required this.item, required this.viewmodel});
+class ContactListTile extends StatelessWidget {
+  ContactListTile({super.key, required this.item, required this.viewModel});
 
   final item;
-  final viewmodel;
+  final viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class StlContactListTile extends StatelessWidget {
       trailing: Checkbox(
         value: item.isSendingTarget,
         onChanged: (bool? value) async {
-          int res = await viewmodel.changeIsSendingTarget(item.id, value!);
+          int res = await viewModel.changeIsSendingTarget(item.id, value!);
         },
       ),
       title: Text(item.name),
@@ -62,17 +61,18 @@ class StlContactListTile extends StatelessWidget {
   }
 }
 
-class ContactListTile extends StatefulWidget {
-  ContactListTile({super.key, required this.item, required this.viewmodel});
+// tile 내부에서 checkbox를 바로 변환할 수 있어서 적용이 빠름
+class StfContactListTile extends StatefulWidget {
+  StfContactListTile({super.key, required this.item, required this.viewModel});
 
   final item;
-  final viewmodel;
+  final viewModel;
 
   @override
-  State<ContactListTile> createState() => _ContactListTileState();
+  State<StfContactListTile> createState() => _StfContactListTile();
 }
 
-class _ContactListTileState extends State<ContactListTile> {
+class _StfContactListTile extends State<StfContactListTile> {
   late bool isTarget;
 
   @override
@@ -89,7 +89,7 @@ class _ContactListTileState extends State<ContactListTile> {
         value: isTarget,
         onChanged: (bool? value) async {
           // sending target 변경하는 API
-          int res = await widget.viewmodel
+          int res = await widget.viewModel
               .changeIsSendingTarget(widget.item.id, value!);
           if (res == 200) {
             setState(() {
@@ -105,10 +105,10 @@ class _ContactListTileState extends State<ContactListTile> {
 }
 
 class AppUserListTile extends StatefulWidget {
-  AppUserListTile({super.key, required this.item, required this.viewmodel});
+  AppUserListTile({super.key, required this.item, required this.viewModel});
 
   final item;
-  final viewmodel;
+  final viewModel;
 
   @override
   State<AppUserListTile> createState() => _AppUserListTileState();
@@ -134,7 +134,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
               value: isTarget,
               onChanged: (bool? value) async {
                 // sending target 변경하는 API
-                int res = await widget.viewmodel
+                int res = await widget.viewModel
                     .changeIsSendingTarget(widget.item.id, value!);
                 if (res == 200) {
                   setState(() {
@@ -164,7 +164,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
                       TextButton(
                           onPressed: () async {
                             // Guardian Post
-                            int state = await widget.viewmodel
+                            int state = await widget.viewModel
                                 .addGuardian(widget.item.phoneNumber);
 
                             print(state);
@@ -172,7 +172,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
                             switch (state) {
                               case 201: // success
                                 // Guardian 등록 시 isSendingTarget을 무조건 true로 전환
-                                state = await widget.viewmodel
+                                state = await widget.viewModel
                                     .changeIsSendingTarget(
                                         widget.item.id, true);
                                 break;
@@ -211,7 +211,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
                       TextButton(
                           onPressed: () async {
                             // 200 성공 404 없는 guardian id
-                            int state = await widget.viewmodel
+                            int state = await widget.viewModel
                                 .deleteGuardian(widget.item.guardianId);
                             Navigator.of(context).pop();
                           },
