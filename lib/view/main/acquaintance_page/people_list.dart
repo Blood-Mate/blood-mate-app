@@ -2,7 +2,7 @@ import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
-import 'component.dart';
+import 'list_tile.dart';
 
 class PeopleList extends StatelessWidget {
   PeopleList(
@@ -73,13 +73,13 @@ class PeopleList extends StatelessWidget {
         final item = filteredItems[index];
         switch (tile) {
           case 'Protege':
-            return ProtegeListTile(item: item);
+            return ProtegeListTile(item: item, viewModel: viewModel);
           case 'AppUser':
             return AppUserListTile(item: item, viewModel: viewModel);
           case 'Contact':
-            return StfContactListTile(item: item, viewModel: viewModel);
+            return ContactListTile(item: item, viewModel: viewModel);
           default:
-            return ProtegeListTile(item: item);
+            return ProtegeListTile(item: item, viewModel: viewModel);
         }
       },
     );

@@ -3,8 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bloodmate_app/data/model/models.dart';
-import 'package:bloodmate_app/view/common/component/component.dart';
+import 'people_list.dart';
 import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class PeopleListView extends StatelessWidget {

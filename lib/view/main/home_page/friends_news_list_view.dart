@@ -27,15 +27,15 @@ class FriendsNewsListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text('내 친구 소식')),
         ThinDevider(),
-        Flexible(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              final item = items[index];
-              return FriendsListViewTile(item: item);
-            },
-            itemCount: itemCount,
-          ),
-        ),
+        // Flexible(
+        //   child: ListView.builder(
+        //     itemBuilder: (context, index) {
+        //       final item = items[index];
+        //       return FriendsListViewTile(item: item);
+        //     },
+        //     itemCount: itemCount,
+        //   ),
+        // ),
       ],
     );
   }
