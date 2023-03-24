@@ -17,7 +17,9 @@ class ProfileViewModel with ChangeNotifier {
   }
 
   Future<void> _loadData() async {
-    _data = await _profileRepository.getMockData();
+    // _data = await _profileRepository.getMockData();
+    _data = await _profileRepository.getProfile();
+    print("viewmodel");
     notifyListeners();
   }
 

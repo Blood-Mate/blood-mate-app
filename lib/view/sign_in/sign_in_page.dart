@@ -26,6 +26,7 @@ class SignInPage extends StatelessWidget {
       body: Column(
         children: [
           const SubPageHeader(title: 'Sign In'),
+          SizedBox(height: 150),
           SignInField(
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,

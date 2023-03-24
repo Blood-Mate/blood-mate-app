@@ -1,62 +1,64 @@
-import 'package:bloodmate_app/view/common/component/component.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bloodmate_app/viewmodel/main/people_list_viewmodel.dart';
+import 'package:bloodmate_app/data/model/models.dart';
+import 'package:bloodmate_app/view/common/component/component.dart';
+import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class PeopleListView extends StatelessWidget {
   const PeopleListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<PeopleListViewModel>(context);
+    var viewModel = Provider.of<AcquaintancePageViewModel>(context);
     return _buildPeopleListView(viewModel);
   }
 
   Widget _buildPeopleListView(viewModel) {
-    final items = viewModel.items; // viewModel에 저장된 items
-    final itemCount = items.length;
+    final proteges = viewModel.protege;
+    final guardians = viewModel.guardian;
+    final contacts = viewModel.contact;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return ListView(
       children: [
-        SizedBox(height: 10),
-        showNeedProtectList(items),
-        ThickDevider(),
-        showMyProtectorList(items),
-        ThickDevider(),
-        showAppFriendsList(items),
-        ThickDevider(),
-        showContactFriendsList(items),
+        Text('Protege'),
+        PeopleList(
+          items: proteges,
+          blankBoxText: 'No Proteges',
+          viewModel: viewModel,
+          sort: viewModel.selectedSortOrder,
+        ),
+        Text('Guardian'),
+        PeopleList(
+          items: guardians,
+          blankBoxText: 'No Guardians',
+          viewModel: viewModel,
+          sort: viewModel.selectedSortOrder,
+          tile: 'AppUser',
+        ),
+        Text('AppUser'),
+        PeopleList(
+          items: contacts,
+          blankBoxText: 'No App Users',
+          viewModel: viewModel,
+          sort: viewModel.selectedSortOrder,
+          isUserFilter: true,
+          tile: 'AppUser',
+          filterSet: guardians,
+        ),
+        Text('Contact'),
+        PeopleList(
+          items: contacts,
+          blankBoxText: 'No Contacts',
+          viewModel: viewModel,
+          sort: viewModel.selectedSortOrder,
+          isNotUserFilter: true,
+          tile: 'Contact',
+        ),
         SizedBox(height: 20),
       ],
     );
-  }
-
-  Widget showNeedProtectList(items) {
-    final itemCount = 0;
-
-    return Flexible(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return ListTile(title: Text(item.content));
-        },
-        itemCount: itemCount,
-      ),
-    );
-  }
-
-  Widget showMyProtectorList(items) {
-    return Container();
-  }
-
-  Widget showAppFriendsList(items) {
-    return Container();
-  }
-
-  Widget showContactFriendsList(items) {
-    return Container();
   }
 }

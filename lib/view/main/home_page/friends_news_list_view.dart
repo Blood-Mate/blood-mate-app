@@ -27,7 +27,6 @@ class FriendsNewsListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text('내 친구 소식')),
         ThinDevider(),
-        SizedBox(height: 20),
         Flexible(
           child: ListView.builder(
             itemBuilder: (context, index) {

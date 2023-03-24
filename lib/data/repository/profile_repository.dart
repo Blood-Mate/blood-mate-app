@@ -33,11 +33,10 @@ class ProfileRepository {
     // try catch는 나중에
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      print("get");
       Response response =
           await _dio.get('/user', options: Options(headers: headers));
-      print(response);
       final profileResponse = Profile.fromJson(response.data);
+      print('profile_repo');
       print(profileResponse);
       return profileResponse;
     }
