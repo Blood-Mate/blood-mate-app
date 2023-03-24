@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:bloodmate_app/view/common/route_animation.dart';
+import 'package:bloodmate_app/view/main/acquaintance_page/write_private_post_page.dart';
 import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class ListButtonView extends StatelessWidget {
@@ -58,6 +60,17 @@ class ListButtonView extends StatelessWidget {
                 });
             viewModel.getContacts();
           },
+        ),
+        SizedBox(width: 10),
+        IconButton(
+          icon: Icon(Icons.add_comment),
+          onPressed: (() {
+            viewModel.releaseFocus();
+            PageRouteWithAnimation pageRouteWithAnimation =
+                PageRouteWithAnimation(
+                    WritePrivatePostPage(viewModel: viewModel));
+            Navigator.push(context, pageRouteWithAnimation.slideRitghtToLeft());
+          }),
         ),
         SizedBox(width: 10),
       ],

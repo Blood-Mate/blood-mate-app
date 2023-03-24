@@ -5,9 +5,11 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
 import 'package:bloodmate_app/data/repository/people_repository.dart';
+import 'package:bloodmate_app/data/repository/post_repository.dart';
 
 class AcquaintancePageViewModel with ChangeNotifier {
   late final PeopleRepository _peopleRepository;
+  late final PostRepository _postRepository;
 
   List<People> _guardian = [];
   List<People> _protege = [];
@@ -19,10 +21,13 @@ class AcquaintancePageViewModel with ChangeNotifier {
 
   late int statusCode;
   late String selectedSortOrder;
+  late People focusedProtege;
+  bool isFocused = false;
   final List<String> sortOptions = ['ASC', 'DSC'];
 
   AcquaintancePageViewModel() {
     _peopleRepository = PeopleRepository();
+    _postRepository = PostRepository();
     selectedSortOrder = 'ASC';
     _loadItems();
   }
@@ -96,6 +101,27 @@ class AcquaintancePageViewModel with ChangeNotifier {
   setSort(String sortBy) {
     selectedSortOrder = sortBy;
     notifyListeners();
+  }
+
+  focusProtege(People protege) {
+    focusedProtege = protege;
+    isFocused = true;
+    print(protege);
+  }
+
+  releaseFocus() {
+    isFocused = false;
+  }
+
+  Future<int> postMyDonation(content) async {
+    Response response = await _postRepository.postPrivatePost(content: content);
+    return response.statusCode!;
+  }
+
+  Future<int> postProtegeDonation(protegeId, content) async {
+    Response response = await _postRepository.postPrivatePostAsGuardian(
+        content: content, wardId: protegeId);
+    return response.statusCode!;
   }
 
   // convert phoneNumber

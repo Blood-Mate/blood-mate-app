@@ -41,6 +41,7 @@ class PostRepository {
     Response response = await _dio.post('/private-post',
         data: data, options: Options(headers: authHeaders));
 
+    print('No Erorr');
     return response;
   }
 

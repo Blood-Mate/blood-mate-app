@@ -23,10 +23,14 @@ class SignInPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: theme.canvasColor,
+      resizeToAvoidBottomInset: true,
       body: Column(
         children: [
           const SubPageHeader(title: 'Sign In'),
-          SizedBox(height: 150),
+          SizedBox(
+              height: MediaQuery.of(context).viewInsets.bottom == 0
+                  ? MediaQuery.of(context).size.height * 0.2
+                  : MediaQuery.of(context).size.height * 0.08),
           SignInField(
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,

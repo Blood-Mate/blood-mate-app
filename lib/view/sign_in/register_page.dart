@@ -1,12 +1,13 @@
+import 'package:bloodmate_app/view/common/component/back_appbar.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:bloodmate_app/view/sign_in/register_field.dart';
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/pages.dart';
-import 'package:bloodmate_app/view/sign_in/register_field.dart';
-import 'package:flutter/material.dart';
-
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/view/sign_in/sign_in_field.dart';
 import 'package:bloodmate_app/viewmodel/register_viewmodel.dart';
-import 'package:go_router/go_router.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -21,14 +22,20 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     Size screenSize = MediaQuery.of(context).size;
-
+    print(screenSize.height);
     return Scaffold(
       backgroundColor: theme.canvasColor,
+      resizeToAvoidBottomInset: true,
+      appBar: BackAppBar().build(context),
+      extendBodyBehindAppBar: true,
       body: Column(
         children: [
           const SubPageHeader(title: 'Register'),
           // 키보드 올라왔을 때 같이 올라가는거 적용필요
-          SizedBox(height: 100),
+          SizedBox(
+              height: MediaQuery.of(context).viewInsets.bottom == 0
+                  ? MediaQuery.of(context).size.height * 0.17
+                  : 0),
           RegisterField(
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,
