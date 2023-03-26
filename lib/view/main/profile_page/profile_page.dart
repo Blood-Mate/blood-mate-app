@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/component/component.dart';
-import 'package:bloodmate_app/view/main/profile_page/setting_page.dart';
-import 'package:bloodmate_app/view/main/profile_page/notice_page.dart';
-import 'package:bloodmate_app/view/main/profile_page/support_page.dart';
+import 'package:bloodmate_app/view/main/profile_page/pop_up/setting_page.dart';
+import 'package:bloodmate_app/view/main/profile_page/pop_up/notice_page.dart';
+import 'package:bloodmate_app/view/main/profile_page/pop_up/support_page.dart';
 import 'package:bloodmate_app/view/main/profile_page/my_info_view.dart';
 import 'package:bloodmate_app/view/main/profile_page/profile_view.dart';
 import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';

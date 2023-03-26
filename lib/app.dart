@@ -102,8 +102,8 @@ class BloodMateApp extends StatelessWidget {
 
   final ThemeData _theme = ThemeData(
     canvasColor: const Color(0xFFFFFFFF),
-    primaryColor: Color.fromARGB(255, 253, 45, 45), //Color(0xFFFF2525),
-    focusColor: Color.fromARGB(255, 235, 94, 94),
+    primaryColor: Color.fromARGB(255, 235, 94, 94),
+    focusColor: Color.fromARGB(255, 253, 45, 45), //Color(0xFFFF2525),
     textTheme: const TextTheme(),
   );
 }

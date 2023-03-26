@@ -24,10 +24,9 @@ class HomePage extends StatelessWidget {
         body: Column(
           children: [
             homePageProfile(),
-            ThinDevider(),
             Expanded(child: friendsNewsList()),
             moreButton(),
-            ThinDevider(),
+            //ThinDevider(),
             homePageTail(screenSize),
           ],
         ));
@@ -47,7 +46,7 @@ class HomePage extends StatelessWidget {
     return Container(
         alignment: Alignment.bottomRight,
         padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(border: Border.all(width: 1)),
+        //decoration: BoxDecoration(border: Border.all(width: 1)),
         child: Text('더보기', textAlign: TextAlign.end));
   }
 
@@ -55,7 +54,7 @@ class HomePage extends StatelessWidget {
     return Container(
       height: 80,
       width: screenSize.width,
-      decoration: BoxDecoration(border: Border.all(width: 1)),
+      //decoration: BoxDecoration(border: Border.all(width: 1)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,

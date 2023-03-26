@@ -92,10 +92,11 @@ class PostRepository {
     checkInternetConnection();
 
     final authHeaders = await getAuthHeader();
-    final data = {postId: postId};
+    final data = {'postId': postId};
     Response response = await _dio.delete('/private-post',
         data: data, options: Options(headers: authHeaders));
 
+    print('No Error');
     return response;
   }
 

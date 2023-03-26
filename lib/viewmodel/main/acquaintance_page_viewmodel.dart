@@ -109,7 +109,6 @@ class AcquaintancePageViewModel with ChangeNotifier {
   focusProtege(People protege) {
     focusedProtege = protege;
     isFocused = true;
-    print(protege);
   }
 
   releaseFocus() {
