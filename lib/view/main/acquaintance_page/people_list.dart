@@ -77,7 +77,7 @@ class PeopleList extends StatelessWidget {
           case 'AppUser':
             return AppUserListTile(item: item, viewModel: viewModel);
           case 'Contact':
-            return StfContactListTile(item: item, viewModel: viewModel);
+            return ContactListTile(item: item, viewModel: viewModel);
           default:
             return ProtegeListTile(item: item, viewModel: viewModel);
         }
