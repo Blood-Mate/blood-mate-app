@@ -24,11 +24,10 @@ class ProfileView extends StatelessWidget {
         Row(
           children: [
             SizedBox(width: 20),
-            // ((profile.profileImageUrl == null) ||
-            //         (profile.profileImageUrl == ""))
-            //     ? CircularImageMock(size: 70)
-            //     : CircularImage(imageUrl: profile.profileImageUrl, size: 70),
-            CircularImageMock(size: 70),
+            ((profile.profileImageUrl == null) ||
+                    (profile.profileImageUrl == ""))
+                ? CircularImageMock(size: 70)
+                : CircularImage(imageUrl: profile.profileImageUrl, size: 70),
             SizedBox(width: 20),
             Container(
               height: 70,
@@ -53,14 +52,14 @@ class ProfileView extends StatelessWidget {
               Text('Phone Number : ' + profile.phoneNumber),
               Text('Blood type : ' + profile.bloodType),
             ]),
-            signOutButton(context),
+            signOutButton(context, viewModel),
           ],
         )
       ],
     );
   }
 
-  Widget signOutButton(context) {
+  Widget signOutButton(context, viewModel) {
     return ElevatedButton(
       child: const Text(
         'Sign Out',
@@ -79,7 +78,7 @@ class ProfileView extends StatelessWidget {
                   ElevatedButton(
                     child: Text('Yes'),
                     onPressed: () {
-                      ProfilePageViewModel().signOut();
+                      viewModel.signOut();
                       GoRouter.of(context).go('/signin');
                     },
                   ),

@@ -22,7 +22,7 @@ class MyInfoView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ProfileButton(text: 'My Post', page: MyPostPage()),
+        ProfileButton(text: 'My Post', page: MyPostPage(viewModel: viewModel)),
         ProfileButton(text: 'My Message', page: MyMessagePage()),
         ProfileButton(text: 'My Award', page: MyAwardPage()),
         ProfileButton(text: 'My Donation', page: MyDonationPage()),

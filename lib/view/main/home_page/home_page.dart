@@ -24,7 +24,6 @@ class HomePage extends StatelessWidget {
         body: Column(
           children: [
             homePageProfile(),
-            ThinDevider(),
             Expanded(child: friendsNewsList()),
             moreButton(),
             ThinDevider(),
