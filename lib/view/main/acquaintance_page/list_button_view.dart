@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:bloodmate_app/view/common/route_animation.dart';
-import 'package:bloodmate_app/view/main/acquaintance_page/write_private_post_page.dart';
 import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
+import 'package:bloodmate_app/view/main/acquaintance_page/write_private_post_page.dart';
 
 class ListButtonView extends StatelessWidget {
   ListButtonView({super.key});
@@ -51,14 +51,13 @@ class ListButtonView extends StatelessWidget {
                           child: Text('No')),
                       TextButton(
                           onPressed: () async {
-                            viewModel.getContacts();
+                            var res = await viewModel.getContacts();
                             Navigator.of(context).pop();
                           },
                           child: Text('Yes'))
                     ],
                   );
                 });
-            viewModel.getContacts();
           },
         ),
         SizedBox(width: 10),

@@ -7,7 +7,7 @@ import 'package:bloodmate_app/view/main/acquaintance_page/people_list_view.dart'
 import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
 
 class AcquaintancePage extends StatelessWidget {
-  // const AcquaintancePage({super.key});
+  AcquaintancePage({super.key});
   final viewModel = AcquaintancePageViewModel();
 
   @override

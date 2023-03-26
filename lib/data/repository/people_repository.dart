@@ -17,27 +17,10 @@ class PeopleRepository {
   // Open Dio
   static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
-  Future getHeader() async {
-    Box _tokenBox = await Hive.openBox('tokens');
-
-    // JSON-WEB-TOKEN JWT
-    var accessToken = _tokenBox.get('access_token');
-    var refreshtoken = _tokenBox.get('refresh_token');
-
-    // Request Header
-    final headers = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $accessToken",
-      'x-refresh-token': refreshtoken
-    };
-
-    return headers;
-  }
-
   // Protege
   Future getProtege() async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
 
     // Internet Connection check
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -60,7 +43,7 @@ class PeopleRepository {
   // contact
   Future getContact() async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
 
     // Internet Connection check
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -76,6 +59,7 @@ class PeopleRepository {
 
       // log
       print('no error');
+      print(contactResponse);
 
       return contactResponse;
     }
@@ -83,7 +67,7 @@ class PeopleRepository {
 
   Future postContact({required contacts}) async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
 
     final data = {"contacts": contacts};
     print(data);
@@ -104,7 +88,7 @@ class PeopleRepository {
   Future patchContact(
       {required int contactId, required bool isSendingTarget}) async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
 
     final data = {"contactId": contactId, "isSendingTarget": isSendingTarget};
 
@@ -125,7 +109,7 @@ class PeopleRepository {
   // Guardian
   Future getGuardian() async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
 
     // Internet Connection check
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -147,7 +131,7 @@ class PeopleRepository {
 
   Future postGuardian({required String phoneNumber}) async {
     // load header from local cached repository
-    final headers = await getHeader();
+    final headers = await getAuthHeader();
     final data = {"phoneNumber": phoneNumber};
 
     // Internet Connection check
@@ -165,21 +149,51 @@ class PeopleRepository {
   }
 
   Future deleteGuardian({required int guardianId}) async {
-    // load header from local cached repository
-    final headers = await getHeader();
+    print('[HTTP API LOG]: DELETE /guardian');
+    checkInternetConnection();
+
+    final authHeaders = await getAuthHeader();
     final data = {"id": guardianId};
 
-    // Internet Connection check
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult != ConnectivityResult.none) {
-      print('delete guardian');
-      // patch contacts' isSendingTarget
-      Response response = await _dio.delete('/guardian',
-          data: data, options: Options(headers: headers));
+    Response response = await _dio.delete('/guardian',
+        data: data, options: Options(headers: authHeaders));
 
-      // log
-      print('no error');
-      return response;
+    // log
+    print('no error');
+    return response;
+  }
+
+  Future deleteContact({required int contactId}) async {
+    print('[HTTP API LOG]: DELETE /contact');
+    checkInternetConnection();
+
+    final authHeaders = await getAuthHeader();
+    Response response = await _dio.delete('/contact/$contactId',
+        options: Options(headers: authHeaders));
+
+    return response;
+  }
+
+  Future getAuthHeader() async {
+    Box _tokenBox = await Hive.openBox('tokens');
+
+    var accessToken = _tokenBox.get('access_token');
+    var refreshtoken = _tokenBox.get('refresh_token');
+
+    final headers = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer $accessToken",
+      'x-refresh-token': refreshtoken
+    };
+
+    return headers;
+  }
+
+  Future checkInternetConnection() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      print('[HTTP ERR]: internet connection');
+      throw Exception('internet connection');
     }
   }
 

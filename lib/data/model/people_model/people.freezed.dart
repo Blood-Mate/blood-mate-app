@@ -23,7 +23,7 @@ mixin _$People {
   int? get id => throw _privateConstructorUsedError;
   int? get guardianId => throw _privateConstructorUsedError;
   int? get requestorId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   bool? get isUser => throw _privateConstructorUsedError;
   bool? get isSendingTarget => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $PeopleCopyWith<$Res> {
       {int? id,
       int? guardianId,
       int? requestorId,
-      String name,
+      String? name,
       String phoneNumber,
       bool? isUser,
       bool? isSendingTarget,
@@ -66,7 +66,7 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
     Object? id = freezed,
     Object? guardianId = freezed,
     Object? requestorId = freezed,
-    Object? name = null,
+    Object? name = freezed,
     Object? phoneNumber = null,
     Object? isUser = freezed,
     Object? isSendingTarget = freezed,
@@ -85,10 +85,10 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
           ? _value.requestorId
           : requestorId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$_PeopleCopyWith<$Res> implements $PeopleCopyWith<$Res> {
       {int? id,
       int? guardianId,
       int? requestorId,
-      String name,
+      String? name,
       String phoneNumber,
       bool? isUser,
       bool? isSendingTarget,
@@ -139,7 +139,7 @@ class __$$_PeopleCopyWithImpl<$Res>
     Object? id = freezed,
     Object? guardianId = freezed,
     Object? requestorId = freezed,
-    Object? name = null,
+    Object? name = freezed,
     Object? phoneNumber = null,
     Object? isUser = freezed,
     Object? isSendingTarget = freezed,
@@ -158,10 +158,10 @@ class __$$_PeopleCopyWithImpl<$Res>
           ? _value.requestorId
           : requestorId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -189,7 +189,7 @@ class _$_People implements _People {
       {this.id,
       this.guardianId,
       this.requestorId,
-      required this.name,
+      this.name,
       required this.phoneNumber,
       this.isUser,
       this.isSendingTarget,
@@ -205,7 +205,7 @@ class _$_People implements _People {
   @override
   final int? requestorId;
   @override
-  final String name;
+  final String? name;
   @override
   final String phoneNumber;
   @override
@@ -264,7 +264,7 @@ abstract class _People implements People {
       {final int? id,
       final int? guardianId,
       final int? requestorId,
-      required final String name,
+      final String? name,
       required final String phoneNumber,
       final bool? isUser,
       final bool? isSendingTarget,
@@ -279,7 +279,7 @@ abstract class _People implements People {
   @override
   int? get requestorId;
   @override
-  String get name;
+  String? get name;
   @override
   String get phoneNumber;
   @override

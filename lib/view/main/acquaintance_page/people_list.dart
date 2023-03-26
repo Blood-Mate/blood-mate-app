@@ -53,10 +53,10 @@ class PeopleList extends StatelessWidget {
     // sorting
     switch (sort) {
       case 'ASC':
-        filteredItems.sort((a, b) => a.name.compareTo(b.name));
+        filteredItems.sort((a, b) => a.name!.compareTo(b.name!));
         break;
       case 'DSC':
-        filteredItems.sort((a, b) => b.name.compareTo(a.name));
+        filteredItems.sort((a, b) => b.name!.compareTo(a.name!));
         break;
     }
 

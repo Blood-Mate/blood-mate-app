@@ -8,9 +8,11 @@ import 'package:bloodmate_app/view/main/profile_page/support_page.dart';
 import 'package:bloodmate_app/view/main/profile_page/my_info_view.dart';
 import 'package:bloodmate_app/view/main/profile_page/profile_view.dart';
 import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';
+import 'package:bloodmate_app/viewmodel/main/profile_page_viewmodel.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+  final viewModel = ProfilePageViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +34,11 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget showProfile() {
-    return ChangeNotifierProvider<ProfileViewModel>(
-        create: (_) => ProfileViewModel(), child: ProfileView());
+    return ChangeNotifierProvider.value(value: viewModel, child: ProfileView());
   }
 
   Widget showMyInfoView() {
-    return ChangeNotifierProvider<MyInfoViewModel>(
-        create: (_) => MyInfoViewModel(), child: MyInfoView());
+    return ChangeNotifierProvider.value(value: viewModel, child: MyInfoView());
   }
 
   Widget settingButtonList() {

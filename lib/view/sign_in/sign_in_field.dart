@@ -26,6 +26,7 @@ class SignInField extends StatelessWidget {
           controller: phoneNumberController,
           type: TextInputType.phone,
           hint: "Phone number",
+          isPhoneNum: true,
         ),
         CustomTextField(
           controller: passwordController,

@@ -15,7 +15,7 @@ class SplashViewModel {
       if (_tokenBox.isNotEmpty) {
         final accessToken = _tokenBox.get('access_token');
         print(accessToken);
-        final isValid = await ProfileRepository().getProfile();
+        final isValid = await ProfileRepository().getUser();
         return true;
       }
       // 전역변수에 넣고싶은데 myTokens 불러오는거에서 오류남
