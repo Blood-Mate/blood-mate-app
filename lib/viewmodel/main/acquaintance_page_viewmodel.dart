@@ -79,8 +79,10 @@ class AcquaintancePageViewModel with ChangeNotifier {
         if (phones != null && phones.isNotEmpty) {
           for (Item phone in phones) {
             final String phoneNumber = phone.value ?? '';
-            contactList.add(
-                {"name": name, "phoneNumber": phoneNumber.replaceAll('-', '')});
+            contactList.add({
+              "name": name,
+              "phoneNumber": combinePhoneAndCountry(phoneNumber, '+82')
+            });
           }
         }
       }
@@ -88,6 +90,7 @@ class AcquaintancePageViewModel with ChangeNotifier {
       print("get user's contacts");
       Response response =
           await _peopleRepository.postContact(contacts: contactList);
+      _loadItems();
       notifyListeners();
 
       return response.statusCode!;
@@ -124,12 +127,27 @@ class AcquaintancePageViewModel with ChangeNotifier {
     return response.statusCode!;
   }
 
+  Future<int> deleteContact(contactId) async {
+    Response response =
+        await _peopleRepository.deleteContact(contactId: contactId);
+    _loadItems();
+    notifyListeners();
+    return response.statusCode!;
+  }
+
   // convert phoneNumber
   combinePhoneAndCountry(String phoneNumber, String countryCode) {
-    // 입력된 전화번호 문자열에서 "-" 문자를 제거
+    // 입력된 전화번호 문자열에서 하이픈 및 공백 제거, 0으로 시작 시 0제거
     phoneNumber = phoneNumber.replaceAll('-', '');
+    phoneNumber = phoneNumber.replaceAll(' ', '');
+    phoneNumber = phoneNumber.startsWith('0')
+        ? phoneNumber.replaceFirst('0', '')
+        : phoneNumber;
 
     // 전화번호와 국가 코드를 합쳐서 전체 전화번호 문자열을 생성
-    return countryCode + phoneNumber;
+    String combinedNumber =
+        phoneNumber.startsWith('+') ? phoneNumber : countryCode + phoneNumber;
+
+    return combinedNumber;
   }
 }

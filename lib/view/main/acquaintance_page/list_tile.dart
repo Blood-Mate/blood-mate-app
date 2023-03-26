@@ -90,6 +90,32 @@ class _StfContactListTile extends State<StfContactListTile> {
           }
         },
       ),
+      onLongPress: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Delete this Contact'),
+                content: Text('Are you sure you want to delete this?'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('No')),
+                  TextButton(
+                      onPressed: () async {
+                        // delete contact
+                        int state = await widget.viewModel
+                            .deleteContact(widget.item.id);
+
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Yes'))
+                ],
+              );
+            });
+      },
       title: Text(widget.item.name),
       subtitle: Text(widget.item.phoneNumber),
     ));
@@ -138,7 +164,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
           : Text('Guardian'),
       title: Text(widget.item.name),
       subtitle: Text(widget.item.phoneNumber),
-      // long tap 할지 그냥 tap 할지 정하기
+      // tap 시에는 guardian 전환
       onTap: () {
         (isGuardian == -1)
             ? showDialog(
@@ -202,7 +228,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
                           child: Text('No')),
                       TextButton(
                           onPressed: () async {
-                            // 200 성공 404 없는 guardian id
+                            // 200 : 성공, 404 : 없는 guardian id
                             int state = await widget.viewModel
                                 .deleteGuardian(widget.item.guardianId);
                             Navigator.of(context).pop();
@@ -211,6 +237,10 @@ class _AppUserListTileState extends State<AppUserListTile> {
                     ],
                   );
                 });
+      },
+      // 해당 contact 삭제
+      onLongPress: () {
+        //delet
       },
     ));
   }

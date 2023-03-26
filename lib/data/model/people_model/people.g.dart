@@ -10,7 +10,7 @@ _$_People _$$_PeopleFromJson(Map<String, dynamic> json) => _$_People(
       id: json['id'] as int?,
       guardianId: json['guardianId'] as int?,
       requestorId: json['requestorId'] as int?,
-      name: json['name'] as String,
+      name: json['name'] as String?,
       phoneNumber: json['phoneNumber'] as String,
       isUser: json['isUser'] as bool?,
       isSendingTarget: json['isSendingTarget'] as bool?,

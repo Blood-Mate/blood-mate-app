@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:bloodmate_app/data/model/post_model/post.dart';
 import 'package:dio/dio.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive/hive.dart';
@@ -13,7 +12,6 @@ class PostRepository {
   static PostRepository get postRepositoryInstance => _postRepository;
   static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
-  // header token이 만료되면 어떻게 처리?
   constructor() {
     final authHaeders = getAuthHeader();
   }
@@ -26,11 +24,17 @@ class PostRepository {
     final authHeaders = await getAuthHeader();
     Response response =
         await _dio.get('/private-post', options: Options(headers: authHeaders));
-    List<Post> privatePosts =
-        List<Post>.from(response.data.map((e) => Post.fromJson(e)));
+    //print(response);
+    List<PostResponse> privatePosts =
+        List<PostResponse>.from(response.data.map((e) => PostResponse(
+              post: Post.fromJson(e['post']),
+              publisher: People.fromJson(e['publisher']),
+              originPost: e['originPost'] == null
+                  ? null
+                  : Post.fromJson(e['originPost']),
+            )));
 
     print('No Error');
-    print(privatePosts);
     return privatePosts;
   }
 

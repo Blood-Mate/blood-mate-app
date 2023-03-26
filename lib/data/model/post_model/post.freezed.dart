@@ -26,10 +26,10 @@ mixin _$Post {
       throw _privateConstructorUsedError; // for private(social network based blood donation) post
   int? get depth => throw _privateConstructorUsedError;
   int? get originId => throw _privateConstructorUsedError;
-  String? get UserId => throw _privateConstructorUsedError;
   bool? get isFinished => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>>? get shares =>
-      throw _privateConstructorUsedError; // for public (location based blood donation) post
+  People? get user =>
+      throw _privateConstructorUsedError; //List<Map<String, dynamic>>? shares,
+// for public (location based blood donation) post
   String? get title => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get bloodType => throw _privateConstructorUsedError;
@@ -56,9 +56,8 @@ abstract class $PostCopyWith<$Res> {
       String content,
       int? depth,
       int? originId,
-      String? UserId,
       bool? isFinished,
-      List<Map<String, dynamic>>? shares,
+      People? user,
       String? title,
       String? imageUrl,
       String? bloodType,
@@ -69,6 +68,8 @@ abstract class $PostCopyWith<$Res> {
       DateTime? createdAt,
       DateTime? bumpAt,
       bool? expired});
+
+  $PeopleCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -88,9 +89,8 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
     Object? content = null,
     Object? depth = freezed,
     Object? originId = freezed,
-    Object? UserId = freezed,
     Object? isFinished = freezed,
-    Object? shares = freezed,
+    Object? user = freezed,
     Object? title = freezed,
     Object? imageUrl = freezed,
     Object? bloodType = freezed,
@@ -119,18 +119,14 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.originId
           : originId // ignore: cast_nullable_to_non_nullable
               as int?,
-      UserId: freezed == UserId
-          ? _value.UserId
-          : UserId // ignore: cast_nullable_to_non_nullable
-              as String?,
       isFinished: freezed == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
               as bool?,
-      shares: freezed == shares
-          ? _value.shares
-          : shares // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as People?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -173,6 +169,18 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
               as bool?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PeopleCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $PeopleCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -186,9 +194,8 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       String content,
       int? depth,
       int? originId,
-      String? UserId,
       bool? isFinished,
-      List<Map<String, dynamic>>? shares,
+      People? user,
       String? title,
       String? imageUrl,
       String? bloodType,
@@ -199,6 +206,9 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       DateTime? createdAt,
       DateTime? bumpAt,
       bool? expired});
+
+  @override
+  $PeopleCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -214,9 +224,8 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
     Object? content = null,
     Object? depth = freezed,
     Object? originId = freezed,
-    Object? UserId = freezed,
     Object? isFinished = freezed,
-    Object? shares = freezed,
+    Object? user = freezed,
     Object? title = freezed,
     Object? imageUrl = freezed,
     Object? bloodType = freezed,
@@ -245,18 +254,14 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
           ? _value.originId
           : originId // ignore: cast_nullable_to_non_nullable
               as int?,
-      UserId: freezed == UserId
-          ? _value.UserId
-          : UserId // ignore: cast_nullable_to_non_nullable
-              as String?,
       isFinished: freezed == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
               as bool?,
-      shares: freezed == shares
-          ? _value._shares
-          : shares // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as People?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -309,9 +314,8 @@ class _$_Post implements _Post {
       required this.content,
       this.depth,
       this.originId,
-      this.UserId,
       this.isFinished,
-      final List<Map<String, dynamic>>? shares,
+      this.user,
       this.title,
       this.imageUrl,
       this.bloodType,
@@ -321,8 +325,7 @@ class _$_Post implements _Post {
       this.latitude,
       this.createdAt,
       this.bumpAt,
-      this.expired})
-      : _shares = shares;
+      this.expired});
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
@@ -337,19 +340,10 @@ class _$_Post implements _Post {
   @override
   final int? originId;
   @override
-  final String? UserId;
-  @override
   final bool? isFinished;
-  final List<Map<String, dynamic>>? _shares;
   @override
-  List<Map<String, dynamic>>? get shares {
-    final value = _shares;
-    if (value == null) return null;
-    if (_shares is EqualUnmodifiableListView) return _shares;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final People? user;
+//List<Map<String, dynamic>>? shares,
 // for public (location based blood donation) post
   @override
   final String? title;
@@ -374,7 +368,7 @@ class _$_Post implements _Post {
 
   @override
   String toString() {
-    return 'Post(id: $id, content: $content, depth: $depth, originId: $originId, UserId: $UserId, isFinished: $isFinished, shares: $shares, title: $title, imageUrl: $imageUrl, bloodType: $bloodType, bloodDonationType: $bloodDonationType, region: $region, longtitude: $longtitude, latitude: $latitude, createdAt: $createdAt, bumpAt: $bumpAt, expired: $expired)';
+    return 'Post(id: $id, content: $content, depth: $depth, originId: $originId, isFinished: $isFinished, user: $user, title: $title, imageUrl: $imageUrl, bloodType: $bloodType, bloodDonationType: $bloodDonationType, region: $region, longtitude: $longtitude, latitude: $latitude, createdAt: $createdAt, bumpAt: $bumpAt, expired: $expired)';
   }
 
   @override
@@ -387,10 +381,9 @@ class _$_Post implements _Post {
             (identical(other.depth, depth) || other.depth == depth) &&
             (identical(other.originId, originId) ||
                 other.originId == originId) &&
-            (identical(other.UserId, UserId) || other.UserId == UserId) &&
             (identical(other.isFinished, isFinished) ||
                 other.isFinished == isFinished) &&
-            const DeepCollectionEquality().equals(other._shares, _shares) &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
@@ -417,9 +410,8 @@ class _$_Post implements _Post {
       content,
       depth,
       originId,
-      UserId,
       isFinished,
-      const DeepCollectionEquality().hash(_shares),
+      user,
       title,
       imageUrl,
       bloodType,
@@ -451,9 +443,8 @@ abstract class _Post implements Post {
       required final String content,
       final int? depth,
       final int? originId,
-      final String? UserId,
       final bool? isFinished,
-      final List<Map<String, dynamic>>? shares,
+      final People? user,
       final String? title,
       final String? imageUrl,
       final String? bloodType,
@@ -476,12 +467,11 @@ abstract class _Post implements Post {
   @override
   int? get originId;
   @override
-  String? get UserId;
-  @override
   bool? get isFinished;
   @override
-  List<Map<String, dynamic>>? get shares;
-  @override // for public (location based blood donation) post
+  People? get user;
+  @override //List<Map<String, dynamic>>? shares,
+// for public (location based blood donation) post
   String? get title;
   @override
   String? get imageUrl;

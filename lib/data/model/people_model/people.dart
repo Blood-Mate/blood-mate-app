@@ -11,7 +11,7 @@ class People with _$People {
     int? id,
     int? guardianId,
     int? requestorId,
-    required String name,
+    String? name,
     required String phoneNumber,
     bool? isUser,
     bool? isSendingTarget,

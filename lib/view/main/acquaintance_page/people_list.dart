@@ -53,10 +53,10 @@ class PeopleList extends StatelessWidget {
     // sorting
     switch (sort) {
       case 'ASC':
-        filteredItems.sort((a, b) => a.name.compareTo(b.name));
+        filteredItems.sort((a, b) => a.name!.compareTo(b.name!));
         break;
       case 'DSC':
-        filteredItems.sort((a, b) => b.name.compareTo(a.name));
+        filteredItems.sort((a, b) => b.name!.compareTo(a.name!));
         break;
     }
 
@@ -77,7 +77,7 @@ class PeopleList extends StatelessWidget {
           case 'AppUser':
             return AppUserListTile(item: item, viewModel: viewModel);
           case 'Contact':
-            return ContactListTile(item: item, viewModel: viewModel);
+            return StfContactListTile(item: item, viewModel: viewModel);
           default:
             return ProtegeListTile(item: item, viewModel: viewModel);
         }

@@ -3,19 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:bloodmate_app/view/common/component/component.dart';
-import 'package:bloodmate_app/viewmodel/main/profile_viewmodel.dart';
+import 'package:bloodmate_app/viewmodel/main/profile_page_viewmodel.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<ProfileViewModel>(context);
+    var viewModel = Provider.of<ProfilePageViewModel>(context);
     return _buildProfileView(viewModel, context);
   }
 
   Widget _buildProfileView(viewModel, context) {
-    final data = viewModel.data; // viewModel에 저장된 data
+    final profile = viewModel.profile; // viewModel에 저장된 data
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,9 +24,11 @@ class ProfileView extends StatelessWidget {
         Row(
           children: [
             SizedBox(width: 20),
-            ((data.profileImageURL == null) || (data.profileImageURL == ""))
-                ? CircularImageMock(size: 70)
-                : CircularImage(imageUrl: data.profileImageURL, size: 70),
+            // ((profile.profileImageUrl == null) ||
+            //         (profile.profileImageUrl == ""))
+            //     ? CircularImageMock(size: 70)
+            //     : CircularImage(imageUrl: profile.profileImageUrl, size: 70),
+            CircularImageMock(size: 70),
             SizedBox(width: 20),
             Container(
               height: 70,
@@ -35,7 +37,7 @@ class ProfileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    data.name,
+                    profile.name,
                     style: TextStyle(fontSize: 20),
                   ),
                 ],
@@ -48,8 +50,8 @@ class ProfileView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Phone Number : ' + data.phoneNumber),
-              Text('Blood type : ' + data.bloodType),
+              Text('Phone Number : ' + profile.phoneNumber),
+              Text('Blood type : ' + profile.bloodType),
             ]),
             signOutButton(context),
           ],
@@ -77,7 +79,7 @@ class ProfileView extends StatelessWidget {
                   ElevatedButton(
                     child: Text('Yes'),
                     onPressed: () {
-                      ProfileViewModel().signOut();
+                      ProfilePageViewModel().signOut();
                       GoRouter.of(context).go('/signin');
                     },
                   ),

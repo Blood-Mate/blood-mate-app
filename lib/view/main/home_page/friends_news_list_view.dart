@@ -14,7 +14,7 @@ class FriendsNewsListView extends StatelessWidget {
   }
 
   Widget _buildFriendsNewsListView(viewModel) {
-    final privatePost = viewModel.privatePost; // viewModel에 저장된 items
+    final privatePost = viewModel.privatePost;
     final privatePostCount = privatePost.length;
 
     return Column(

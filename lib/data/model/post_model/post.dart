@@ -15,9 +15,8 @@ class Post with _$Post {
     // for private(social network based blood donation) post
     int? depth,
     int? originId,
-    String? UserId,
     bool? isFinished,
-    //People? User, //////////////////////////
+    People? user,
     //List<Map<String, dynamic>>? shares,
 
     // for public (location based blood donation) post

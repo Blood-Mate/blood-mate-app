@@ -11,11 +11,10 @@ _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
       content: json['content'] as String,
       depth: json['depth'] as int?,
       originId: json['originId'] as int?,
-      UserId: json['UserId'] as String?,
       isFinished: json['isFinished'] as bool?,
-      shares: (json['shares'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
-          .toList(),
+      user: json['user'] == null
+          ? null
+          : People.fromJson(json['user'] as Map<String, dynamic>),
       title: json['title'] as String?,
       imageUrl: json['imageUrl'] as String?,
       bloodType: json['bloodType'] as String?,
@@ -37,9 +36,8 @@ Map<String, dynamic> _$$_PostToJson(_$_Post instance) => <String, dynamic>{
       'content': instance.content,
       'depth': instance.depth,
       'originId': instance.originId,
-      'UserId': instance.UserId,
       'isFinished': instance.isFinished,
-      'shares': instance.shares,
+      'user': instance.user,
       'title': instance.title,
       'imageUrl': instance.imageUrl,
       'bloodType': instance.bloodType,

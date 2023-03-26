@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType type;
   final String hint;
+  final bool isPhoneNum;
 
   const CustomTextField(
       {Key? key,
       required this.controller,
       required this.type,
-      required this.hint})
+      required this.hint,
+      this.isPhoneNum = false})
       : super(key: key);
 
   @override
@@ -28,6 +31,8 @@ class CustomTextField extends StatelessWidget {
         keyboardType: type,
         obscureText: type == TextInputType.visiblePassword ? true : false,
         controller: controller,
+        inputFormatters:
+            isPhoneNum ? [FilteringTextInputFormatter.digitsOnly] : [],
       ),
     );
   }

@@ -16,16 +16,20 @@ class ProfileRepository {
   // Open Dio
   static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
+  constructor() {
+    final authHaeders = getAuthHeader();
+  }
+
+  Profile? _profile = null;
+
   // DB에서 profile data 가져옴
   Future getUser() async {
     print('[HTTP API LOG]: GET /user');
     checkInternetConnection();
 
     final headers = await getAuthHeader();
-
     Response response =
         await _dio.get('/user', options: Options(headers: headers));
-    print(response);
     final profileResponse = Profile.fromJson(response.data);
     print('No Error');
 

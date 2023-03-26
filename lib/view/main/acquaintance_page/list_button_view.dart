@@ -51,14 +51,13 @@ class ListButtonView extends StatelessWidget {
                           child: Text('No')),
                       TextButton(
                           onPressed: () async {
-                            viewModel.getContacts();
+                            var res = await viewModel.getContacts();
                             Navigator.of(context).pop();
                           },
                           child: Text('Yes'))
                     ],
                   );
                 });
-            viewModel.getContacts();
           },
         ),
         SizedBox(width: 10),
