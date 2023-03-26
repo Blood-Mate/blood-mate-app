@@ -25,13 +25,14 @@ class FriendsNewsListView extends StatelessWidget {
         Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text('내 친구 소식')),
-        ThinDevider(),
+            child: Text('From My Contacts')),
+        SizedBox(height: 10),
         Flexible(
           child: ListView.builder(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             itemBuilder: (context, index) {
               final item = privatePost[index];
-              return FriendsListViewTile(item: item);
+              return FriendsListViewTile(item: item, viewModel: viewModel);
             },
             itemCount: privatePostCount,
           ),

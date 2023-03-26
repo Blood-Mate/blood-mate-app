@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/viewmodel/main/profile_page_viewmodel.dart';
-import 'package:bloodmate_app/view/main/profile_page/my_posts_view.dart';
+import 'package:bloodmate_app/view/main/profile_page/pop_up/my_posts_view.dart';
 
 class MyPostPage extends StatelessWidget {
   MyPostPage({super.key, required this.viewModel});

@@ -13,6 +13,7 @@ class ProfilePageViewModel with ChangeNotifier {
   late final PostRepository _PostRepository;
 
   late bool isPrivatePosts;
+  late Post? focusedPost;
 
   Profile _profile = Profile(
       id: 0,
@@ -59,6 +60,26 @@ class ProfilePageViewModel with ChangeNotifier {
     Response response = await _PostRepository.deletePrivatePost(postId: postId);
     _loadData();
     return response.statusCode!;
+  }
+
+  Future<int> editMyPrivatePost(postId, content) async {
+    Response response = await _PostRepository.updatePrivatePostsContent(
+        postId: postId, content: content);
+    await _loadData();
+    await focusPost(postId);
+    return response.statusCode!;
+  }
+
+  focusPost(int postId) {
+    for (Post post in _profile.privatePosts) {
+      if (post.id == postId) {
+        focusedPost = post;
+      }
+    }
+  }
+
+  releaseFocus() {
+    focusedPost = null;
   }
 
   Future signOut() async {

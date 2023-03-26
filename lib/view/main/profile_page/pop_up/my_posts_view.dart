@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ class _MyPostsView extends State<MyPostsView> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         categoryButton(viewModel, context),
+        SizedBox(height: 20),
         Expanded(
           child: showPosts(viewModel),
         ),
@@ -40,7 +42,7 @@ class _MyPostsView extends State<MyPostsView> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor:
-                  viewModel.isPrivatePosts ? theme.focusColor : Colors.grey,
+                  viewModel.isPrivatePosts ? theme.primaryColor : Colors.grey,
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
@@ -53,7 +55,7 @@ class _MyPostsView extends State<MyPostsView> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor:
-                  viewModel.isPrivatePosts ? Colors.grey : theme.focusColor,
+                  viewModel.isPrivatePosts ? Colors.grey : theme.primaryColor,
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
@@ -67,6 +69,8 @@ class _MyPostsView extends State<MyPostsView> {
     final myPrivatePostCount = myPrivatePosts.length;
 
     return ListView.builder(
+      shrinkWrap: true,
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
       itemBuilder: (context, index) {
         final item = myPrivatePosts[index];
         return myPrivatePostCount == 0

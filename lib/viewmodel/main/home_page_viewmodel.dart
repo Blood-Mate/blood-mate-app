@@ -8,6 +8,8 @@ class HomePageViewModel with ChangeNotifier {
   late final ProfileRepository _profileRepository;
   late final PostRepository _postRepository;
 
+  late PostResponse? focusedPostResponse;
+
   Profile _profile = Profile(
       id: 0,
       name: '',
@@ -31,5 +33,13 @@ class HomePageViewModel with ChangeNotifier {
     _privatePost = await _postRepository.getPrivatePost();
 
     notifyListeners();
+  }
+
+  focusPost(PostResponse post) {
+    focusedPostResponse = post;
+  }
+
+  releaseFocus() {
+    focusedPostResponse = null;
   }
 }
