@@ -13,6 +13,7 @@ class PostRepository {
   static PostRepository get postRepositoryInstance => _postRepository;
   static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
+  // header token이 만료되면 어떻게 처리?
   constructor() {
     final authHaeders = getAuthHeader();
   }
@@ -28,6 +29,8 @@ class PostRepository {
     List<Post> privatePosts =
         List<Post>.from(response.data.map((e) => Post.fromJson(e)));
 
+    print('No Error');
+    print(privatePosts);
     return privatePosts;
   }
 
@@ -41,7 +44,7 @@ class PostRepository {
     Response response = await _dio.post('/private-post',
         data: data, options: Options(headers: authHeaders));
 
-    print('No Erorr');
+    print('No Error');
     return response;
   }
 

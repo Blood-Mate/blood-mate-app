@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:bloodmate_app/data/model/models.dart';
+
 part 'post.g.dart';
 part 'post.freezed.dart';
 
@@ -8,22 +10,27 @@ class Post with _$Post {
   factory Post({
     // for common
     required int id,
-    required String title,
     required String content,
-    required bool isFinished,
-    required int userId,
-    required DateTime createdAt,
 
     // for private(social network based blood donation) post
     int? depth,
     int? originId,
+    String? UserId,
+    bool? isFinished,
+    //People? User, //////////////////////////
+    //List<Map<String, dynamic>>? shares,
 
     // for public (location based blood donation) post
+    String? title,
+    String? imageUrl,
     String? bloodType,
     String? bloodDonationType,
     String? region,
-    int? longtitude,
-    int? latitude,
+    String? longtitude,
+    String? latitude,
+    DateTime? createdAt,
+    DateTime? bumpAt,
+    bool? expired,
   }) = _Post;
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);

@@ -17,33 +17,46 @@ class ProfileRepository {
   static final Dio _dio = const DioFactory(AppEnvironment.baseUrl).create();
 
   // DB에서 profile data 가져옴
-  Future getProfile() async {
+  Future getUser() async {
+    print('[HTTP API LOG]: GET /user');
+    checkInternetConnection();
+
+    final headers = await getAuthHeader();
+
+    Response response =
+        await _dio.get('/user', options: Options(headers: headers));
+    print(response);
+    final profileResponse = Profile.fromJson(response.data);
+    print('No Error');
+
+    return profileResponse;
+
+    // 함수를 Future<Profile>로 짜면 nullable해서 빈 Profile 객체를 반환해야함
+    // Profile profile = {};
+    // return profile;
+  }
+
+  Future getAuthHeader() async {
     Box _tokenBox = await Hive.openBox('tokens');
 
-    // JSON-WEB-TOKEN JWT
     var accessToken = _tokenBox.get('access_token');
     var refreshtoken = _tokenBox.get('refresh_token');
-    // Request Header
+
     final headers = {
       "Content-Type": "application/json",
       "Authorization": "Bearer $accessToken",
       'x-refresh-token': refreshtoken
     };
-    // Internet Connection check
-    // try catch는 나중에
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult != ConnectivityResult.none) {
-      Response response =
-          await _dio.get('/user', options: Options(headers: headers));
-      final profileResponse = Profile.fromJson(response.data);
-      print('profile_repo');
-      print(profileResponse);
-      return profileResponse;
-    }
 
-    // 함수를 Future<Profile>로 짜면 nullable해서 빈 Profile 객체를 반환해야함
-    // Profile profile = {};
-    // return profile;
+    return headers;
+  }
+
+  Future checkInternetConnection() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      print('[HTTP ERR]: internet connection');
+      throw Exception('internet connection');
+    }
   }
 
   // mock data

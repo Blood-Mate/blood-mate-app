@@ -11,7 +11,8 @@ import 'package:bloodmate_app/view/main/home_page/profile_view.dart';
 import 'package:bloodmate_app/viewmodel/main/main_viewmodels.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  final viewModel = HomePageViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,6 @@ class HomePage extends StatelessWidget {
             ThinDevider(),
             Expanded(child: friendsNewsList()),
             moreButton(),
-            Container(height: 170),
             ThinDevider(),
             homePageTail(screenSize),
           ],
@@ -34,14 +34,13 @@ class HomePage extends StatelessWidget {
   }
 
   Widget homePageProfile() {
-    return ChangeNotifierProvider<ProfileViewModel>(
-        create: (_) => ProfileViewModel(), child: HomePageProfileView());
+    return ChangeNotifierProvider.value(
+        value: viewModel, child: HomePageProfileView());
   }
 
   Widget friendsNewsList() {
-    return ChangeNotifierProvider<FriendsNewsListViewModel>(
-        create: (_) => FriendsNewsListViewModel(),
-        child: FriendsNewsListView());
+    return ChangeNotifierProvider.value(
+        value: viewModel, child: FriendsNewsListView());
   }
 
   Widget moreButton() {

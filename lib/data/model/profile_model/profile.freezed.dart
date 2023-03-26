@@ -20,10 +20,13 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Profile {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get profileImageURL => throw _privateConstructorUsedError;
+  String? get profileImageUrl => throw _privateConstructorUsedError;
   String get bloodType => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  List<Post> get publicPosts => throw _privateConstructorUsedError;
+  List<Post> get privatePosts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,10 +39,13 @@ abstract class $ProfileCopyWith<$Res> {
       _$ProfileCopyWithImpl<$Res, Profile>;
   @useResult
   $Res call(
-      {String name,
-      String? profileImageURL,
+      {int id,
+      String name,
+      String? profileImageUrl,
       String bloodType,
-      String phoneNumber});
+      String phoneNumber,
+      List<Post> publicPosts,
+      List<Post> privatePosts});
 }
 
 /// @nodoc
@@ -55,19 +61,26 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? profileImageURL = freezed,
+    Object? profileImageUrl = freezed,
     Object? bloodType = null,
     Object? phoneNumber = null,
+    Object? publicPosts = null,
+    Object? privatePosts = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImageURL: freezed == profileImageURL
-          ? _value.profileImageURL
-          : profileImageURL // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       bloodType: null == bloodType
           ? _value.bloodType
@@ -77,6 +90,14 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      publicPosts: null == publicPosts
+          ? _value.publicPosts
+          : publicPosts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
+      privatePosts: null == privatePosts
+          ? _value.privatePosts
+          : privatePosts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
     ) as $Val);
   }
 }
@@ -89,10 +110,13 @@ abstract class _$$_ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
-      String? profileImageURL,
+      {int id,
+      String name,
+      String? profileImageUrl,
       String bloodType,
-      String phoneNumber});
+      String phoneNumber,
+      List<Post> publicPosts,
+      List<Post> privatePosts});
 }
 
 /// @nodoc
@@ -105,19 +129,26 @@ class __$$_ProfileCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? profileImageURL = freezed,
+    Object? profileImageUrl = freezed,
     Object? bloodType = null,
     Object? phoneNumber = null,
+    Object? publicPosts = null,
+    Object? privatePosts = null,
   }) {
     return _then(_$_Profile(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImageURL: freezed == profileImageURL
-          ? _value.profileImageURL
-          : profileImageURL // ignore: cast_nullable_to_non_nullable
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       bloodType: null == bloodType
           ? _value.bloodType
@@ -127,6 +158,14 @@ class __$$_ProfileCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      publicPosts: null == publicPosts
+          ? _value._publicPosts
+          : publicPosts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
+      privatePosts: null == privatePosts
+          ? _value._privatePosts
+          : privatePosts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
     ));
   }
 }
@@ -135,26 +174,48 @@ class __$$_ProfileCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Profile implements _Profile {
   _$_Profile(
-      {required this.name,
-      this.profileImageURL,
+      {required this.id,
+      required this.name,
+      this.profileImageUrl,
       required this.bloodType,
-      required this.phoneNumber});
+      required this.phoneNumber,
+      required final List<Post> publicPosts,
+      required final List<Post> privatePosts})
+      : _publicPosts = publicPosts,
+        _privatePosts = privatePosts;
 
   factory _$_Profile.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileFromJson(json);
 
   @override
+  final int id;
+  @override
   final String name;
   @override
-  final String? profileImageURL;
+  final String? profileImageUrl;
   @override
   final String bloodType;
   @override
   final String phoneNumber;
+  final List<Post> _publicPosts;
+  @override
+  List<Post> get publicPosts {
+    if (_publicPosts is EqualUnmodifiableListView) return _publicPosts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_publicPosts);
+  }
+
+  final List<Post> _privatePosts;
+  @override
+  List<Post> get privatePosts {
+    if (_privatePosts is EqualUnmodifiableListView) return _privatePosts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_privatePosts);
+  }
 
   @override
   String toString() {
-    return 'Profile(name: $name, profileImageURL: $profileImageURL, bloodType: $bloodType, phoneNumber: $phoneNumber)';
+    return 'Profile(id: $id, name: $name, profileImageUrl: $profileImageUrl, bloodType: $bloodType, phoneNumber: $phoneNumber, publicPosts: $publicPosts, privatePosts: $privatePosts)';
   }
 
   @override
@@ -162,19 +223,31 @@ class _$_Profile implements _Profile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Profile &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.profileImageURL, profileImageURL) ||
-                other.profileImageURL == profileImageURL) &&
+            (identical(other.profileImageUrl, profileImageUrl) ||
+                other.profileImageUrl == profileImageUrl) &&
             (identical(other.bloodType, bloodType) ||
                 other.bloodType == bloodType) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            const DeepCollectionEquality()
+                .equals(other._publicPosts, _publicPosts) &&
+            const DeepCollectionEquality()
+                .equals(other._privatePosts, _privatePosts));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, profileImageURL, bloodType, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      profileImageUrl,
+      bloodType,
+      phoneNumber,
+      const DeepCollectionEquality().hash(_publicPosts),
+      const DeepCollectionEquality().hash(_privatePosts));
 
   @JsonKey(ignore: true)
   @override
@@ -192,21 +265,30 @@ class _$_Profile implements _Profile {
 
 abstract class _Profile implements Profile {
   factory _Profile(
-      {required final String name,
-      final String? profileImageURL,
+      {required final int id,
+      required final String name,
+      final String? profileImageUrl,
       required final String bloodType,
-      required final String phoneNumber}) = _$_Profile;
+      required final String phoneNumber,
+      required final List<Post> publicPosts,
+      required final List<Post> privatePosts}) = _$_Profile;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$_Profile.fromJson;
 
   @override
+  int get id;
+  @override
   String get name;
   @override
-  String? get profileImageURL;
+  String? get profileImageUrl;
   @override
   String get bloodType;
   @override
   String get phoneNumber;
+  @override
+  List<Post> get publicPosts;
+  @override
+  List<Post> get privatePosts;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileCopyWith<_$_Profile> get copyWith =>

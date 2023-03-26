@@ -6,8 +6,6 @@ part 'my_info.freezed.dart';
 @freezed
 class MyInfo with _$MyInfo {
   factory MyInfo({
-    required List<int> publicPosts,
-    required List<int> privatePosts,
     required List<String> senddingMessages,
     required List<String> receivingMessages,
     required List<String> awards,

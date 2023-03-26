@@ -20,8 +20,6 @@ MyInfo _$MyInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MyInfo {
-  List<int> get publicPosts => throw _privateConstructorUsedError;
-  List<int> get privatePosts => throw _privateConstructorUsedError;
   List<String> get senddingMessages => throw _privateConstructorUsedError;
   List<String> get receivingMessages => throw _privateConstructorUsedError;
   List<String> get awards => throw _privateConstructorUsedError;
@@ -39,9 +37,7 @@ abstract class $MyInfoCopyWith<$Res> {
       _$MyInfoCopyWithImpl<$Res, MyInfo>;
   @useResult
   $Res call(
-      {List<int> publicPosts,
-      List<int> privatePosts,
-      List<String> senddingMessages,
+      {List<String> senddingMessages,
       List<String> receivingMessages,
       List<String> awards,
       List<int> donationRequests,
@@ -61,8 +57,6 @@ class _$MyInfoCopyWithImpl<$Res, $Val extends MyInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? publicPosts = null,
-    Object? privatePosts = null,
     Object? senddingMessages = null,
     Object? receivingMessages = null,
     Object? awards = null,
@@ -70,14 +64,6 @@ class _$MyInfoCopyWithImpl<$Res, $Val extends MyInfo>
     Object? successDonations = null,
   }) {
     return _then(_value.copyWith(
-      publicPosts: null == publicPosts
-          ? _value.publicPosts
-          : publicPosts // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      privatePosts: null == privatePosts
-          ? _value.privatePosts
-          : privatePosts // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       senddingMessages: null == senddingMessages
           ? _value.senddingMessages
           : senddingMessages // ignore: cast_nullable_to_non_nullable
@@ -109,9 +95,7 @@ abstract class _$$_MyInfoCopyWith<$Res> implements $MyInfoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<int> publicPosts,
-      List<int> privatePosts,
-      List<String> senddingMessages,
+      {List<String> senddingMessages,
       List<String> receivingMessages,
       List<String> awards,
       List<int> donationRequests,
@@ -128,8 +112,6 @@ class __$$_MyInfoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? publicPosts = null,
-    Object? privatePosts = null,
     Object? senddingMessages = null,
     Object? receivingMessages = null,
     Object? awards = null,
@@ -137,14 +119,6 @@ class __$$_MyInfoCopyWithImpl<$Res>
     Object? successDonations = null,
   }) {
     return _then(_$_MyInfo(
-      publicPosts: null == publicPosts
-          ? _value._publicPosts
-          : publicPosts // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      privatePosts: null == privatePosts
-          ? _value._privatePosts
-          : privatePosts // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       senddingMessages: null == senddingMessages
           ? _value._senddingMessages
           : senddingMessages // ignore: cast_nullable_to_non_nullable
@@ -173,16 +147,12 @@ class __$$_MyInfoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MyInfo implements _MyInfo {
   _$_MyInfo(
-      {required final List<int> publicPosts,
-      required final List<int> privatePosts,
-      required final List<String> senddingMessages,
+      {required final List<String> senddingMessages,
       required final List<String> receivingMessages,
       required final List<String> awards,
       required final List<int> donationRequests,
       required final List<int> successDonations})
-      : _publicPosts = publicPosts,
-        _privatePosts = privatePosts,
-        _senddingMessages = senddingMessages,
+      : _senddingMessages = senddingMessages,
         _receivingMessages = receivingMessages,
         _awards = awards,
         _donationRequests = donationRequests,
@@ -190,22 +160,6 @@ class _$_MyInfo implements _MyInfo {
 
   factory _$_MyInfo.fromJson(Map<String, dynamic> json) =>
       _$$_MyInfoFromJson(json);
-
-  final List<int> _publicPosts;
-  @override
-  List<int> get publicPosts {
-    if (_publicPosts is EqualUnmodifiableListView) return _publicPosts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_publicPosts);
-  }
-
-  final List<int> _privatePosts;
-  @override
-  List<int> get privatePosts {
-    if (_privatePosts is EqualUnmodifiableListView) return _privatePosts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_privatePosts);
-  }
 
   final List<String> _senddingMessages;
   @override
@@ -253,7 +207,7 @@ class _$_MyInfo implements _MyInfo {
 
   @override
   String toString() {
-    return 'MyInfo(publicPosts: $publicPosts, privatePosts: $privatePosts, senddingMessages: $senddingMessages, receivingMessages: $receivingMessages, awards: $awards, donationRequests: $donationRequests, successDonations: $successDonations)';
+    return 'MyInfo(senddingMessages: $senddingMessages, receivingMessages: $receivingMessages, awards: $awards, donationRequests: $donationRequests, successDonations: $successDonations)';
   }
 
   @override
@@ -261,10 +215,6 @@ class _$_MyInfo implements _MyInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MyInfo &&
-            const DeepCollectionEquality()
-                .equals(other._publicPosts, _publicPosts) &&
-            const DeepCollectionEquality()
-                .equals(other._privatePosts, _privatePosts) &&
             const DeepCollectionEquality()
                 .equals(other._senddingMessages, _senddingMessages) &&
             const DeepCollectionEquality()
@@ -280,8 +230,6 @@ class _$_MyInfo implements _MyInfo {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_publicPosts),
-      const DeepCollectionEquality().hash(_privatePosts),
       const DeepCollectionEquality().hash(_senddingMessages),
       const DeepCollectionEquality().hash(_receivingMessages),
       const DeepCollectionEquality().hash(_awards),
@@ -304,9 +252,7 @@ class _$_MyInfo implements _MyInfo {
 
 abstract class _MyInfo implements MyInfo {
   factory _MyInfo(
-      {required final List<int> publicPosts,
-      required final List<int> privatePosts,
-      required final List<String> senddingMessages,
+      {required final List<String> senddingMessages,
       required final List<String> receivingMessages,
       required final List<String> awards,
       required final List<int> donationRequests,
@@ -314,10 +260,6 @@ abstract class _MyInfo implements MyInfo {
 
   factory _MyInfo.fromJson(Map<String, dynamic> json) = _$_MyInfo.fromJson;
 
-  @override
-  List<int> get publicPosts;
-  @override
-  List<int> get privatePosts;
   @override
   List<String> get senddingMessages;
   @override

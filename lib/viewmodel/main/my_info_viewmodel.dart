@@ -8,8 +8,6 @@ class MyInfoViewModel with ChangeNotifier {
 
   MyInfo get data => _data;
   MyInfo _data = MyInfo(
-    publicPosts: [],
-    privatePosts: [],
     senddingMessages: [],
     receivingMessages: [],
     awards: [],

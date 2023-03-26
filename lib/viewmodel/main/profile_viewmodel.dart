@@ -8,8 +8,8 @@ class ProfileViewModel with ChangeNotifier {
   late final ProfileRepository _profileRepository;
 
   Profile get data => _data;
-  Profile _data =
-      Profile(name: "", profileImageURL: "", bloodType: "", phoneNumber: "");
+  late Profile _data;
+  //     = Profile(name: "", profileImageURL: "", bloodType: "", phoneNumber: "");
 
   ProfileViewModel() {
     _profileRepository = ProfileRepository();
@@ -18,8 +18,7 @@ class ProfileViewModel with ChangeNotifier {
 
   Future<void> _loadData() async {
     // _data = await _profileRepository.getMockData();
-    _data = await _profileRepository.getProfile();
-    print("viewmodel");
+    _data = await _profileRepository.getUser();
     notifyListeners();
   }
 

@@ -22,20 +22,24 @@ Post _$PostFromJson(Map<String, dynamic> json) {
 mixin _$Post {
 // for common
   int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  bool get isFinished => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
-  DateTime get createdAt =>
+  String get content =>
       throw _privateConstructorUsedError; // for private(social network based blood donation) post
   int? get depth => throw _privateConstructorUsedError;
-  int? get originId =>
+  int? get originId => throw _privateConstructorUsedError;
+  String? get UserId => throw _privateConstructorUsedError;
+  bool? get isFinished => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>>? get shares =>
       throw _privateConstructorUsedError; // for public (location based blood donation) post
+  String? get title => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   String? get bloodType => throw _privateConstructorUsedError;
   String? get bloodDonationType => throw _privateConstructorUsedError;
   String? get region => throw _privateConstructorUsedError;
-  int? get longtitude => throw _privateConstructorUsedError;
-  int? get latitude => throw _privateConstructorUsedError;
+  String? get longtitude => throw _privateConstructorUsedError;
+  String? get latitude => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get bumpAt => throw _privateConstructorUsedError;
+  bool? get expired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,18 +53,22 @@ abstract class $PostCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String title,
       String content,
-      bool isFinished,
-      int userId,
-      DateTime createdAt,
       int? depth,
       int? originId,
+      String? UserId,
+      bool? isFinished,
+      List<Map<String, dynamic>>? shares,
+      String? title,
+      String? imageUrl,
       String? bloodType,
       String? bloodDonationType,
       String? region,
-      int? longtitude,
-      int? latitude});
+      String? longtitude,
+      String? latitude,
+      DateTime? createdAt,
+      DateTime? bumpAt,
+      bool? expired});
 }
 
 /// @nodoc
@@ -77,44 +85,32 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
     Object? content = null,
-    Object? isFinished = null,
-    Object? userId = null,
-    Object? createdAt = null,
     Object? depth = freezed,
     Object? originId = freezed,
+    Object? UserId = freezed,
+    Object? isFinished = freezed,
+    Object? shares = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
     Object? bloodType = freezed,
     Object? bloodDonationType = freezed,
     Object? region = freezed,
     Object? longtitude = freezed,
     Object? latitude = freezed,
+    Object? createdAt = freezed,
+    Object? bumpAt = freezed,
+    Object? expired = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      isFinished: null == isFinished
-          ? _value.isFinished
-          : isFinished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       depth: freezed == depth
           ? _value.depth
           : depth // ignore: cast_nullable_to_non_nullable
@@ -123,6 +119,26 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.originId
           : originId // ignore: cast_nullable_to_non_nullable
               as int?,
+      UserId: freezed == UserId
+          ? _value.UserId
+          : UserId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFinished: freezed == isFinished
+          ? _value.isFinished
+          : isFinished // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      shares: freezed == shares
+          ? _value.shares
+          : shares // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       bloodType: freezed == bloodType
           ? _value.bloodType
           : bloodType // ignore: cast_nullable_to_non_nullable
@@ -138,11 +154,23 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
       longtitude: freezed == longtitude
           ? _value.longtitude
           : longtitude // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      bumpAt: freezed == bumpAt
+          ? _value.bumpAt
+          : bumpAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      expired: freezed == expired
+          ? _value.expired
+          : expired // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -155,18 +183,22 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String title,
       String content,
-      bool isFinished,
-      int userId,
-      DateTime createdAt,
       int? depth,
       int? originId,
+      String? UserId,
+      bool? isFinished,
+      List<Map<String, dynamic>>? shares,
+      String? title,
+      String? imageUrl,
       String? bloodType,
       String? bloodDonationType,
       String? region,
-      int? longtitude,
-      int? latitude});
+      String? longtitude,
+      String? latitude,
+      DateTime? createdAt,
+      DateTime? bumpAt,
+      bool? expired});
 }
 
 /// @nodoc
@@ -179,44 +211,32 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
     Object? content = null,
-    Object? isFinished = null,
-    Object? userId = null,
-    Object? createdAt = null,
     Object? depth = freezed,
     Object? originId = freezed,
+    Object? UserId = freezed,
+    Object? isFinished = freezed,
+    Object? shares = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
     Object? bloodType = freezed,
     Object? bloodDonationType = freezed,
     Object? region = freezed,
     Object? longtitude = freezed,
     Object? latitude = freezed,
+    Object? createdAt = freezed,
+    Object? bumpAt = freezed,
+    Object? expired = freezed,
   }) {
     return _then(_$_Post(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      isFinished: null == isFinished
-          ? _value.isFinished
-          : isFinished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       depth: freezed == depth
           ? _value.depth
           : depth // ignore: cast_nullable_to_non_nullable
@@ -225,6 +245,26 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
           ? _value.originId
           : originId // ignore: cast_nullable_to_non_nullable
               as int?,
+      UserId: freezed == UserId
+          ? _value.UserId
+          : UserId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFinished: freezed == isFinished
+          ? _value.isFinished
+          : isFinished // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      shares: freezed == shares
+          ? _value._shares
+          : shares // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       bloodType: freezed == bloodType
           ? _value.bloodType
           : bloodType // ignore: cast_nullable_to_non_nullable
@@ -240,11 +280,23 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
       longtitude: freezed == longtitude
           ? _value.longtitude
           : longtitude // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      bumpAt: freezed == bumpAt
+          ? _value.bumpAt
+          : bumpAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      expired: freezed == expired
+          ? _value.expired
+          : expired // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -254,18 +306,23 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
 class _$_Post implements _Post {
   _$_Post(
       {required this.id,
-      required this.title,
       required this.content,
-      required this.isFinished,
-      required this.userId,
-      required this.createdAt,
       this.depth,
       this.originId,
+      this.UserId,
+      this.isFinished,
+      final List<Map<String, dynamic>>? shares,
+      this.title,
+      this.imageUrl,
       this.bloodType,
       this.bloodDonationType,
       this.region,
       this.longtitude,
-      this.latitude});
+      this.latitude,
+      this.createdAt,
+      this.bumpAt,
+      this.expired})
+      : _shares = shares;
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
@@ -273,21 +330,31 @@ class _$_Post implements _Post {
   @override
   final int id;
   @override
-  final String title;
-  @override
   final String content;
-  @override
-  final bool isFinished;
-  @override
-  final int userId;
-  @override
-  final DateTime createdAt;
 // for private(social network based blood donation) post
   @override
   final int? depth;
   @override
   final int? originId;
+  @override
+  final String? UserId;
+  @override
+  final bool? isFinished;
+  final List<Map<String, dynamic>>? _shares;
+  @override
+  List<Map<String, dynamic>>? get shares {
+    final value = _shares;
+    if (value == null) return null;
+    if (_shares is EqualUnmodifiableListView) return _shares;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
 // for public (location based blood donation) post
+  @override
+  final String? title;
+  @override
+  final String? imageUrl;
   @override
   final String? bloodType;
   @override
@@ -295,13 +362,19 @@ class _$_Post implements _Post {
   @override
   final String? region;
   @override
-  final int? longtitude;
+  final String? longtitude;
   @override
-  final int? latitude;
+  final String? latitude;
+  @override
+  final DateTime? createdAt;
+  @override
+  final DateTime? bumpAt;
+  @override
+  final bool? expired;
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, content: $content, isFinished: $isFinished, userId: $userId, createdAt: $createdAt, depth: $depth, originId: $originId, bloodType: $bloodType, bloodDonationType: $bloodDonationType, region: $region, longtitude: $longtitude, latitude: $latitude)';
+    return 'Post(id: $id, content: $content, depth: $depth, originId: $originId, UserId: $UserId, isFinished: $isFinished, shares: $shares, title: $title, imageUrl: $imageUrl, bloodType: $bloodType, bloodDonationType: $bloodDonationType, region: $region, longtitude: $longtitude, latitude: $latitude, createdAt: $createdAt, bumpAt: $bumpAt, expired: $expired)';
   }
 
   @override
@@ -310,16 +383,17 @@ class _$_Post implements _Post {
         (other.runtimeType == runtimeType &&
             other is _$_Post &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.isFinished, isFinished) ||
-                other.isFinished == isFinished) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
             (identical(other.depth, depth) || other.depth == depth) &&
             (identical(other.originId, originId) ||
                 other.originId == originId) &&
+            (identical(other.UserId, UserId) || other.UserId == UserId) &&
+            (identical(other.isFinished, isFinished) ||
+                other.isFinished == isFinished) &&
+            const DeepCollectionEquality().equals(other._shares, _shares) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.bloodType, bloodType) ||
                 other.bloodType == bloodType) &&
             (identical(other.bloodDonationType, bloodDonationType) ||
@@ -328,7 +402,11 @@ class _$_Post implements _Post {
             (identical(other.longtitude, longtitude) ||
                 other.longtitude == longtitude) &&
             (identical(other.latitude, latitude) ||
-                other.latitude == latitude));
+                other.latitude == latitude) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.bumpAt, bumpAt) || other.bumpAt == bumpAt) &&
+            (identical(other.expired, expired) || other.expired == expired));
   }
 
   @JsonKey(ignore: true)
@@ -336,18 +414,22 @@ class _$_Post implements _Post {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      title,
       content,
-      isFinished,
-      userId,
-      createdAt,
       depth,
       originId,
+      UserId,
+      isFinished,
+      const DeepCollectionEquality().hash(_shares),
+      title,
+      imageUrl,
       bloodType,
       bloodDonationType,
       region,
       longtitude,
-      latitude);
+      latitude,
+      createdAt,
+      bumpAt,
+      expired);
 
   @JsonKey(ignore: true)
   @override
@@ -366,47 +448,59 @@ class _$_Post implements _Post {
 abstract class _Post implements Post {
   factory _Post(
       {required final int id,
-      required final String title,
       required final String content,
-      required final bool isFinished,
-      required final int userId,
-      required final DateTime createdAt,
       final int? depth,
       final int? originId,
+      final String? UserId,
+      final bool? isFinished,
+      final List<Map<String, dynamic>>? shares,
+      final String? title,
+      final String? imageUrl,
       final String? bloodType,
       final String? bloodDonationType,
       final String? region,
-      final int? longtitude,
-      final int? latitude}) = _$_Post;
+      final String? longtitude,
+      final String? latitude,
+      final DateTime? createdAt,
+      final DateTime? bumpAt,
+      final bool? expired}) = _$_Post;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
 
   @override // for common
   int get id;
   @override
-  String get title;
-  @override
   String get content;
-  @override
-  bool get isFinished;
-  @override
-  int get userId;
-  @override
-  DateTime get createdAt;
   @override // for private(social network based blood donation) post
   int? get depth;
   @override
   int? get originId;
+  @override
+  String? get UserId;
+  @override
+  bool? get isFinished;
+  @override
+  List<Map<String, dynamic>>? get shares;
   @override // for public (location based blood donation) post
+  String? get title;
+  @override
+  String? get imageUrl;
+  @override
   String? get bloodType;
   @override
   String? get bloodDonationType;
   @override
   String? get region;
   @override
-  int? get longtitude;
+  String? get longtitude;
   @override
-  int? get latitude;
+  String? get latitude;
+  @override
+  DateTime? get createdAt;
+  @override
+  DateTime? get bumpAt;
+  @override
+  bool? get expired;
   @override
   @JsonKey(ignore: true)
   _$$_PostCopyWith<_$_Post> get copyWith => throw _privateConstructorUsedError;

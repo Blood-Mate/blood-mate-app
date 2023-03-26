@@ -1,20 +1,21 @@
+import 'package:bloodmate_app/data/model/models.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:bloodmate_app/viewmodel/main/profile_viewmodel.dart';
+import 'package:bloodmate_app/viewmodel/main/home_page_viewmodel.dart';
 
 class HomePageProfileView extends StatelessWidget {
   const HomePageProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<ProfileViewModel>(context);
+    var viewModel = Provider.of<HomePageViewModel>(context);
     return _buildHomePageProfileView(viewModel);
   }
 
   Widget _buildHomePageProfileView(viewModel) {
-    final data = viewModel.data; // viewModel에 저장된 data
+    final profile = viewModel.profile;
 
     return Column(
       children: [
@@ -26,13 +27,14 @@ class HomePageProfileView extends StatelessWidget {
               width: 100,
               height: 100,
               decoration: BoxDecoration(border: Border.all(width: 1)),
-              child: ((data.profileImageURL == null) ||
-                      (data.profileImageURL == ""))
+              child: ((profile.profileImageUrl == null) ||
+                      (profile.profileImageUrl == ""))
                   ? Image(
                       image: AssetImage('assets/image/bloodmate_logo.png'),
                       fit: BoxFit.cover)
                   : Image(
-                      image: CachedNetworkImageProvider(data.profileImageURL)),
+                      image:
+                          CachedNetworkImageProvider(profile.profileImageURL)),
             ),
             SizedBox(width: 20),
             Container(
@@ -47,7 +49,7 @@ class HomePageProfileView extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   ),
                   Text(
-                    data.name + ' 님!',
+                    profile.name + ' 님!',
                     style: TextStyle(fontSize: 20),
                   )
                 ],
