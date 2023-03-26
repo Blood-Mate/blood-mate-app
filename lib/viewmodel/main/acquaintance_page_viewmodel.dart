@@ -6,11 +6,9 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:bloodmate_app/data/model/models.dart';
 import 'package:bloodmate_app/data/repository/people_repository.dart';
 import 'package:bloodmate_app/data/repository/post_repository.dart';
-import 'package:bloodmate_app/data/repository/post_repository.dart';
 
 class AcquaintancePageViewModel with ChangeNotifier {
   late final PeopleRepository _peopleRepository;
-  late final PostRepository _postRepository;
   late final PostRepository _postRepository;
 
   List<People> _guardian = [];
@@ -23,8 +21,6 @@ class AcquaintancePageViewModel with ChangeNotifier {
 
   late int statusCode;
   late String selectedSortOrder;
-  late People focusedProtege;
-  bool isFocused = false;
   late People focusedProtege;
   bool isFocused = false;
   final List<String> sortOptions = ['ASC', 'DSC'];

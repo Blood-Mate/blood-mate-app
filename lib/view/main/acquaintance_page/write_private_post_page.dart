@@ -1,16 +1,6 @@
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
 
 import '../../common/component/component.dart';
-=======
-import 'package:contacts_service/contacts_service.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../common/component/component.dart';
-import 'package:bloodmate_app/viewmodel/main/write_private_post_page_viewmodel.dart';
-import 'package:bloodmate_app/viewmodel/main/acquaintance_page_viewmodel.dart';
->>>>>>> c06fd72d210ce196a694f525e56d45ed94e8db62
 
 class WritePrivatePostPage extends StatelessWidget {
   WritePrivatePostPage({super.key, required this.viewModel});
