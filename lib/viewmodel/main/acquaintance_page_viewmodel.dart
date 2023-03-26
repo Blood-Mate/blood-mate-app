@@ -28,7 +28,6 @@ class AcquaintancePageViewModel with ChangeNotifier {
   AcquaintancePageViewModel() {
     _peopleRepository = PeopleRepository();
     _postRepository = PostRepository();
-    _postRepository = PostRepository();
     selectedSortOrder = 'ASC';
     _loadItems();
   }
