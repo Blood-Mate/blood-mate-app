@@ -48,7 +48,7 @@ class MyPrivatePostsTile extends StatelessWidget {
                 title: Text(item.content),
                 onTap: () async {
                   // 자세히 보기
-                  viewModel.focusPost(item.id);
+                  await viewModel.focusPost(item.id);
                   PageRouteWithAnimation pageRouteWithAnimation =
                       PageRouteWithAnimation(
                           MyPrivatePostPage(viewModel: viewModel));

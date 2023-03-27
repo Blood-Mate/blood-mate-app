@@ -10,10 +10,11 @@ import 'package:bloodmate_app/data/repository/profile_repository.dart';
 class ProfilePageViewModel with ChangeNotifier {
   late final ProfileRepository _profileRepository;
   late final MyInfoRepository _myInfoRepository;
-  late final PostRepository _PostRepository;
+  late final PostRepository _postRepository;
 
   late bool isPrivatePosts;
   late Post? focusedPost;
+  late Post? focusedOriginPost;
 
   Profile _profile = Profile(
       id: 0,
@@ -36,7 +37,7 @@ class ProfilePageViewModel with ChangeNotifier {
   ProfilePageViewModel() {
     _profileRepository = ProfileRepository();
     _myInfoRepository = MyInfoRepository();
-    _PostRepository = PostRepository();
+    _postRepository = PostRepository();
     isPrivatePosts = true;
     _loadData();
   }
@@ -57,23 +58,43 @@ class ProfilePageViewModel with ChangeNotifier {
   }
 
   Future<int> deletMyPrivatePost(postId) async {
-    Response response = await _PostRepository.deletePrivatePost(postId: postId);
+    Response response = await _postRepository.deletePrivatePost(postId: postId);
     _loadData();
     return response.statusCode!;
   }
 
   Future<int> editMyPrivatePost(postId, content) async {
-    Response response = await _PostRepository.updatePrivatePostsContent(
+    Response response = await _postRepository.updatePrivatePostsContent(
         postId: postId, content: content);
     await _loadData();
     await focusPost(postId);
     return response.statusCode!;
   }
 
-  focusPost(int postId) {
+  focusPost(int postId) async {
     for (Post post in _profile.privatePosts) {
       if (post.id == postId) {
         focusedPost = post;
+      }
+    }
+    print(focusedPost!.originId);
+    await getOrigin();
+  }
+
+  getOrigin() async {
+    var originId = focusedPost!.originId;
+    if (originId == null || originId == -1) {
+      focusedOriginPost = null;
+    }
+    List<PostResponse> _privatePost = await _postRepository.getPrivatePost();
+    for (PostResponse postResponse in _privatePost) {
+      if (postResponse.post.id == originId) {
+        focusedOriginPost = postResponse.post;
+      }
+      if (postResponse.post.originId! == originId) {
+        focusedOriginPost = (postResponse.originPost == null)
+            ? postResponse.post
+            : postResponse.originPost;
       }
     }
   }
