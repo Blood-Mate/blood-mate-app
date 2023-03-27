@@ -19,6 +19,7 @@ class BloodMateApp extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: _router,
         theme: _theme,
+        debugShowCheckedModeBanner: false, // 디버그 배너삭제
         builder: (context, child) => ScrollConfiguration(
           behavior: DiableScrollGlow(),
           child: child ?? Container(),
@@ -102,9 +103,13 @@ class BloodMateApp extends StatelessWidget {
 
   final ThemeData _theme = ThemeData(
     canvasColor: const Color(0xFFFFFFFF),
+    cardColor: Color.fromARGB(255, 255, 251, 251),
     primaryColor: Color.fromARGB(255, 235, 94, 94),
+    primaryColorLight: Color.fromARGB(255, 231, 121, 121),
     focusColor: Color.fromARGB(255, 253, 45, 45), //Color(0xFFFF2525),
-    textTheme: const TextTheme(),
+    disabledColor: Color.fromARGB(255, 96, 96, 96),
+    textButtonTheme: TextButtonThemeData(style: ButtonStyle()),
+    textTheme: const TextTheme(labelSmall: TextStyle()),
   );
 }
 

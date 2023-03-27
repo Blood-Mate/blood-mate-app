@@ -25,9 +25,11 @@ class HomePage extends StatelessWidget {
           children: [
             homePageProfile(),
             Expanded(child: friendsNewsList()),
-            moreButton(),
+            //moreButton(),
             //ThinDevider(),
+            SizedBox(height: 10),
             homePageTail(screenSize),
+            SizedBox(height: 15),
           ],
         ));
   }
@@ -47,7 +49,7 @@ class HomePage extends StatelessWidget {
         alignment: Alignment.bottomRight,
         padding: EdgeInsets.all(10),
         //decoration: BoxDecoration(border: Border.all(width: 1)),
-        child: Text('더보기', textAlign: TextAlign.end));
+        child: Text('more', textAlign: TextAlign.end));
   }
 
   Widget homePageTail(Size screenSize) {

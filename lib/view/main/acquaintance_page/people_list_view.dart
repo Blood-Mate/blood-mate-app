@@ -21,15 +21,23 @@ class PeopleListView extends StatelessWidget {
     final contacts = viewModel.contact;
 
     return ListView(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
       children: [
-        Text('Protege'),
+        Text(
+          'Protege',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
         PeopleList(
           items: proteges,
           blankBoxText: 'No Proteges',
           viewModel: viewModel,
           sort: viewModel.selectedSortOrder,
         ),
-        Text('Guardian'),
+        SizedBox(height: 15),
+        Text(
+          'Guardian',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
         PeopleList(
           items: guardians,
           blankBoxText: 'No Guardians',
@@ -37,7 +45,11 @@ class PeopleListView extends StatelessWidget {
           sort: viewModel.selectedSortOrder,
           tile: 'AppUser',
         ),
-        Text('AppUser'),
+        SizedBox(height: 15),
+        Text(
+          'App User',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
         PeopleList(
           items: contacts,
           blankBoxText: 'No App Users',
@@ -47,7 +59,11 @@ class PeopleListView extends StatelessWidget {
           tile: 'AppUser',
           filterSet: guardians,
         ),
-        Text('Contact'),
+        SizedBox(height: 15),
+        Text(
+          'Contact',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
         PeopleList(
           items: contacts,
           blankBoxText: 'No Contacts',

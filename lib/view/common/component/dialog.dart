@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 
 class FailDialog extends StatelessWidget {
@@ -7,16 +8,16 @@ class FailDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return AlertDialog(
       title: Text('Error'),
       content: Text('Failed to ' + text + '. Please try again.'),
       actions: <Widget>[
-        ElevatedButton(
-          child: Text('OK'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        DialogButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            text: 'Ok'),
       ],
     );
   }

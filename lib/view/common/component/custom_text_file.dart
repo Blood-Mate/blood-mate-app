@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       height: 50.0,
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(

@@ -35,16 +35,15 @@ class SignInPage extends StatelessWidget {
             phoneNumberController: _phoneNumberController,
             passwordController: _passwordController,
           ),
+          // print(_passwordController.text);
           ElevatedButton(
-              child: const Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primaryColor,
+                foregroundColor: Colors.white,
+                fixedSize: Size((screenSize.width) / 3 + 20, 45),
               ),
+              child: const Text('Sign In'),
               onPressed: () async {
-                // print(_phoneNumberController.text);
-                // print(_passwordController.text);
                 final res = await _viewModel.signIn(
                   _phoneNumberController.text,
                   _passwordController.text,
@@ -62,13 +61,14 @@ class SignInPage extends StatelessWidget {
                       });
                 }
               }),
+          SizedBox(height: 10),
           ElevatedButton(
-              child: const Text(
-                'Register',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primaryColor,
+                foregroundColor: Colors.white,
+                fixedSize: Size((screenSize.width) / 3 + 20, 45),
               ),
+              child: const Text('Register'),
               onPressed: () {
                 PageRouteWithAnimation pageRouteWithAnimation =
                     PageRouteWithAnimation(RegisterPage());

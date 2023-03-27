@@ -18,17 +18,26 @@ class ProfileButton extends StatelessWidget {
     var theme = Theme.of(context);
 
     return Ink(
-      width: screenSize.width - 50,
-      height: 90,
+      width: screenSize.width / 2 - 30,
+      height: screenSize.width / 2 - 30,
       decoration: BoxDecoration(
-          color: theme.canvasColor,
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
-          border: Border.all(
-              width: 2,
-              color: theme.primaryColor, //const Color(0xFF7D7D7D),
-              style: BorderStyle.solid)),
+        color: theme.cardColor,
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
+        border: Border.all(
+            width: 2,
+            color: Color(0xFFFFFFFF), //const Color(0xFF7D7D7D),
+            style: BorderStyle.solid),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: InkWell(
-        highlightColor: theme.focusColor,
+        highlightColor: Color(0xFFFFFFFF),
         //customBorder:
         //RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         onTap: () {
@@ -42,7 +51,7 @@ class ProfileButton extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-                color: Color(0xFF646464), // Color(0xFFF5EFFF),
+                color: Color.fromARGB(255, 56, 54, 54), // Color(0xFFF5EFFF),
                 fontWeight: FontWeight.w700,
                 fontSize: 17),
           ),
@@ -81,6 +90,7 @@ class _ProfileIconButtonState extends State<ProfileIconButton> {
           child: Row(
         children: [
           widget.icon,
+          SizedBox(width: 3),
           Text(widget.text),
         ],
       )),

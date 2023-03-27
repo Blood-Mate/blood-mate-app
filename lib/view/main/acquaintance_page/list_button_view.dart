@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class ListButtonView extends StatelessWidget {
 
   Widget _buildListButtonView(viewModel, context) {
     List<String> dropdownList = viewModel.sortOptions;
+    ThemeData theme = Theme.of(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -34,7 +36,11 @@ class ListButtonView extends StatelessWidget {
         ),
         SizedBox(width: 10),
         GestureDetector(
-          child: Icon(Icons.add_box_outlined, size: 30),
+          child: Icon(
+            Icons.person_add_alt_outlined,
+            size: 25,
+            color: theme.disabledColor,
+          ),
           onTap: () {
             showDialog(
                 context: context,
@@ -44,25 +50,28 @@ class ListButtonView extends StatelessWidget {
                     content:
                         Text('Are you sure you want to sync your contacts?'),
                     actions: [
-                      TextButton(
+                      DialogButton(
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text('No')),
-                      TextButton(
+                          text: 'No'),
+                      DialogButton(
                           onPressed: () async {
                             var res = await viewModel.getContacts();
                             Navigator.of(context).pop();
                           },
-                          child: Text('Yes'))
+                          text: 'Yes'),
                     ],
                   );
                 });
           },
         ),
-        SizedBox(width: 10),
+        SizedBox(width: 0),
         IconButton(
-          icon: Icon(Icons.add_comment),
+          icon: Icon(
+            Icons.mode_edit_outline,
+            color: theme.disabledColor,
+          ), //post add, edit note,
           onPressed: (() {
             viewModel.releaseFocus();
             PageRouteWithAnimation pageRouteWithAnimation =

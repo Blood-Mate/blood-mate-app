@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/main/home_page/friends_post_page.dart';
 import 'package:bloodmate_app/view/main/profile_page/pop_up/my_private_post_page.dart';
@@ -66,18 +67,18 @@ class MyPrivatePostsTile extends StatelessWidget {
                             title: Text('Delete Post'),
                             content: Text('Are you sure you want to delete?'),
                             actions: [
-                              TextButton(
+                              DialogButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('No')),
-                              TextButton(
+                                  text: 'No'),
+                              DialogButton(
                                   onPressed: () async {
                                     var res = await viewModel
                                         .deletMyPrivatePost(item.id);
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('Yes'))
+                                  text: 'Yes'),
                             ],
                           );
                         });

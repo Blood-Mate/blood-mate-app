@@ -46,7 +46,7 @@ class _MyPostsView extends State<MyPostsView> {
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
-            child: Text('Private Posts')),
+            child: Text('Friend Based')),
         SizedBox(width: 10),
         ElevatedButton(
             onPressed: () {
@@ -59,7 +59,7 @@ class _MyPostsView extends State<MyPostsView> {
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
-            child: Text('Public Posts')),
+            child: Text('Location Based')),
       ],
     );
   }

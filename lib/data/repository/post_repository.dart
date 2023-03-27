@@ -94,6 +94,7 @@ class PostRepository {
 
     final authHeaders = await getAuthHeader();
     final data = {'postId': postId};
+    print(postId);
     Response response = await _dio.delete('/private-post',
         data: data, options: Options(headers: authHeaders));
 

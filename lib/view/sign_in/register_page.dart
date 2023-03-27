@@ -43,12 +43,12 @@ class RegisterPage extends StatelessWidget {
             bloodTypeController: _bloodTypeController,
           ),
           ElevatedButton(
-              child: const Text(
-                'Register',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primaryColor,
+                foregroundColor: Colors.white,
+                fixedSize: Size((screenSize.width) / 3 + 20, 45),
               ),
+              child: const Text('Register'),
               onPressed: () async {
                 final res = await _viewModel.register(
                   _phoneNumberController.text,

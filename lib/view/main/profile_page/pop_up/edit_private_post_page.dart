@@ -55,7 +55,7 @@ class EditPrivatePostPage extends StatelessWidget {
         },
       ),
       actions: [
-        TextButton(
+        DialogButton(
             onPressed: () async {
               // 내 private post 수정하기
               print("my post");
@@ -66,7 +66,8 @@ class EditPrivatePostPage extends StatelessWidget {
                 Navigator.pop(context, true);
               }
             },
-            child: Text("Edit")),
+            isHeader: true,
+            text: 'Edit')
       ],
     );
   }
@@ -74,8 +75,8 @@ class EditPrivatePostPage extends StatelessWidget {
   Widget writePost(Size screenSize) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      height: screenSize.height - 160,
+      margin: const EdgeInsets.all(20.0),
+      height: screenSize.height - 190,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
           color: Colors.white,

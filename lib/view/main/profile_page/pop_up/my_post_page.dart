@@ -26,7 +26,7 @@ class MyPostPage extends StatelessWidget {
       appBar: BackAppBar().build(context),
       body: Column(
         children: [
-          SubPageHeader(title: 'My Posts'),
+          SubPageHeader(title: 'My Post'),
           SizedBox(height: 15),
           Expanded(child: showMyPosts()),
         ],
