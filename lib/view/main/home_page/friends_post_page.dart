@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
 import 'package:bloodmate_app/view/common/component/component.dart';
+import 'package:bloodmate_app/view/common/route_animation.dart';
+import 'package:bloodmate_app/view/main/home_page/share_post_page.dart';
 
 class FriendsPostPage extends StatelessWidget {
   FriendsPostPage({super.key, required this.viewModel});
@@ -34,7 +36,7 @@ class FriendsPostPage extends StatelessWidget {
               child: Column(
                 children: [
                   showContactData(writer, originPost),
-                  showPost(screenSize, post, theme, originPost),
+                  showPost(post, originPost, context),
                 ],
               ),
             ),
@@ -62,7 +64,10 @@ class FriendsPostPage extends StatelessWidget {
         ]));
   }
 
-  Widget showPost(screenSize, post, theme, originPost) {
+  Widget showPost(post, originPost, context) {
+    ThemeData theme = Theme.of(context);
+    Size screenSize = MediaQuery.of(context).size;
+
     return Stack(
       children: [
         Container(
@@ -110,10 +115,12 @@ class FriendsPostPage extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 fixedSize: Size(200, 50), backgroundColor: theme.primaryColor),
             onPressed: () {
-              // donation request to origin User
-              print(post);
+              PageRouteWithAnimation pageRouteWithAnimation =
+                  PageRouteWithAnimation(SharePostPage(viewModel: viewModel));
+              Navigator.push(
+                  context, pageRouteWithAnimation.slideRitghtToLeft());
             },
-            child: Text("Send Request"),
+            child: Text("Share"),
           ),
         ),
       ],

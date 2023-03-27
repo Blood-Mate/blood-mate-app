@@ -1,4 +1,5 @@
 import 'package:bloodmate_app/data/repository/post_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/data/model/models.dart';
@@ -33,6 +34,24 @@ class HomePageViewModel with ChangeNotifier {
     _privatePost = await _postRepository.getPrivatePost();
 
     notifyListeners();
+  }
+
+  Future<int> sharePost(content) async {
+    int originId;
+    int currentDepth = focusedPostResponse!.post.depth!;
+
+    if (focusedPostResponse!.originPost != null) {
+      // shared post
+      originId = focusedPostResponse!.originPost!.id;
+    } else {
+      // origin post
+      originId = focusedPostResponse!.post.id;
+    }
+    // share
+    Response response = await _postRepository.repostPrivatePost(
+        content: content, originId: originId, currentDepth: currentDepth);
+
+    return response.statusCode!;
   }
 
   focusPost(PostResponse post) {

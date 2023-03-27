@@ -24,6 +24,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
     ThemeData theme = Theme.of(context);
     Size screenSize = MediaQuery.of(context).size;
     final post = viewModel.focusedPost;
+    Post? originPost = viewModel.focusedOriginPost;
 
     return Scaffold(
       backgroundColor: theme.canvasColor,
@@ -37,7 +38,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
           SubPageHeader(title: 'My Private Post'),
           Expanded(
             child: SingleChildScrollView(
-              child: showPost(screenSize, post),
+              child: showPost(screenSize, post, originPost),
             ),
           ),
         ],
@@ -79,7 +80,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
     );
   }
 
-  Widget showPost(screenSize, post) {
+  Widget showPost(screenSize, post, originPost) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -90,11 +91,32 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(color: Colors.black, width: 1)),
       child: SingleChildScrollView(
-        child: Container(
-          height: 400,
-          margin: EdgeInsets.symmetric(vertical: 15),
-          child: Text(post.content),
-        ),
+        child: (post.originId != -1)
+            ? Container(
+                height: 400,
+                margin: EdgeInsets.symmetric(vertical: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(post.content),
+                    SizedBox(height: 40),
+                    Text("Origin Post"),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      width: screenSize.width - 40,
+                      height: 1,
+                      color: Colors.grey,
+                    ),
+                    Text(originPost.content),
+                  ],
+                ),
+              )
+            : Container(
+                height: 400,
+                margin: EdgeInsets.symmetric(vertical: 15),
+                child: Text(post.content),
+              ),
       ),
     );
   }
