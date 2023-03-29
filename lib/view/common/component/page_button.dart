@@ -24,21 +24,20 @@ class _PageButtonState extends State<PageButton> {
     var theme = Theme.of(context);
 
     return Ink(
-      width: screenSize.width / 2 - 40,
-      height: 45,
+      width: screenSize.width / 2 - 32,
+      height: 55,
       decoration: BoxDecoration(
           color: theme.primaryColor,
-          borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(0),
-              bottom: Radius.circular(0)), //circular(6)
+          borderRadius:
+              const BorderRadius.all(Radius.circular(6)), //circular(6)
           border: Border.all(
               width: 1,
-              color: const Color(0xFF7D7D7D),
+              color: Color(0xFFFFFFFF), //Color(0xFF7D7D7D),
               style: BorderStyle.solid)),
       child: InkWell(
-        highlightColor: theme.focusColor,
-        //customBorder:
-        //RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        highlightColor: theme.primaryColorLight, //theme.focusColor,
+        customBorder:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         onTap: () {
           PageRouteWithAnimation pageRouteWithAnimation =
               PageRouteWithAnimation(widget.page);
@@ -52,7 +51,7 @@ class _PageButtonState extends State<PageButton> {
             style: const TextStyle(
                 color: Color(0xFFF5EFFF), //Color(0xFF646464),
                 fontWeight: FontWeight.w700,
-                fontSize: 17),
+                fontSize: 14),
           ),
         ),
       ),

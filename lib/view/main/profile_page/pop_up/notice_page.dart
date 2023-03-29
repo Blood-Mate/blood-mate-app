@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
 
+import 'package:bloodmate_app/view/common/component/component.dart';
+
 class NoticePage extends StatelessWidget {
-  const NoticePage({super.key});
+  NoticePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return _buildNoticePage(context);
+  }
+
+  Widget _buildNoticePage(context) {
+    ThemeData theme = Theme.of(context);
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
-      width: screenSize.width,
-      height: screenSize.height,
-      decoration: BoxDecoration(color: Colors.grey),
-      child: const Center(
-        child: Text('Notice Page'),
+    return Scaffold(
+      backgroundColor: theme.canvasColor,
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight), child: BackAppBar()),
+      body: Column(
+        children: [
+          SubPageHeader(title: 'Notice'),
+          Expanded(
+            child: Center(child: Text('Notice Page')),
+          ),
+        ],
       ),
     );
   }

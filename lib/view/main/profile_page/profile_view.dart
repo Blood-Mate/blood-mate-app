@@ -15,7 +15,8 @@ class ProfileView extends StatelessWidget {
   }
 
   Widget _buildProfileView(viewModel, context) {
-    final profile = viewModel.profile; // viewModel에 저장된 data
+    final profile = viewModel.profile;
+    ThemeData theme = Theme.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,49 +45,84 @@ class ProfileView extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Phone Number : ' + profile.phoneNumber),
-              Text('Blood type : ' + profile.bloodType),
-            ]),
-            signOutButton(context, viewModel),
+            SizedBox(width: 20),
+            Container(
+              width: MediaQuery.of(context).size.width - 150,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Phone Number : ' + profile.phoneNumber),
+                    SizedBox(height: 5),
+                    Text('Blood type : ' + profile.bloodType),
+                  ]),
+            ),
+            SizedBox(width: 20),
+            signOutButton(context, viewModel, theme),
+            SizedBox(width: 20),
           ],
         )
       ],
     );
   }
 
-  Widget signOutButton(context, viewModel) {
+  Widget signOutButton(context, viewModel, theme) {
     return ElevatedButton(
-      child: const Text(
-        'Sign Out',
-        style: TextStyle(
-          color: Colors.black,
-        ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: theme.primaryColor,
+        foregroundColor: Colors.white,
+        fixedSize: Size(90, 40),
       ),
+      child: const Text('Sign Out'),
       onPressed: () {
         showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
                 title: Text('Sign Out'),
-                content: Text('Sign Out Really?'),
+                content: Text('Sign-out from this account?'),
                 actions: <Widget>[
-                  ElevatedButton(
-                    child: Text('Yes'),
-                    onPressed: () {
+                  InkWell(
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                    splashColor: theme.primaryColorLight,
+                    onTap: () {
                       viewModel.signOut();
                       GoRouter.of(context).go('/signin');
                     },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                      child: Text(
+                        'Yes',
+                        style: TextStyle(
+                          color: theme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
                   ),
-                  ElevatedButton(
-                    child: Text('No'),
-                    onPressed: () {
+                  InkWell(
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                    splashColor: theme.primaryColorLight,
+                    onTap: () {
                       Navigator.pop(context);
                     },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                      child: Text(
+                        'No',
+                        style: TextStyle(
+                          color: theme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               );

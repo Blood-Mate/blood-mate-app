@@ -66,6 +66,7 @@ class PeopleList extends StatelessWidget {
     }
 
     return ListView.builder(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       shrinkWrap: true,
       //scrollDirection: Axis.vertical,
       itemCount: itemCount,

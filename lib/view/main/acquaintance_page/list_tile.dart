@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloodmate_app/view/common/route_animation.dart';
@@ -11,10 +12,17 @@ class ProtegeListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Card(
         child: ListTile(
-      title: Text(item.name),
-      subtitle: Text(item.phoneNumber),
+      title: Text(item.name,
+          style: TextStyle(
+              color: theme.disabledColor,
+              fontSize: 17,
+              fontWeight: FontWeight.w600)),
+      subtitle: Text(item.phoneNumber,
+          style: TextStyle(color: theme.disabledColor, fontSize: 14)),
       trailing: IconButton(
           onPressed: (() {
             viewModel.focusProtege(item);
@@ -23,7 +31,7 @@ class ProtegeListTile extends StatelessWidget {
                     WritePrivatePostPage(viewModel: viewModel));
             Navigator.push(context, pageRouteWithAnimation.slideRitghtToLeft());
           }),
-          icon: Icon(Icons.add_comment)),
+          icon: Icon(Icons.edit, color: theme.primaryColor)),
     ));
   }
 }
@@ -75,47 +83,59 @@ class _StfContactListTile extends State<StfContactListTile> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Card(
         child: ListTile(
-      trailing: Checkbox(
-        value: isTarget,
-        onChanged: (bool? value) async {
-          // sending target 변경하는 API
-          int res = await widget.viewModel
-              .changeIsSendingTarget(widget.item.id, value!);
-          if (res == 200) {
-            setState(() {
-              isTarget = !isTarget;
-            });
-          }
-        },
+      trailing: Container(
+        width: 60,
+        alignment: Alignment.center,
+        child: Checkbox(
+          activeColor: theme.primaryColor,
+          value: isTarget,
+          onChanged: (bool? value) async {
+            // sending target 변경하는 API
+            int res = await widget.viewModel
+                .changeIsSendingTarget(widget.item.id, value!);
+            if (res == 200) {
+              setState(() {
+                isTarget = !isTarget;
+              });
+            }
+          },
+        ),
       ),
       onLongPress: () {
         showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Delete Contact'),
-                content: Text('Are you sure you want to delete?'),
+                title: Text('Remove Contact'),
+                content: Text('Are you sure you want to remove?'),
                 actions: [
-                  TextButton(
+                  DialogButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text('No')),
-                  TextButton(
+                      text: 'No'),
+                  DialogButton(
                       onPressed: () async {
                         int state = await widget.viewModel
                             .deleteContact(widget.item.id);
                         Navigator.of(context).pop();
                       },
-                      child: Text('Yes'))
+                      text: 'Yes'),
                 ],
               );
             });
       },
-      title: Text(widget.item.name),
-      subtitle: Text(widget.item.phoneNumber),
+      title: Text(widget.item.name,
+          style: TextStyle(
+              color: theme.disabledColor,
+              fontSize: 17,
+              fontWeight: FontWeight.w600)),
+      subtitle: Text(widget.item.phoneNumber,
+          style: TextStyle(color: theme.disabledColor, fontSize: 14)),
     ));
   }
 }
@@ -143,42 +163,62 @@ class _AppUserListTileState extends State<AppUserListTile> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Card(
         child: ListTile(
+            title: Text(widget.item.name,
+                style: TextStyle(
+                    color: theme.disabledColor,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600)),
+            subtitle: Text(widget.item.phoneNumber,
+                style: TextStyle(color: theme.disabledColor, fontSize: 14)),
             trailing: (isGuardian == -1)
-                ? Checkbox(
-                    value: isTarget,
-                    onChanged: (bool? value) async {
-                      // sending target 변경하는 API
-                      int res = await widget.viewModel
-                          .changeIsSendingTarget(widget.item.id, value!);
-                      if (res == 200) {
-                        setState(() {
-                          isTarget = !isTarget;
-                        });
-                      }
-                    },
+                ? Container(
+                    width: 60,
+                    alignment: Alignment.center,
+                    child: Checkbox(
+                      activeColor: theme.primaryColor,
+                      value: isTarget,
+                      onChanged: (bool? value) async {
+                        // sending target 변경하는 API
+                        int res = await widget.viewModel
+                            .changeIsSendingTarget(widget.item.id, value!);
+                        if (res == 200) {
+                          setState(() {
+                            isTarget = !isTarget;
+                          });
+                        }
+                      },
+                    ),
                   )
-                : Text('Guardian'),
-            title: Text(widget.item.name),
-            subtitle: Text(widget.item.phoneNumber),
-            // long tap 할지 그냥 tap 할지 정하기
+                : Container(
+                    width: 90,
+                    height: 25,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: theme.primaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(6))),
+                    child: Text(
+                      'My Guardian',
+                      style: TextStyle(fontSize: 13, color: Color(0xFFFFFFFF)),
+                    )),
             onTap: () {
               (isGuardian == -1)
                   ? showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Change to Guardian'),
-                          content:
-                              Text('Are you sure you want to change this?'),
+                          title: Text('List as a Guardian'),
+                          content: Text('Are you sure you want?'),
                           actions: [
-                            TextButton(
+                            DialogButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('No')),
-                            TextButton(
+                                text: 'No'),
+                            DialogButton(
                                 onPressed: () async {
                                   // Guardian Post
                                   int state = await widget.viewModel
@@ -209,7 +249,7 @@ class _AppUserListTileState extends State<AppUserListTile> {
                                   }
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Yes'))
+                                text: 'Yes'),
                           ],
                         );
                       })
@@ -217,23 +257,22 @@ class _AppUserListTileState extends State<AppUserListTile> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Delete Guardian'),
-                          content:
-                              Text('Are you sure you want to change this?'),
+                          title: Text('Remove Guardian'),
+                          content: Text('Are you sure you want to remove?'),
                           actions: [
-                            TextButton(
+                            DialogButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('No')),
-                            TextButton(
+                                text: 'No'),
+                            DialogButton(
                                 onPressed: () async {
                                   // 200 성공 404 없는 guardian id
                                   int state = await widget.viewModel
                                       .deleteGuardian(widget.item.guardianId);
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Yes'))
+                                text: 'Yes'),
                           ],
                         );
                       });
@@ -244,21 +283,21 @@ class _AppUserListTileState extends State<AppUserListTile> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Delete Contact'),
-                        content: Text('Are you sure you want to delete?'),
+                        title: Text('Remove Contact'),
+                        content: Text('Are you sure you want to remove?'),
                         actions: [
-                          TextButton(
+                          DialogButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('No')),
-                          TextButton(
+                              text: 'No'),
+                          DialogButton(
                               onPressed: () async {
                                 int state = await widget.viewModel
                                     .deleteContact(widget.item.id);
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Yes'))
+                              text: 'Yes'),
                         ],
                       );
                     });

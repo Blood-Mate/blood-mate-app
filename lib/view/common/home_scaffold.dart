@@ -27,20 +27,11 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
-    // var calendar_icon = (_menu == 0)
-    //     ? Image.asset("assets/icons/calendar_act.png", width: 30, height: 30)
-    //     : Image.asset("assets/icons/calendar.png", width: 30, height: 30);
-
-    // var pet_icon = (_menu == 1)
-    //     ? Image.asset("assets/icons/pet_act.png", width: 30, height: 30)
-    //     : Image.asset("assets/icons/pet.png", width: 30, height: 30);
-
-    // var profile_icon = (_menu == 2)
-    //     ? Image.asset("assets/icons/profile_act.png", width: 30, height: 30)
-    //     : Image.asset("assets/icons/profile.png", width: 30, height: 30);
+    ThemeData theme = Theme.of(context);
+    Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-      height: 60,
+      height: 70,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(16.0)),
         boxShadow: [
@@ -55,45 +46,130 @@ class _NavBarState extends State<NavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          IconButton(
-            onPressed: (() {
-              //_menu = 0;
+          GestureDetector(
+            onTap: () {
+              _menu = 0;
               GoRouter.of(context).go('/home');
-            }),
-            icon: Icon(Icons.home),
-            enableFeedback: false,
+            },
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home_outlined,
+                    color:
+                        _menu == 0 ? theme.primaryColor : theme.disabledColor,
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Home',
+                    style: TextStyle(
+                      color:
+                          _menu == 0 ? theme.primaryColor : theme.disabledColor,
+                      fontSize: 12,
+                    ),
+                  )
+                ]),
           ),
-          IconButton(
-            onPressed: (() {
-              //_menu = 1;
+          GestureDetector(
+            onTap: () {
+              _menu = 1;
               GoRouter.of(context).go('/local');
-            }),
-            icon: Icon(Icons.auto_stories),
-            enableFeedback: false,
+            },
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color:
+                        _menu == 1 ? theme.primaryColor : theme.disabledColor,
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Local',
+                    style: TextStyle(
+                      color:
+                          _menu == 1 ? theme.primaryColor : theme.disabledColor,
+                      fontSize: 12,
+                    ),
+                  )
+                ]),
           ),
-          IconButton(
-            onPressed: (() {
-              //_menu = 1;
+          GestureDetector(
+            onTap: () {
+              _menu = 2;
               GoRouter.of(context).go('/acquaintance');
-            }),
-            icon: Icon(Icons.face),
-            enableFeedback: false,
+            },
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.contacts_outlined,
+                    color:
+                        _menu == 2 ? theme.primaryColor : theme.disabledColor,
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Contact',
+                    style: TextStyle(
+                      color:
+                          _menu == 2 ? theme.primaryColor : theme.disabledColor,
+                      fontSize: 12,
+                    ),
+                  )
+                ]),
           ),
-          IconButton(
-            onPressed: (() {
-              //_menu = 1;
+          GestureDetector(
+            onTap: () {
+              _menu = 3;
               GoRouter.of(context).go('/alert');
-            }),
-            icon: Icon(Icons.notifications),
-            enableFeedback: false,
+            },
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.notifications_none_outlined,
+                    color:
+                        _menu == 3 ? theme.primaryColor : theme.disabledColor,
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Alert',
+                    style: TextStyle(
+                      color:
+                          _menu == 3 ? theme.primaryColor : theme.disabledColor,
+                      fontSize: 12,
+                    ),
+                  )
+                ]),
           ),
-          IconButton(
-            onPressed: (() {
-              //_menu = 2;
+          GestureDetector(
+            onTap: () {
+              _menu = 4;
               GoRouter.of(context).go('/profile');
-            }),
-            icon: Icon(Icons.person),
-            enableFeedback: false,
+            },
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.person_outline,
+                    color:
+                        _menu == 4 ? theme.primaryColor : theme.disabledColor,
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Profile',
+                    style: TextStyle(
+                      color:
+                          _menu == 4 ? theme.primaryColor : theme.disabledColor,
+                      fontSize: 12,
+                    ),
+                  )
+                ]),
           ),
         ],
       ),

@@ -31,7 +31,7 @@ class SharePostPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight), child: BackAppBar()),
       body: Column(
         children: [
-          SubPageHeader(title: 'Share Friend\'s Post'),
+          SubPageHeader(title: 'Share Friend\'s Request'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -49,8 +49,8 @@ class SharePostPage extends StatelessWidget {
 
   Widget addContent() {
     return Container(
-      height: 70,
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+      height: 150,
+      margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
       padding: EdgeInsets.all(15),
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
@@ -74,8 +74,8 @@ class SharePostPage extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
-          height: screenSize.height - 250,
+          margin: const EdgeInsets.all(20.0),
+          height: screenSize.height - 355,
           alignment: Alignment.topLeft,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -92,7 +92,7 @@ class SharePostPage extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 30,
+          bottom: 40,
           left: (screenSize.width - 200) / 2,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(

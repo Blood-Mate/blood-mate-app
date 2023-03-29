@@ -19,13 +19,26 @@ class MyInfoView extends StatelessWidget {
 
   Widget _buildMyInfoView(viewModel) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ProfileButton(text: 'My Post', page: MyPostPage(viewModel: viewModel)),
-        ProfileButton(text: 'My Message', page: MyMessagePage()),
-        ProfileButton(text: 'My Award', page: MyAwardPage()),
-        ProfileButton(text: 'My Donation', page: MyDonationPage()),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ProfileButton(
+                text: 'My Request', page: MyPostPage(viewModel: viewModel)),
+            SizedBox(width: 20),
+            ProfileButton(text: 'My Message', page: MyMessagePage()),
+          ],
+        ),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ProfileButton(text: 'My Award', page: MyAwardPage()),
+            SizedBox(width: 20),
+            ProfileButton(text: 'My Donation', page: MyDonationPage()),
+          ],
+        ),
       ],
     );
   }

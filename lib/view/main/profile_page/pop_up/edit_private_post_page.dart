@@ -29,7 +29,7 @@ class EditPrivatePostPage extends StatelessWidget {
           child: appBar(context, post)),
       body: Column(
         children: [
-          SubPageHeader(title: 'Edit Post'),
+          SubPageHeader(title: 'Edit Request'),
           Expanded(
             child: SingleChildScrollView(
               child: writePost(screenSize),
@@ -55,7 +55,7 @@ class EditPrivatePostPage extends StatelessWidget {
         },
       ),
       actions: [
-        TextButton(
+        DialogButton(
             onPressed: () async {
               // 내 private post 수정하기
               print("my post");
@@ -66,7 +66,8 @@ class EditPrivatePostPage extends StatelessWidget {
                 Navigator.pop(context, true);
               }
             },
-            child: Text("Edit")),
+            isHeader: true,
+            text: 'Edit')
       ],
     );
   }
@@ -74,8 +75,8 @@ class EditPrivatePostPage extends StatelessWidget {
   Widget writePost(Size screenSize) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      height: screenSize.height - 160,
+      margin: const EdgeInsets.all(20.0),
+      height: screenSize.height - 190,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -86,7 +87,7 @@ class EditPrivatePostPage extends StatelessWidget {
           height: 400,
           margin: EdgeInsets.symmetric(vertical: 15),
           child: TextField(
-            decoration: InputDecoration.collapsed(hintText: "Write Post"),
+            decoration: InputDecoration.collapsed(hintText: "Write Request"),
             keyboardType: TextInputType.multiline,
             maxLines: null,
             controller: _contentController,

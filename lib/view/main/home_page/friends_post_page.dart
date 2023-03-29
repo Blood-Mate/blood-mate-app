@@ -30,7 +30,7 @@ class FriendsPostPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight), child: BackAppBar()),
       body: Column(
         children: [
-          SubPageHeader(title: 'Friend\'s Post'),
+          SubPageHeader(title: 'Friend\'s Request'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -49,7 +49,7 @@ class FriendsPostPage extends StatelessWidget {
   Widget showContactData(contact, originPost) {
     return Container(
         height: 70,
-        margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
         padding: EdgeInsets.all(15),
         alignment: Alignment.topLeft,
         decoration: BoxDecoration(
@@ -58,7 +58,7 @@ class FriendsPostPage extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           (originPost != null)
-              ? Text(contact.name + ' \'s acquaintance requests blood donation')
+              ? Text(contact.name + ' \'s neighbor requests blood donation')
               : Text(contact.name + ' requests blood donation'),
           //Text('Blood type : '),
         ]));
@@ -72,8 +72,8 @@ class FriendsPostPage extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
-          height: screenSize.height - 250,
+          margin: const EdgeInsets.all(20.0),
+          height: screenSize.height - 275,
           alignment: Alignment.topLeft,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -90,7 +90,7 @@ class FriendsPostPage extends StatelessWidget {
                       children: [
                         Text(post.content),
                         SizedBox(height: 40),
-                        Text("Origin Post"),
+                        Text("Origin Request"),
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 5),
                           width: screenSize.width - 40,
@@ -109,7 +109,7 @@ class FriendsPostPage extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 30,
+          bottom: 40,
           left: (screenSize.width - 200) / 2,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(

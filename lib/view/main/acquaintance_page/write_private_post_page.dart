@@ -28,20 +28,9 @@ class WritePrivatePostPage extends StatelessWidget {
           child: appBar(context, !viewModel.isFocused)),
       body: Column(
         children: [
-          SubPageHeader(title: 'Write Private Post'),
+          SubPageHeader(title: 'Create Request'),
           viewModel.isFocused
-              ?
-              // Expanded(
-              //     child: ListView(
-              //       shrinkWrap: true,
-              //       children: [
-              //         showProtegeData(viewModel.focusedProtege),
-              //         Expanded(
-              //             child: writePost(!viewModel.isFocused, screenSize)),
-              //       ],
-              //     ),
-              //   )
-              Expanded(
+              ? Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -76,11 +65,12 @@ class WritePrivatePostPage extends StatelessWidget {
         },
       ),
       actions: [
-        TextButton(
+        DialogButton(
+            isHeader: true,
             onPressed: () async {
               if (isMyPost) {
                 // 내 private post 등록하기
-                print("my post");
+                print("my request");
                 final res =
                     await viewModel.postMyDonation(_contentController.text);
                 if (res == 201) {
@@ -88,7 +78,7 @@ class WritePrivatePostPage extends StatelessWidget {
                   Navigator.of(context).pop();
                 }
               } else {
-                print("protege's post");
+                print("protege's request");
                 final res = await viewModel.postProtegeDonation(
                     viewModel.focusedProtege.requestorId,
                     _contentController.text);
@@ -98,7 +88,7 @@ class WritePrivatePostPage extends StatelessWidget {
                 }
               }
             },
-            child: Text("Post")),
+            text: "Create"),
       ],
     );
   }
@@ -106,7 +96,7 @@ class WritePrivatePostPage extends StatelessWidget {
   Widget showProtegeData(protege) {
     return Container(
         height: 70,
-        margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
         padding: EdgeInsets.all(15),
         alignment: Alignment.topLeft,
         decoration: BoxDecoration(
@@ -114,7 +104,7 @@ class WritePrivatePostPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             border: Border.all(color: Colors.black, width: 1)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Writing a Blood Donation Post for  ' + protege.name),
+          Text('Writing a Blood Donation Request for ' + protege.name),
           Text('Blood type : ' + protege.bloodType),
         ]));
   }
@@ -122,8 +112,8 @@ class WritePrivatePostPage extends StatelessWidget {
   Widget writePost(bool isMyPost, Size screenSize) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      height: isMyPost ? screenSize.height - 160 : screenSize.height - 250,
+      margin: const EdgeInsets.all(20.0),
+      height: isMyPost ? screenSize.height - 190 : screenSize.height - 275,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -134,7 +124,7 @@ class WritePrivatePostPage extends StatelessWidget {
           height: 400,
           margin: EdgeInsets.symmetric(vertical: 15),
           child: TextField(
-            decoration: InputDecoration.collapsed(hintText: "Write Post"),
+            decoration: InputDecoration.collapsed(hintText: "Write Request"),
             keyboardType: TextInputType.multiline,
             maxLines: null,
             controller: _contentController,

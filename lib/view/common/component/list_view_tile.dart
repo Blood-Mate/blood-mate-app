@@ -1,3 +1,4 @@
+import 'package:bloodmate_app/view/common/component/component.dart';
 import 'package:bloodmate_app/view/common/route_animation.dart';
 import 'package:bloodmate_app/view/main/home_page/friends_post_page.dart';
 import 'package:bloodmate_app/view/main/profile_page/pop_up/my_private_post_page.dart';
@@ -14,7 +15,11 @@ class FriendsListViewTile extends StatelessWidget {
     return Card(
         child: ListTile(
       title: Text(item.publisher.name + ' requests blood donation'),
-      subtitle: Text(item.post.content),
+      subtitle: Text(
+        item.post.content,
+        maxLines: 2, // 두 줄까지만 보이도록 함
+        overflow: TextOverflow.ellipsis, // 길이가 너무 길면 ...으로 처리
+      ),
       onTap: () {
         viewModel.focusPost(item);
         PageRouteWithAnimation pageRouteWithAnimation =
@@ -26,11 +31,25 @@ class FriendsListViewTile extends StatelessWidget {
 }
 
 class LocalListViewTile extends StatelessWidget {
-  const LocalListViewTile({super.key});
+  LocalListViewTile({super.key, required this.item, required this.viewModel});
+
+  final item;
+  final viewModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Card(
+        child: ListTile(
+      title: Text(item.title),
+      subtitle: Text(
+        item.content,
+        maxLines: 2, // 두 줄까지만 보이도록 함
+        overflow: TextOverflow.ellipsis, // 길이가 너무 길면 ...으로 처리
+      ),
+      onTap: () {
+        print(item);
+      },
+    ));
   }
 }
 
@@ -66,18 +85,18 @@ class MyPrivatePostsTile extends StatelessWidget {
                             title: Text('Delete Post'),
                             content: Text('Are you sure you want to delete?'),
                             actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text('No')),
-                              TextButton(
+                              DialogButton(
                                   onPressed: () async {
                                     var res = await viewModel
                                         .deletMyPrivatePost(item.id);
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('Yes'))
+                                  text: 'Yes'),
+                              DialogButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  text: 'No'),
                             ],
                           );
                         });

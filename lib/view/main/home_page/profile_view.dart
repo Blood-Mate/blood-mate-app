@@ -22,11 +22,12 @@ class HomePageProfileView extends StatelessWidget {
         SizedBox(height: 50),
         Row(
           children: [
-            SizedBox(width: 20),
+            SizedBox(width: 24),
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(border: Border.all(width: 1)),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Color(0xFF969696))),
               child: ((profile.profileImageUrl == null) ||
                       (profile.profileImageUrl == ""))
                   ? Image(
@@ -43,13 +44,13 @@ class HomePageProfileView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   Text(
-                    '안녕하세요!',
+                    'Hello,',
                     style: TextStyle(fontSize: 20),
                   ),
                   Text(
-                    profile.name + ' 님!',
+                    profile.name + ' !',
                     style: TextStyle(fontSize: 20),
                   )
                 ],

@@ -35,7 +35,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
           child: appBar(context, post)),
       body: Column(
         children: [
-          SubPageHeader(title: 'My Private Post'),
+          SubPageHeader(title: 'My Request'),
           Expanded(
             child: SingleChildScrollView(
               child: showPost(screenSize, post, originPost),
@@ -74,8 +74,9 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
               post = widget.viewModel.focusedPost;
             });
           },
-          icon: Icon(Icons.edit_document, fill: 0, color: Colors.black),
+          icon: Icon(Icons.edit_outlined, color: Color(0xFF969696)),
         ),
+        SizedBox(width: 10),
       ],
     );
   }
@@ -83,8 +84,8 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
   Widget showPost(screenSize, post, originPost) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      height: screenSize.height - 160,
+      margin: const EdgeInsets.all(20.0),
+      height: screenSize.height - 190,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -101,7 +102,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
                   children: [
                     Text(post.content),
                     SizedBox(height: 40),
-                    Text("Origin Post"),
+                    Text("Origin Request"),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 5),
                       width: screenSize.width - 40,

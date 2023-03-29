@@ -8,6 +8,7 @@ export 'profile_button.dart';
 export 'dialog.dart';
 export 'custom_text_file.dart';
 export 'back_appbar.dart';
+export 'dialog_button.dart';
 
 class ThinDevider extends StatelessWidget {
   const ThinDevider({super.key});

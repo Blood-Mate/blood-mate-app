@@ -46,7 +46,7 @@ class _MyPostsView extends State<MyPostsView> {
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
-            child: Text('Private Posts')),
+            child: Text('Friend Based')),
         SizedBox(width: 10),
         ElevatedButton(
             onPressed: () {
@@ -59,7 +59,7 @@ class _MyPostsView extends State<MyPostsView> {
               foregroundColor: Colors.white,
               fixedSize: Size((screenSize.width - 40) / 2, 50),
             ),
-            child: Text('Public Posts')),
+            child: Text('Location Based')),
       ],
     );
   }
@@ -73,9 +73,11 @@ class _MyPostsView extends State<MyPostsView> {
       padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
       itemBuilder: (context, index) {
         final item = myPrivatePosts[index];
-        return myPrivatePostCount == 0
-            ? Card(child: ListTile(title: Text("No Posts")))
-            : MyPrivatePostsTile(item: item, viewModel: viewModel);
+        return Padding(
+            padding: EdgeInsets.symmetric(vertical: 3),
+            child: myPrivatePostCount == 0
+                ? Card(child: ListTile(title: Text("No Posts")))
+                : MyPrivatePostsTile(item: item, viewModel: viewModel));
       },
       itemCount: myPrivatePostCount,
     );

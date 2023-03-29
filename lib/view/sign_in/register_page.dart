@@ -30,7 +30,7 @@ class RegisterPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Column(
         children: [
-          const SubPageHeader(title: 'Register'),
+          const SubPageHeader(title: 'Create Account'),
           // 키보드 올라왔을 때 같이 올라가는거 적용필요
           SizedBox(
               height: MediaQuery.of(context).viewInsets.bottom == 0
@@ -43,13 +43,14 @@ class RegisterPage extends StatelessWidget {
             bloodTypeController: _bloodTypeController,
           ),
           ElevatedButton(
-              child: const Text(
-                'Register',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primaryColor,
+                foregroundColor: Colors.white,
+                fixedSize: Size((screenSize.width) / 3 + 20, 45),
               ),
+              child: const Text('Create Account'),
               onPressed: () async {
+                Navigator.popUntil(context, ModalRoute.withName('/signin'));
                 final res = await _viewModel.register(
                   _phoneNumberController.text,
                   _passwordController.text,
@@ -59,15 +60,14 @@ class RegisterPage extends StatelessWidget {
                 print(res);
                 if (res == "Success") {
                   print("suc");
-                  Navigator.popUntil(context, ModalRoute.withName('/signin'));
                 } else {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return FailDialog(
-                          text: "register",
-                        );
-                      });
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (context) {
+                  //       return FailDialog(
+                  //         text: "create your account",
+                  //       );
+                  //     });
                 }
               }),
         ],

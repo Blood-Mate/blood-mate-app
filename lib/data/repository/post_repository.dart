@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bloodmate_app/data/mock_data/mock_data.dart';
 import 'package:dio/dio.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive/hive.dart';
@@ -94,6 +95,7 @@ class PostRepository {
 
     final authHeaders = await getAuthHeader();
     final data = {'postId': postId};
+    print(postId);
     Response response = await _dio.delete('/private-post',
         data: data, options: Options(headers: authHeaders));
 
@@ -150,5 +152,10 @@ class PostRepository {
       print('[HTTP ERR]: internet connection');
       throw Exception('internet connection');
     }
+  }
+
+  // mock data
+  List<Post> getMockData() {
+    return PublicPostRepo.publicPostMockData;
   }
 }

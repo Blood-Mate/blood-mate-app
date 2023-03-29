@@ -26,8 +26,9 @@ class ProfilePage extends StatelessWidget {
           SubPageHeader(title: 'My Page'),
           showProfile(),
           Expanded(child: showMyInfoView()),
+          SizedBox(height: 10),
           settingButtonList(),
-          SizedBox(height: 20),
+          SizedBox(height: 25),
         ],
       ),
     );
@@ -42,17 +43,21 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget settingButtonList() {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         ProfileIconButton(
-            icon: Icon(Icons.settings), text: 'Setting', page: SettingPage()),
+            icon: Icon(Icons.build_circle_outlined),
+            text: 'Setting',
+            page: SettingPage()),
         ProfileIconButton(
-            icon: Icon(Icons.support_agent),
+            icon: Icon(Icons.headset_mic_outlined),
             text: 'Support',
             page: SupportPage()),
         ProfileIconButton(
-            icon: Icon(Icons.settings), text: 'Notice', page: NoticePage())
+            icon: Icon(Icons.lightbulb_outline),
+            text: 'Notice',
+            page: NoticePage())
       ],
     );
   }

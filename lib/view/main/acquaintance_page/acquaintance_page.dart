@@ -19,9 +19,8 @@ class AcquaintancePage extends StatelessWidget {
       backgroundColor: theme.canvasColor,
       body: Column(
         children: [
-          SubPageHeader(title: 'My Friends'),
+          SubPageHeader(title: 'Contact'),
           acquaintancePageButton(),
-          ThickDevider(),
           Expanded(child: showMyPeoples()),
         ],
       ),
