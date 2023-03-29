@@ -23,7 +23,7 @@ class RegisterField extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Text('Fill in the blank to register'),
+        const Text('Enter your information to make your own account'),
         const SizedBox(
           height: 20,
         ),

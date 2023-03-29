@@ -25,7 +25,7 @@ class MyInfoView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ProfileButton(
-                text: 'My Post', page: MyPostPage(viewModel: viewModel)),
+                text: 'My Request', page: MyPostPage(viewModel: viewModel)),
             SizedBox(width: 20),
             ProfileButton(text: 'My Message', page: MyMessagePage()),
           ],

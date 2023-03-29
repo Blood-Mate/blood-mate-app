@@ -73,9 +73,11 @@ class _MyPostsView extends State<MyPostsView> {
       padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
       itemBuilder: (context, index) {
         final item = myPrivatePosts[index];
-        return myPrivatePostCount == 0
-            ? Card(child: ListTile(title: Text("No Posts")))
-            : MyPrivatePostsTile(item: item, viewModel: viewModel);
+        return Padding(
+            padding: EdgeInsets.symmetric(vertical: 3),
+            child: myPrivatePostCount == 0
+                ? Card(child: ListTile(title: Text("No Posts")))
+                : MyPrivatePostsTile(item: item, viewModel: viewModel));
       },
       itemCount: myPrivatePostCount,
     );

@@ -24,18 +24,18 @@ class PeopleListView extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
       children: [
         Text(
-          'Protege',
+          'People who listed me as their guardian',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         PeopleList(
           items: proteges,
-          blankBoxText: 'No Proteges',
+          blankBoxText: 'No people who listed me as their guardian',
           viewModel: viewModel,
           sort: viewModel.selectedSortOrder,
         ),
         SizedBox(height: 15),
         Text(
-          'Guardian',
+          'My Guardians',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         PeopleList(

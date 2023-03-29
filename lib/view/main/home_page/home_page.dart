@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           PageButton(
-            text: 'QnA',
+            text: 'FAQ',
             page: QnAPage(),
           ),
           PageButton(

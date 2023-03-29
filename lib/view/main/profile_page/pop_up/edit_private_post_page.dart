@@ -29,7 +29,7 @@ class EditPrivatePostPage extends StatelessWidget {
           child: appBar(context, post)),
       body: Column(
         children: [
-          SubPageHeader(title: 'Edit Post'),
+          SubPageHeader(title: 'Edit Request'),
           Expanded(
             child: SingleChildScrollView(
               child: writePost(screenSize),
@@ -87,7 +87,7 @@ class EditPrivatePostPage extends StatelessWidget {
           height: 400,
           margin: EdgeInsets.symmetric(vertical: 15),
           child: TextField(
-            decoration: InputDecoration.collapsed(hintText: "Write Post"),
+            decoration: InputDecoration.collapsed(hintText: "Write Request"),
             keyboardType: TextInputType.multiline,
             maxLines: null,
             controller: _contentController,

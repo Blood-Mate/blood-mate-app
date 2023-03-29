@@ -1,9 +1,13 @@
+import 'package:bloodmate_app/view/main/local_donation_page/local_donation_list_view.dart';
+import 'package:bloodmate_app/viewmodel/main/local_donation_page_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/component/component.dart';
 
 class LocalDonationPage extends StatelessWidget {
-  const LocalDonationPage({super.key});
+  LocalDonationPage({super.key});
+  final viewModel = LocalDonationPageViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +19,11 @@ class LocalDonationPage extends StatelessWidget {
       body: Column(
         children: [
           SubPageHeader(title: 'Blood Donation List'),
+          SizedBox(height: 10),
           LocationBlock(),
           SizedBox(height: 15),
-          LocalDonationPageBody(screenSize),
+          listButton(screenSize),
+          Expanded(child: localDonationList()),
         ],
       ),
     );
@@ -40,35 +46,24 @@ class LocalDonationPage extends StatelessWidget {
     );
   }
 
-  Widget LocalDonationPageBody(Size screenSize) {
-    return Column(
+  Widget listButton(Size screenSize) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(width: 20),
-            SortButton(text: '혈액형'),
-            SizedBox(width: 10),
-            SortButton(text: '헌혈종류'),
-            SizedBox(width: 100),
-            Icon(Icons.search),
-            Icon(Icons.post_add),
-            SizedBox(width: 20),
-          ],
-        ),
-        Container(
-            width: screenSize.width - 30,
-            height: screenSize.height - 250,
-            child: SingleChildScrollView(
-                child: Column(
-              children: [
-                FriendDonationListBox(screenSize: screenSize),
-                FriendDonationListBox(screenSize: screenSize),
-                FriendDonationListBox(screenSize: screenSize),
-              ],
-            ))),
-        SizedBox(height: 10),
+        SizedBox(width: 20),
+        Text('Blood Type'),
+        SizedBox(width: 10),
+        Text('Blood Components'),
+        SizedBox(width: 100),
+        Icon(Icons.search),
+        Icon(Icons.post_add),
+        SizedBox(width: 20),
       ],
     );
+  }
+
+  Widget localDonationList() {
+    return ChangeNotifierProvider.value(
+        value: viewModel, child: LocalDonationListView());
   }
 }

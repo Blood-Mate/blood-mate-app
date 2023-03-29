@@ -28,7 +28,7 @@ class WritePrivatePostPage extends StatelessWidget {
           child: appBar(context, !viewModel.isFocused)),
       body: Column(
         children: [
-          SubPageHeader(title: 'Create Post'),
+          SubPageHeader(title: 'Create Request'),
           viewModel.isFocused
               ? Expanded(
                   child: SingleChildScrollView(
@@ -70,7 +70,7 @@ class WritePrivatePostPage extends StatelessWidget {
             onPressed: () async {
               if (isMyPost) {
                 // 내 private post 등록하기
-                print("my post");
+                print("my request");
                 final res =
                     await viewModel.postMyDonation(_contentController.text);
                 if (res == 201) {
@@ -78,7 +78,7 @@ class WritePrivatePostPage extends StatelessWidget {
                   Navigator.of(context).pop();
                 }
               } else {
-                print("protege's post");
+                print("protege's request");
                 final res = await viewModel.postProtegeDonation(
                     viewModel.focusedProtege.requestorId,
                     _contentController.text);
@@ -88,7 +88,7 @@ class WritePrivatePostPage extends StatelessWidget {
                 }
               }
             },
-            text: "Post"),
+            text: "Create"),
       ],
     );
   }
@@ -104,7 +104,7 @@ class WritePrivatePostPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             border: Border.all(color: Colors.black, width: 1)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Writing a Blood Donation Post for  ' + protege.name),
+          Text('Writing a Blood Donation Request for ' + protege.name),
           Text('Blood type : ' + protege.bloodType),
         ]));
   }
@@ -124,7 +124,7 @@ class WritePrivatePostPage extends StatelessWidget {
           height: 400,
           margin: EdgeInsets.symmetric(vertical: 15),
           child: TextField(
-            decoration: InputDecoration.collapsed(hintText: "Write Post"),
+            decoration: InputDecoration.collapsed(hintText: "Write Request"),
             keyboardType: TextInputType.multiline,
             maxLines: null,
             controller: _contentController,

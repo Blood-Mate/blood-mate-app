@@ -35,7 +35,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
           child: appBar(context, post)),
       body: Column(
         children: [
-          SubPageHeader(title: 'My Post'),
+          SubPageHeader(title: 'My Request'),
           Expanded(
             child: SingleChildScrollView(
               child: showPost(screenSize, post, originPost),
@@ -102,7 +102,7 @@ class _MyPrivatePostPageState extends State<MyPrivatePostPage> {
                   children: [
                     Text(post.content),
                     SizedBox(height: 40),
-                    Text("Origin Post"),
+                    Text("Origin Request"),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 5),
                       width: screenSize.width - 40,

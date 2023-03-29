@@ -30,7 +30,7 @@ class FriendsPostPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight), child: BackAppBar()),
       body: Column(
         children: [
-          SubPageHeader(title: 'Friend\'s Post'),
+          SubPageHeader(title: 'Friend\'s Request'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -58,7 +58,7 @@ class FriendsPostPage extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           (originPost != null)
-              ? Text(contact.name + ' \'s friend requests blood donation')
+              ? Text(contact.name + ' \'s neighbor requests blood donation')
               : Text(contact.name + ' requests blood donation'),
           //Text('Blood type : '),
         ]));
@@ -90,7 +90,7 @@ class FriendsPostPage extends StatelessWidget {
                       children: [
                         Text(post.content),
                         SizedBox(height: 40),
-                        Text("Origin Post"),
+                        Text("Origin Request"),
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 5),
                           width: screenSize.width - 40,

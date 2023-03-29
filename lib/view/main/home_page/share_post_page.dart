@@ -31,7 +31,7 @@ class SharePostPage extends StatelessWidget {
           preferredSize: Size.fromHeight(kToolbarHeight), child: BackAppBar()),
       body: Column(
         children: [
-          SubPageHeader(title: 'Share Post'),
+          SubPageHeader(title: 'Share Friend\'s Request'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(

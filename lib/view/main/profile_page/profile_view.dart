@@ -83,7 +83,7 @@ class ProfileView extends StatelessWidget {
             builder: (context) {
               return AlertDialog(
                 title: Text('Sign Out'),
-                content: Text('Sign Out Really?'),
+                content: Text('Sign-out from this account?'),
                 actions: <Widget>[
                   InkWell(
                     borderRadius: BorderRadius.all(Radius.circular(6)),

@@ -110,8 +110,8 @@ class _StfContactListTile extends State<StfContactListTile> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Delete Contact'),
-                content: Text('Are you sure you want to delete?'),
+                title: Text('Remove Contact'),
+                content: Text('Are you sure you want to remove?'),
                 actions: [
                   DialogButton(
                       onPressed: () {
@@ -194,15 +194,15 @@ class _AppUserListTileState extends State<AppUserListTile> {
                     ),
                   )
                 : Container(
-                    width: 80,
+                    width: 90,
                     height: 25,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         color: theme.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(6))),
                     child: Text(
-                      'Guardian',
-                      style: TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
+                      'My Guardian',
+                      style: TextStyle(fontSize: 13, color: Color(0xFFFFFFFF)),
                     )),
             onTap: () {
               (isGuardian == -1)
@@ -210,9 +210,8 @@ class _AppUserListTileState extends State<AppUserListTile> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Change to Guardian'),
-                          content:
-                              Text('Are you sure you want to change this?'),
+                          title: Text('List as a Guardian'),
+                          content: Text('Are you sure you want?'),
                           actions: [
                             DialogButton(
                                 onPressed: () {
@@ -258,9 +257,8 @@ class _AppUserListTileState extends State<AppUserListTile> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Delete Guardian'),
-                          content:
-                              Text('Are you sure you want to change this?'),
+                          title: Text('Remove Guardian'),
+                          content: Text('Are you sure you want to remove?'),
                           actions: [
                             DialogButton(
                                 onPressed: () {
@@ -285,8 +283,8 @@ class _AppUserListTileState extends State<AppUserListTile> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Delete Contact'),
-                        content: Text('Are you sure you want to delete?'),
+                        title: Text('Remove Contact'),
+                        content: Text('Are you sure you want to remove?'),
                         actions: [
                           DialogButton(
                               onPressed: () {

@@ -1,4 +1,5 @@
 import 'package:bloodmate_app/data/repository/user_repository.dart';
+import 'package:dio/dio.dart';
 
 class RegisterViewModel {
   late final UserRepository _userRepository;
@@ -9,11 +10,13 @@ class RegisterViewModel {
 
   Future register(String phoneNumber, String password, String name,
       String bloodType) async {
-    return await _userRepository.register(
-        phoneNumber: phoneNumber,
+    var combineNumber = combinePhoneAndCountry(phoneNumber, '+82');
+    Response res = await _userRepository.register(
+        phoneNumber: combineNumber,
         password: password,
         name: name,
         bloodType: bloodType);
+    return res.statusCode;
   }
 
   // convert phoneNumber

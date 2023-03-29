@@ -56,7 +56,7 @@ class SignInPage extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return FailDialog(
-                          text: "sign in",
+                          text: "Sign in",
                         );
                       });
                 }
@@ -68,7 +68,7 @@ class SignInPage extends StatelessWidget {
                 foregroundColor: Colors.white,
                 fixedSize: Size((screenSize.width) / 3 + 20, 45),
               ),
-              child: const Text('Register'),
+              child: const Text('Create Account'),
               onPressed: () {
                 PageRouteWithAnimation pageRouteWithAnimation =
                     PageRouteWithAnimation(RegisterPage());
